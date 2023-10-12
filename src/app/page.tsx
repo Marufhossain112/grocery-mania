@@ -1,4 +1,5 @@
 import AboutUs from '@/ui/AboutUs';
+import FAQCard from '@/ui/FAQCard';
 import Featured from '@/ui/Featured';
 import Gallery from '@/ui/Gallery';
 import Testimonial from '@/ui/Testimonials';
@@ -13,6 +14,7 @@ const HomePage = () => {
       <Testimonial />
       <Gallery />
       <AboutUs />
+      <FAQCard />
       <GMFooter />
     </div>
   );
