@@ -1,44 +1,87 @@
-'use client';
+import React from 'react';
 
-import { Footer } from 'flowbite-react';
-
-export default function MyFooter() {
+const GMFooter = () => {
     return (
-        <Footer container>
-            <div className="w-full text-center">
-                <div className="w-full justify-between sm:flex sm:items-center sm:justify-between">
-                    <Footer.Brand
-                        alt="Flowbite Logo"
-                        href="https://flowbite.com"
-                        name="Flowbite"
-                        src="https://flowbite.com/docs/images/logo.svg"
-                    />
-                    <Footer.LinkGroup>
-                        <Footer.Link href="#">
-                            About
-                        </Footer.Link>
-                        <Footer.Link href="#">
-                            Privacy Policy
-                        </Footer.Link>
-                        <Footer.Link href="#">
-                            Licensing
-                        </Footer.Link>
-                        <Footer.Link href="#">
-                            Contact
-                        </Footer.Link>
-                    </Footer.LinkGroup>
+        <footer style={{ background: "black" }}>
+            <div className="mx-auto w-full max-w-screen-xl">
+                {/* <div className="grid grid-cols-2 gap-8 px-4 py-6 lg:py-8 md:grid-cols-4"> */}
+                <div className="grid grid-cols-4 mx-auto p-5">
+                    <div className='flex justify-center items-center'>
+                        <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Company</h2>
+                        <ul className="text-gray-500 dark:text-gray-400 font-medium">
+                            <li className="mb-4">
+                                <a href="#" className=" hover:underline">About</a>
+                            </li>
+                            <li className="mb-4">
+                                <a href="#" className="hover:underline">Careers</a>
+                            </li>
+                            <li className="mb-4">
+                                <a href="#" className="hover:underline">Brand Center</a>
+                            </li>
+                            <li className="mb-4">
+                                <a href="#" className="hover:underline">Blog</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div className='flex justify-center items-center'>
+                        <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Help center</h2>
+                        <ul className="text-gray-500 dark:text-gray-400 font-medium">
+                            <li className="mb-4">
+                                <a href="#" className="hover:underline">Discord Server</a>
+                            </li>
+                            <li className="mb-4">
+                                <a href="#" className="hover:underline">Twitter</a>
+                            </li>
+                            <li className="mb-4">
+                                <a href="#" className="hover:underline">Facebook</a>
+                            </li>
+                            <li className="mb-4">
+                                <a href="#" className="hover:underline">Contact Us</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div className='flex justify-center items-center'>
+                        <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Legal</h2>
+                        <ul className="text-gray-500 dark:text-gray-400 font-medium">
+                            <li className="mb-4">
+                                <a href="#" className="hover:underline">Legal</a>
+                            </li>
+                            <li className="mb-4">
+                                <a href="#" className="hover:underline">Privacy Policy</a>
+                            </li>
+                            <li className="mb-4">
+                                <a href="#" className="hover:underline">Licensing</a>
+                            </li>
+                            <li className="mb-4">
+                                <a href="#" className="hover:underline">Terms &amp; Conditions</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div className='flex justify-center items-center'>
+                        <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Download</h2>
+                        <ul className="text-gray-500 dark:text-gray-400 font-medium">
+                            <li className="mb-4">
+                                <a href="#" className="hover:underline">iOS</a>
+                            </li>
+                            <li className="mb-4">
+                                <a href="#" className="hover:underline">Android</a>
+                            </li>
+                            <li className="mb-4">
+                                <a href="#" className="hover:underline">Windows</a>
+                            </li>
+                            <li className="mb-4">
+                                <a href="#" className="hover:underline">MacOS</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <Footer.Divider />
-                <Footer.Copyright
-                    by="Flowbite™"
-                    href="#"
-                    year={2022}
-                />
+                <div className='flex'>
+                    <span className="text-sm text-gray-500 mx-auto text-center">© 2023 Grocery Mania™. All Rights Reserved.
+                    </span>
+                </div>
             </div>
-        </Footer>
+        </footer >
     );
-}
+};
 
-
-
-
+export default GMFooter;;
