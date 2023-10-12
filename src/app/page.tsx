@@ -1,7 +1,12 @@
-'use client';
+import GMNavbar from '@/ui/components/Navbar';
+import React from 'react';
 
-import { Alert } from 'flowbite-react';
+const HomePage = () => {
+  return (
+    <div>
+      <GMNavbar />
+    </div>
+  );
+};
 
-export default function MyPage() {
-  return <Alert color="info">Alert!</Alert>;
-}
+export default HomePage;
