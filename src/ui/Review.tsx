@@ -15,8 +15,8 @@ export default function Review() {
                         <Rating.Star />
                         <Rating.Star filled={false} />
                     </Rating>
-
                     <p>{'"This is really awesome"'}</p>
+                    <Avatar />
                     <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">
                         Bonnie Green
                     </h5>
@@ -35,8 +35,8 @@ export default function Review() {
                         <Rating.Star />
                         <Rating.Star filled={false} />
                     </Rating>
-
                     <p>{'"This is really awesome"'}</p>
+                    <Avatar />
                     <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">
                         Bonnie Green
                     </h5>
@@ -55,8 +55,8 @@ export default function Review() {
                         <Rating.Star />
                         <Rating.Star filled={false} />
                     </Rating>
-
                     <p>{'"This is really awesome"'}</p>
+                    <Avatar />
                     <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">
                         Bonnie Green
                     </h5>
