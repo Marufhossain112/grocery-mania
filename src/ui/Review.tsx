@@ -7,7 +7,6 @@ export default function Review() {
         <div className='flex flex-col justify-center  items-center gap-4'>
             <Card style={{ width: "95%" }}>
                 <div className="flex flex-col items-center pb-10">
-                    {/* <Avatar /> */}
                     <Rating>
                         <Rating.Star />
                         <Rating.Star />
