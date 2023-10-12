@@ -1,6 +1,7 @@
 'use client';
 
 import { Button, Navbar } from 'flowbite-react';
+import SearchBar from './SearchBar';
 
 export default function GMNavbar() {
     return (
@@ -14,9 +15,6 @@ export default function GMNavbar() {
                     Grocery Mania
                 </span>
             </Navbar.Brand>
-            <div className="flex md:order-2">
-                <Navbar.Toggle />
-            </div>
             <Navbar.Collapse>
                 <Navbar.Link
                     active
@@ -39,6 +37,10 @@ export default function GMNavbar() {
                     Contact
                 </Navbar.Link>
             </Navbar.Collapse>
+            <div className="flex md:order-2">
+                <SearchBar />
+            </div>
+            <Navbar.Toggle />
         </Navbar>
     );
 }
