@@ -9,37 +9,11 @@ import GMPagination from '../components/Pagination';
 import RatingReview from '../components/RatingReview';
 import GMBreadcrumb from '../components/Breadcrum';
 import { BsCartPlus } from 'react-icons/bs';
+import GMNavbar from '../components/Navbar';
 export default function Products() {
     return (
         <>
-            <Navbar
-                fluid
-                rounded
-                style={{ background: "#21d8aa" }}
-            >
-                <Navbar.Brand href="/">
-                    <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-                        Grocery Mania
-                    </span>
-                </Navbar.Brand>
-                <Navbar.Collapse>
-                    <Navbar.Link
-                        // active
-                        href="/"
-                    >
-                        <p>
-                            Home
-                        </p>
-                    </Navbar.Link>
-                    <Navbar.Link href="/products">
-                        Products
-                    </Navbar.Link>
-                </Navbar.Collapse>
-                <div className="flex md:order-2">
-                    <SearchBar />
-                </div>
-                <Navbar.Toggle />
-            </Navbar>
+            <GMNavbar />
             {/* <h3 className='text-center font-bold text-2xl py-3'>Products</h3> */}
             <div style={{
                 display: "grid",

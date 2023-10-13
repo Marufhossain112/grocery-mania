@@ -27,13 +27,13 @@ export default function GMNavbar() {
                 <Navbar.Link href="/products">
                     Products
                 </Navbar.Link>
-                <Navbar.Link href="#testimonials">
+                <Navbar.Link href="/#testimonials">
                     Testimonials
                 </Navbar.Link>
-                <Navbar.Link href="#about">
+                <Navbar.Link href="/#about">
                     About
                 </Navbar.Link>
-                <Navbar.Link href="#faq">
+                <Navbar.Link href="/#faq">
                     FAQ
                 </Navbar.Link>
             </Navbar.Collapse>
