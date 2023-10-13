@@ -3,7 +3,7 @@ import AboutUsCard from './components/AboutUsCard';
 
 const AboutUs = () => {
     return (
-        <div >
+        <div id='about'>
             <h3 style={{ marginBottom: "1rem" }} className='text-center font-bold text-2xl pt-5 pb-4 '>
                 About Us
             </h3>

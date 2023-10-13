@@ -17,24 +17,24 @@ export default function GMNavbar() {
             </Navbar.Brand>
             <Navbar.Collapse>
                 <Navbar.Link
-                    active
-                    href="#"
+                    // active
+                    href="/"
                 >
                     <p>
                         Home
                     </p>
                 </Navbar.Link>
-                <Navbar.Link href="#">
+                <Navbar.Link href="/products">
+                    Products
+                </Navbar.Link>
+                <Navbar.Link href="#testimonials">
+                    Testimonials
+                </Navbar.Link>
+                <Navbar.Link href="#about">
                     About
                 </Navbar.Link>
-                <Navbar.Link href="#">
-                    Services
-                </Navbar.Link>
-                <Navbar.Link href="#">
-                    Pricing
-                </Navbar.Link>
-                <Navbar.Link href="#">
-                    Contact
+                <Navbar.Link href="#faq">
+                    FAQ
                 </Navbar.Link>
             </Navbar.Collapse>
             <div className="flex md:order-2">

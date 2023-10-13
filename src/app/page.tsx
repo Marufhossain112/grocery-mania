@@ -7,6 +7,7 @@ import Newsletter from '@/ui/Newsletter';
 import Testimonial from '@/ui/Testimonials';
 import GMFooter from '@/ui/components/Footer';
 import GMNavbar from '@/ui/components/Navbar';
+import RatingReview from '@/ui/components/RatingReview';
 import ScrollToTopButton from '@/ui/components/ScrollToTopButton';
 import { Spinner } from 'flowbite-react';
 import React, { useEffect, useState } from 'react';
@@ -19,9 +20,9 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div>
+    <div id='home'>
       {
-        isLoading ? <div style={{height:"100vh"}} className="flex justify-center items-center">
+        isLoading ? <div style={{ height: "100vh" }} className="flex justify-center items-center">
           <Spinner size="lg" aria-label="Center-aligned spinner example" />
         </div> : <div><GMNavbar />
           <Featured />
