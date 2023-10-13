@@ -8,6 +8,7 @@ import CheckboxElement from '../components/Checkbox';
 import GMPagination from '../components/Pagination';
 import RatingReview from '../components/RatingReview';
 import GMBreadcrumb from '../components/Breadcrum';
+import { BsCartPlus } from 'react-icons/bs';
 export default function Products() {
     return (
         <>
@@ -74,11 +75,20 @@ export default function Products() {
                             />
                         </div>
                         <a href="#">
-                            <h5 className="text-lg font-medium tracking-tight text-gray-900 dark:text-white">
-                                <div className='flex items-end'>  <p>
-                                    Apple Watch Series 7 GPS
-                                </p>
-                                    <span><Badge color="info">Rice</Badge ></span></div>
+                            <h5 className="text-md font-normal tracking-tight text-gray-900 dark:text-white">
+                                <div className='flex '>
+                                    <div className='flex items-end'>
+                                        <p>
+                                            Apple Watch Series 7 GPS
+                                        </p>
+                                        <div className='flex flex-col items-center gap-2'>
+                                            <div className='text-2xl'>
+                                                <BsCartPlus />
+                                            </div>
+                                            <Badge color="info">Rice</Badge >
+                                        </div>
+                                    </div>
+                                </div>
                             </h5>
                         </a>
                         <div>
@@ -112,11 +122,20 @@ export default function Products() {
                             />
                         </div>
                         <a href="#">
-                            <h5 className="text-lg font-medium tracking-tight text-gray-900 dark:text-white">
-                                <div className='flex items-end'>  <p>
-                                    Apple Watch Series 7 GPS
-                                </p>
-                                    <span><Badge color="info">Rice</Badge ></span></div>
+                            <h5 className="text-md font-normal tracking-tight text-gray-900 dark:text-white">
+                                <div className='flex '>
+                                    <div className='flex items-end'>
+                                        <p>
+                                            Apple Watch Series 7 GPS
+                                        </p>
+                                        <div className='flex flex-col items-center gap-2'>
+                                            <div className='text-2xl'>
+                                                <BsCartPlus />
+                                            </div>
+                                            <Badge color="info">Rice</Badge >
+                                        </div>
+                                    </div>
+                                </div>
                             </h5>
                         </a>
                         <div>
@@ -150,11 +169,20 @@ export default function Products() {
                             />
                         </div>
                         <a href="#">
-                            <h5 className="text-lg font-medium tracking-tight text-gray-900 dark:text-white">
-                                <div className='flex items-end'>  <p>
-                                    Apple Watch Series 7 GPS
-                                </p>
-                                    <span><Badge color="info">Rice</Badge ></span></div>
+                            <h5 className="text-md font-normal tracking-tight text-gray-900 dark:text-white">
+                                <div className='flex '>
+                                    <div className='flex items-end'>
+                                        <p>
+                                            Apple Watch Series 7 GPS
+                                        </p>
+                                        <div className='flex flex-col items-center gap-2'>
+                                            <div className='text-2xl'>
+                                                <BsCartPlus />
+                                            </div>
+                                            <Badge color="info">Rice</Badge >
+                                        </div>
+                                    </div>
+                                </div>
                             </h5>
                         </a>
                         <div>
@@ -188,11 +216,20 @@ export default function Products() {
                             />
                         </div>
                         <a href="#">
-                            <h5 className="text-lg font-medium tracking-tight text-gray-900 dark:text-white">
-                                <div className='flex items-end'>  <p>
-                                    Apple Watch Series 7 GPS
-                                </p>
-                                    <span><Badge color="info">Rice</Badge ></span></div>
+                            <h5 className="text-md font-normal tracking-tight text-gray-900 dark:text-white">
+                                <div className='flex '>
+                                    <div className='flex items-end'>
+                                        <p>
+                                            Apple Watch Series 7 GPS
+                                        </p>
+                                        <div className='flex flex-col items-center gap-2'>
+                                            <div className='text-2xl'>
+                                                <BsCartPlus />
+                                            </div>
+                                            <Badge color="info">Rice</Badge >
+                                        </div>
+                                    </div>
+                                </div>
                             </h5>
                         </a>
                         <div>
@@ -226,11 +263,20 @@ export default function Products() {
                             />
                         </div>
                         <a href="#">
-                            <h5 className="text-lg font-medium tracking-tight text-gray-900 dark:text-white">
-                                <div className='flex items-end'>  <p>
-                                    Apple Watch Series 7 GPS
-                                </p>
-                                    <span><Badge color="info">Rice</Badge ></span></div>
+                            <h5 className="text-md font-normal tracking-tight text-gray-900 dark:text-white">
+                                <div className='flex '>
+                                    <div className='flex items-end'>
+                                        <p>
+                                            Apple Watch Series 7 GPS
+                                        </p>
+                                        <div className='flex flex-col items-center gap-2'>
+                                            <div className='text-2xl'>
+                                                <BsCartPlus />
+                                            </div>
+                                            <Badge color="info">Rice</Badge >
+                                        </div>
+                                    </div>
+                                </div>
                             </h5>
                         </a>
                         <div>
@@ -264,11 +310,20 @@ export default function Products() {
                             />
                         </div>
                         <a href="#">
-                            <h5 className="text-lg font-medium tracking-tight text-gray-900 dark:text-white">
-                                <div className='flex items-end'>  <p>
-                                    Apple Watch Series 7 GPS
-                                </p>
-                                    <span><Badge color="info">Rice</Badge ></span></div>
+                            <h5 className="text-md font-normal tracking-tight text-gray-900 dark:text-white">
+                                <div className='flex '>
+                                    <div className='flex items-end'>
+                                        <p>
+                                            Apple Watch Series 7 GPS
+                                        </p>
+                                        <div className='flex flex-col items-center gap-2'>
+                                            <div className='text-2xl'>
+                                                <BsCartPlus />
+                                            </div>
+                                            <Badge color="info">Rice</Badge >
+                                        </div>
+                                    </div>
+                                </div>
                             </h5>
                         </a>
                         <div>
@@ -291,10 +346,9 @@ export default function Products() {
                             </a>
                         </div>
                     </Card>
-
                 </div>
             </div>
-            <div className='flex justify-end'>
+            <div className='flex justify-end container mx-auto ' style={{ padding: "0 4.5rem" }}>
                 <GMPagination />
             </div>
         </>
