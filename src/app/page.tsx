@@ -6,6 +6,7 @@ import Newsletter from '@/ui/Newsletter';
 import Testimonial from '@/ui/Testimonials';
 import GMFooter from '@/ui/components/Footer';
 import GMNavbar from '@/ui/components/Navbar';
+import ScrollToTopButton from '@/ui/components/ScrollToTopButton';
 import React from 'react';
 const HomePage = () => {
   return (
@@ -17,6 +18,7 @@ const HomePage = () => {
       <AboutUs />
       <FAQCard />
       <Newsletter />
+      <ScrollToTopButton />
       <GMFooter />
     </div>
   );
