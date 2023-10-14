@@ -1,9 +1,14 @@
+import GMNavbar from '@/ui/components/Navbar';
+import UserProfileCard from '@/ui/components/ProfileCard';
 import React from 'react';
 
 const Profile = () => {
     return (
         <div>
-            <h1>This is profile page.</h1>
+            <GMNavbar />
+            <div style={{ marginTop: "2rem" }} className='flex justify-center items-center '>
+                <UserProfileCard />
+            </div>
         </div>
     );
 };
