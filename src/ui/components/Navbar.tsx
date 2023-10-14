@@ -36,6 +36,12 @@ export default function GMNavbar() {
                 <Navbar.Link href="/#faq">
                     FAQ
                 </Navbar.Link>
+                <Navbar.Link href="/register">
+                    Register
+                </Navbar.Link>
+                <Navbar.Link href="/login">
+                    Login
+                </Navbar.Link>
             </Navbar.Collapse>
             <div className="flex md:order-2">
                 <SearchBar />
