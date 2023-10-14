@@ -57,9 +57,6 @@ const Login = () => {
                                 placeholder="Password"
                                 {...register("password", { required: "password is required" })} />
                             {errors.password && <p className='text-red-600'>{errors.password.message}</p>}
-
-
-
                             <button
                                 type="submit"
                                 className="w-full text-center py-3 rounded bg-green-400 text-white hover:bg-green-dark focus:outline-none my-1"
