@@ -1,7 +1,6 @@
 "use client";
 import app from '@/firebase/firebase.init';
 import { createUserWithEmailAndPassword, getAuth, updateProfile } from 'firebase/auth';
-import { Toast } from 'flowbite-react';
 import React from 'react';
 import { useForm, SubmitHandler } from "react-hook-form";
 import toast from 'react-hot-toast';
@@ -11,38 +10,37 @@ type RegisterProps = {
     password: string;
     confirmPassword: string;
     agreement: boolean;
+    phoneNumber: string;
+    role: string;
 };
 const Register = () => {
     const auth = getAuth(app);
-
     const {
         register,
         handleSubmit,
-        watch,
         reset,
         formState: { errors },
     } = useForm<RegisterProps>();
     const onSubmit: SubmitHandler<RegisterProps> = async (data) => {
-        const { email, password, name } = data;
-
+        const { email, password, name, phoneNumber } = data;
         try {
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
             const user = userCredential.user;
-            // Update the user's profile with the display name
             await updateProfile(user, {
                 displayName: name,
             });
+            // @ts-ignore
+            user.role = "user";
+            // @ts-ignore
+            user.phoneNumber = phoneNumber;
             toast.success("User created successfully.");
             reset();
-            // console.log(user);
-
+            console.log(user);
         } catch (error: any) {
             const errorCode = error.code;
             const errorMessage = error.message;
-            // console.log(errorMessage);
         }
     };
-
     return (
         <div >
             <div style={{
@@ -68,6 +66,11 @@ const Register = () => {
                                 placeholder="Email"
                                 {...register("email", { required: "email is required" })} />
                             {errors.email && <p className='text-red-600'>{errors.email.message}</p>}
+                            <input
+                                type="number"
+                                className="block border border-grey-light w-full p-3 rounded mb-4"
+                                placeholder="Phone number"
+                                {...register("phoneNumber")} />
                             <input
                                 type="password"
                                 className="block border border-grey-light w-full p-3 rounded mb-4"

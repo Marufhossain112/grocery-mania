@@ -1,6 +1,7 @@
 "use client";
 import app from '@/firebase/firebase.init';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { useRouter } from 'next/navigation';
 import React from 'react';
 import { useForm, SubmitHandler } from "react-hook-form";
 import toast from 'react-hot-toast';
@@ -9,11 +10,12 @@ type LoginProps = {
     password: string;
 };
 const Login = () => {
+    const router = useRouter();
     const auth = getAuth(app);
     const {
         register,
         handleSubmit,
-        watch,
+        reset,
         formState: { errors },
     } = useForm<LoginProps>();
     const onSubmit: SubmitHandler<LoginProps> = async (data) => {
@@ -23,7 +25,9 @@ const Login = () => {
             const user = userCredential.user;
             console.log(user);
             toast.success("User logged in successfully.");
-            // ...
+            router.push("/profile");
+            reset();
+
         })
             .catch((error) => {
                 const errorCode = error.code;
