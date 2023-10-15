@@ -2,8 +2,26 @@
 
 import { Button, Navbar } from 'flowbite-react';
 import SearchBar from './SearchBar';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { getAuth, signOut } from "firebase/auth";
+import app from '@/firebase/firebase.init';
+import toast from 'react-hot-toast';
+import { signOutUser } from '@/redux/user/userslice';
+import { useRouter } from 'next/navigation';
+const auth = getAuth(app);
 export default function GMNavbar() {
+    const dispatch = useDispatch();
+    const { user } = useSelector((state) => state.persistedUserReducer);
+    const router = useRouter();
+    const handleSignout = () => {
+        signOut(auth).then(() => {
+            dispatch(signOutUser());
+            // Sign-out successful.
+            toast.success("Logout successful");
+            router.push("/");
+        }).catch((error) => {
+        });
+    };
     return (
         <Navbar
             fluid
@@ -39,12 +57,21 @@ export default function GMNavbar() {
                 <Navbar.Link href="/feedback">
                     Feedback
                 </Navbar.Link>
-                <Navbar.Link href="/register">
-                    Register
-                </Navbar.Link>
-                <Navbar.Link href="/login">
-                    Login
-                </Navbar.Link>
+                {
+                    user ? <Navbar.Link onClick={handleSignout}>
+                        Logout
+                    </Navbar.Link> : <>
+                        <Navbar.Link href="/register">
+                            Register
+                        </Navbar.Link>
+
+                        <Navbar.Link href="/login">
+                            Login
+                        </Navbar.Link>
+                    </>
+                }
+
+
             </Navbar.Collapse>
             <div className="flex md:order-2">
                 <SearchBar />

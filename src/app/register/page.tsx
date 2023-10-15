@@ -1,9 +1,11 @@
 "use client";
 import app from '@/firebase/firebase.init';
+import { setUser } from '@/redux/user/userslice';
 import { createUserWithEmailAndPassword, getAuth, updateProfile } from 'firebase/auth';
 import React from 'react';
 import { useForm, SubmitHandler } from "react-hook-form";
 import toast from 'react-hot-toast';
+import { useDispatch } from 'react-redux';
 type RegisterProps = {
     name: string;
     email: string;
@@ -21,18 +23,47 @@ const Register = () => {
         reset,
         formState: { errors },
     } = useForm<RegisterProps>();
+    const dispatch = useDispatch();
     const onSubmit: SubmitHandler<RegisterProps> = async (data) => {
-        const { email, password, name, phoneNumber } = data;
+
+        const { email, password, name, phoneNumber, confirmPassword } = data;
+        if (password !== confirmPassword) {
+            toast.error("Passwords do not match");
+            return;
+        }
         try {
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
             const user = userCredential.user;
+            console.log("UserData", user);
+            dispatch(setUser(user.email));
             await updateProfile(user, {
                 displayName: name,
             });
+
             // @ts-ignore
             user.role = "user";
             // @ts-ignore
             user.phoneNumber = phoneNumber;
+            const users = {
+                name: user.displayName,
+                email: user.email,
+                role: user.role,
+                phoneNumber: user.phoneNumber,
+                uid: user.uid,
+                photoURL: user.photoURL,
+            };
+            if (user) {
+                fetch("http://localhost:5000/users", {
+                    method: "POST",
+                    headers: {
+                        "content-type": "application/json",
+                    },
+                    body: JSON.stringify(users),
+                })
+                    .then((res) => res.json())
+                    .then((data) => console.log(data))
+                    .catch((err) => console.log(err));
+            }
             toast.success("User created successfully.");
             reset();
             console.log(user);

@@ -16,8 +16,11 @@ export const api = createApi({
         getOneProduct: builder.query({
             query: (id) => `/products/${id}`,
         }),
+        createUser: builder.mutation({
+            query: () => `/products`,
+        }),
     }),
 });
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useGetFeaturedProductsQuery, useVisualsProductsQuery, useProductsQuery, useGetOneProductQuery } = api;
+export const { useGetFeaturedProductsQuery, useVisualsProductsQuery, useProductsQuery, useGetOneProductQuery, useCreateUserMutation } = api;

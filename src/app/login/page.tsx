@@ -1,15 +1,18 @@
 "use client";
 import app from '@/firebase/firebase.init';
+import { setUser } from '@/redux/user/userslice';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { useRouter } from 'next/navigation';
 import React from 'react';
 import { useForm, SubmitHandler } from "react-hook-form";
 import toast from 'react-hot-toast';
+import { useDispatch } from 'react-redux';
 type LoginProps = {
     email: string;
     password: string;
 };
 const Login = () => {
+    const dispatch = useDispatch();
     const router = useRouter();
     const auth = getAuth(app);
     const {
@@ -23,11 +26,10 @@ const Login = () => {
         await signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
             // Signed in 
             const user = userCredential.user;
-            console.log(user);
+            dispatch(setUser(user.email));
             toast.success("User logged in successfully.");
             router.push("/profile");
             reset();
-
         })
             .catch((error) => {
                 const errorCode = error.code;
