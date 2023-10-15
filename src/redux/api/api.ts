@@ -10,8 +10,11 @@ export const api = createApi({
         visualsProducts: builder.query({
             query: () => `/visuals`,
         }),
+        products: builder.query({
+            query: () => `/products`,
+        }),
     }),
 });
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useGetFeaturedProductsQuery,useVisualsProductsQuery } = api;
+export const { useGetFeaturedProductsQuery, useVisualsProductsQuery, useProductsQuery } = api;
