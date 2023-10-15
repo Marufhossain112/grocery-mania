@@ -18,16 +18,16 @@ export default function SelectInput() {
                 required
             >
                 <option>
-                    United States
+                    Low to High
                 </option>
                 <option>
-                    Canada
+                    High to Low
                 </option>
                 <option>
-                    France
+                    A to Z
                 </option>
                 <option>
-                    Germany
+                    Z to A
                 </option>
             </Select>
         </div>

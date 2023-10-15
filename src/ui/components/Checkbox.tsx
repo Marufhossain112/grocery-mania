@@ -6,7 +6,7 @@ export default function CheckboxElement() {
             className="flex max-w-md flex-col gap-4"
             id="checkbox"
         >
-            <div className="flex items-center gap-2">
+            {/* <div className="flex items-center gap-2">
                 <Checkbox
                     defaultChecked
                     id="accept"
@@ -16,22 +16,41 @@ export default function CheckboxElement() {
                     htmlFor="agree"
                 >
                     <p>
-                        I agree with the
+                        Category
                     </p>
+                </Label>
+            </div> */}
+            <div className="flex items-center gap-2">
+                <Checkbox id="promotion" />
+                <Label htmlFor="promotion">
+                    In stock
                 </Label>
             </div>
             <div className="flex items-center gap-2">
                 <Checkbox id="promotion" />
                 <Label htmlFor="promotion">
-                    I want to get promotional offers
+                    Fish
                 </Label>
             </div>
             <div className="flex items-center gap-2">
-                <Checkbox id="age" />
-                <Label htmlFor="age">
-                    I am 18 years or older
+                <Checkbox id="promotion" />
+                <Label htmlFor="promotion">
+                    Rice
                 </Label>
             </div>
+            <div className="flex items-center gap-2">
+                <Checkbox id="promotion" />
+                <Label htmlFor="promotion">
+                    Suji
+                </Label>
+            </div>
+            <div className="flex items-center gap-2">
+                <Checkbox id="promotion" />
+                <Label htmlFor="promotion">
+                    Fruit
+                </Label>
+            </div>
+
         </div>
     );
 }
