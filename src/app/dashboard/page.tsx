@@ -9,6 +9,8 @@ import UserTable from '@/ui/UserData/UserTable';
 import BookingStatus from '@/ui/UserData/BookingStatus';
 import ProfileSummary from '@/ui/UserData/ProfileSummary';
 import toast from 'react-hot-toast';
+import UserList from '@/ui/Management/UserManagement';
+import ProductManagement from '@/ui/Management/ProductManagement';
 const UserDashboard = () => {
     const [selectedItem, setSelectedItem] = useState('Please choose dashboard items');
     const [addedCart, setAddedCart] = useState([]);
@@ -67,7 +69,7 @@ const UserDashboard = () => {
                                     <Sidebar.Item
                                         href="#"
                                         icon={HiInbox}
-                                        onClick={() => handleSidebarItemClick('history')}
+                                        onClick={() => handleSidebarItemClick('user')}
                                     >
                                         <p>
                                             User management
@@ -76,16 +78,16 @@ const UserDashboard = () => {
                                     <Sidebar.Item
                                         href="#"
                                         icon={HiUser}
-                                        onClick={() => handleSidebarItemClick('status')}
+                                        onClick={() => handleSidebarItemClick('service')}
                                     >
                                         <p>
-                                            Service management
+                                            Product management
                                         </p>
                                     </Sidebar.Item>
                                     <Sidebar.Item
                                         href="#"
                                         icon={HiShoppingBag}
-                                        onClick={() => handleSidebarItemClick('summary')}
+                                        onClick={() => handleSidebarItemClick('profile')}
                                     >
                                         <p>
                                             Profile Summary
@@ -105,32 +107,36 @@ const UserDashboard = () => {
                         </Sidebar>
                         {
                             selectedItem === 'activities' &&
-                            <div>
-                                <h1>Platform Activities</h1>
+                            <div className='text-center '>
+                                <h3 className='text-center font-bold text-2xl py-3'>User activities</h3>
+                                <p>Added to cart: {foundAddedCart ? foundAddedCart.length : "0"} items</p>
+                                <p>Ordered products quantity: {foundOrderedCart ? foundOrderedCart.length : "0"} items</p>
                             </div>
                         }
                         {
                             selectedItem === 'user' &&
                             <div>
-                                <h1>User management</h1>
+                                <UserList />
                             </div>
                         }
                         {
                             selectedItem === 'service' &&
-                            <div>
-                                <h1>Service management</h1>
+                            <div style={{ marginTop: '0rem' }}>
+                                <h3 className='text-center font-bold text-2xl py-3'>Product Management</h3>
+                                <ProductManagement />
                             </div>
                         }
                         {
                             selectedItem === 'profile' &&
-                            <div>
-                                <h1>Profile Summary</h1>
+                            <div style={{ marginTop: '0rem' }}>
+                                <h3 className='text-center font-bold text-2xl py-3'>Profile Summary</h3>
+                                <ProfileSummary />
                             </div>
                         }
                         {
                             selectedItem === 'edit' &&
-                            <div>
-                                <h1>Edit Profile</h1>
+                            <div style={{ marginTop: '0rem' }}>
+                                <h3 className='text-center font-bold text-2xl py-3'>Edit profile</h3>
                             </div>
                         }
                     </> : <>   <Sidebar className='h-screen' aria-label="Sidebar with multi-level dropdown example">

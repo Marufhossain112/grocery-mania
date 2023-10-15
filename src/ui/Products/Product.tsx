@@ -17,11 +17,7 @@ export default function Products() {
     const { user } = useSelector((state) => state.persistedUserReducer);
     const { data, isLoading } = useProductsQuery(undefined);
     console.log("Products", data);
-    if (isLoading) {
-        return <div style={{ height: "100vh" }} className="flex justify-center items-center">
-            <Spinner size="lg" aria-label="Center-aligned spinner example" />
-        </div>;
-    }
+
     const handleAddToCart = async (product: any) => {
         const response = await (fetch("http://localhost:5000/cart"));
         const existingCart = await response.json();
@@ -48,6 +44,11 @@ export default function Products() {
                 .catch((err) => console.log(err));
         }
     };
+    if (isLoading) {
+        return <div style={{ height: "100vh" }} className="flex justify-center items-center">
+            <Spinner size="lg" aria-label="Center-aligned spinner example" />
+        </div>;
+    }
     return (
         <>
             <GMNavbar />
