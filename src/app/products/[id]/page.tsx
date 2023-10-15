@@ -33,7 +33,7 @@ const ProductDetails = () => {
                     <Image src={data.img} height={80} width={300} alt='product' />
                 </div>
                 <div>
-                    <h4 style={{ marginBottom: "6px" }} className='text-2xl font-medium'>A burning shoes </h4>
+                    <h4 style={{ marginBottom: "6px" }} className='text-2xl font-medium'>{data.name} </h4>
                     <div className='flex justify-between items-center'>
                         <div style={{ marginBottom: "4px" }} className='flex items-center'><span style={{ fontSize: "1.5rem" }} className='mr-2 '>৳{data.price}</span><RatingReview /> <span className='ml-2'>({data.reviews} reviews)</span></div> <div><BsShareFill /></div>
                     </div>
@@ -106,7 +106,7 @@ const ProductDetails = () => {
                                             className="rounded-lg bg-cyan-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-cyan-800 focus:outline-none focus:ring-4 focus:ring-cyan-300 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800"
                                             href="#"
                                         >
-                                            <Link href={`/product/${product._id}`}>
+                                            <Link href={`/product/${data._id}/relatedProductDetails/${product.id}`}>
                                                 <button>
                                                     Go to details
                                                 </button>

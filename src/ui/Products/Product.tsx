@@ -10,6 +10,7 @@ import GMBreadcrumb from '../components/Breadcrum';
 import { BsCartPlus } from 'react-icons/bs';
 import GMNavbar from '../components/Navbar';
 import { useProductsQuery } from '@/redux/api/api';
+import Link from 'next/link';
 export default function Products() {
     const { data, isLoading } = useProductsQuery(undefined);
     console.log("Products", data);
@@ -86,9 +87,11 @@ export default function Products() {
                                     className="rounded-lg bg-cyan-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-cyan-800 focus:outline-none focus:ring-4 focus:ring-cyan-300 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800"
                                     href="#"
                                 >
-                                    <p>
-                                        Go to details
-                                    </p>
+                                    <Link href={`/products/${product._id}`}>
+                                        <button>
+                                            Go to details
+                                        </button>
+                                    </Link>
                                 </a>
                             </div>
                         </Card>
