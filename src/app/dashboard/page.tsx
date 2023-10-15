@@ -6,6 +6,7 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useGetOneUserQuery } from '@/redux/api/api';
 import UserTable from '@/ui/UserData/UserTable';
+import BookingStatus from '@/ui/UserData/BookingStatus';
 const UserDashboard = () => {
     const [selectedItem, setSelectedItem] = useState('Please choose dashboard items');
     const [addedCart, setAddedCart] = useState([]);
@@ -198,8 +199,9 @@ const UserDashboard = () => {
                         }
                         {
                             selectedItem === 'status' &&
-                            <div>
-                                <h1>Status</h1>
+                            <div style={{ marginTop: '0rem' }}>
+                                <h3 className='text-center font-bold text-2xl py-3'>Booking Status</h3>
+                                <BookingStatus />
                             </div>
                         }
                         {
