@@ -97,9 +97,6 @@ const UserDashboard = () => {
                         <h1>Edit Profile</h1>
                     </div>
                 }
-                {/* <div className="">
-                    <h1 className="text-4xl font-bold">User activities</h1>
-                </div> */}
             </div>
         </div>
     );

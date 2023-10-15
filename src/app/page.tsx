@@ -1,4 +1,5 @@
 "use client";
+import { useGetFeaturedProductsQuery } from '@/redux/api/api';
 import AboutUs from '@/ui/AboutUs';
 import FAQCard from '@/ui/FAQCard';
 import Featured from '@/ui/Featured';
@@ -7,24 +8,20 @@ import Newsletter from '@/ui/Newsletter';
 import Testimonial from '@/ui/Testimonials';
 import GMFooter from '@/ui/components/Footer';
 import GMNavbar from '@/ui/components/Navbar';
-import RatingReview from '@/ui/components/RatingReview';
 import ScrollToTopButton from '@/ui/components/ScrollToTopButton';
 import { Spinner } from 'flowbite-react';
 import React, { useEffect, useState } from 'react';
 const HomePage = () => {
-  const [isLoading, setIsLoading] = useState(true);
-  useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 1000);
-  }, []);
-
+  const { data, isLoading } = useGetFeaturedProductsQuery(undefined);
+  if (isLoading) {
+    return <div style={{ height: "100vh" }} className="flex justify-center items-center">
+      <Spinner size="lg" aria-label="Center-aligned spinner example" />
+    </div>;
+  }
   return (
     <div id='home'>
       {
-        isLoading ? <div style={{ height: "100vh" }} className="flex justify-center items-center">
-          <Spinner size="lg" aria-label="Center-aligned spinner example" />
-        </div> : <div><GMNavbar />
+        <div><GMNavbar />
           <Featured />
           <Testimonial />
           <Gallery />
