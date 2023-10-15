@@ -1,104 +1,51 @@
 'use client';
+import { useGetBookedOrdersQuery } from '@/redux/api/api';
 import { Table } from 'flowbite-react';
-export default function DefaultTable() {
+export default function UserTable() {
+    const { data, isLoading } = useGetBookedOrdersQuery(undefined);
+    console.log("datatqata", data);
+    // const { name, quantity, category, price } = data;
+
     return (
-        <Table>
-            <Table.Head>
-                <Table.HeadCell>
-                    Product name
-                </Table.HeadCell>
-                <Table.HeadCell>
-                    Color
-                </Table.HeadCell>
-                <Table.HeadCell>
-                    Category
-                </Table.HeadCell>
-                <Table.HeadCell>
-                    Price
-                </Table.HeadCell>
-                <Table.HeadCell>
-                    <span className="sr-only">
-                        Edit
-                    </span>
-                </Table.HeadCell>
-            </Table.Head>
-            <Table.Body className="divide-y">
-                <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
-                    <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                        Apple MacBook Pro 17
-                    </Table.Cell>
-                    <Table.Cell>
-                        Sliver
-                    </Table.Cell>
-                    <Table.Cell>
-                        Laptop
-                    </Table.Cell>
-                    <Table.Cell>
-                        $2999
-                    </Table.Cell>
-                    <Table.Cell>
-                        <a
-                            className="font-medium text-cyan-600 hover:underline dark:text-cyan-500"
-                            href="/tables"
-                        >
-                            <p>
-                                Edit
-                            </p>
-                        </a>
-                    </Table.Cell>
-                </Table.Row>
-                <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
-                    <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                        <p>
-                            Microsoft Surface Pro
-                        </p>
-                    </Table.Cell>
-                    <Table.Cell>
-                        White
-                    </Table.Cell>
-                    <Table.Cell>
-                        Laptop PC
-                    </Table.Cell>
-                    <Table.Cell>
-                        $1999
-                    </Table.Cell>
-                    <Table.Cell>
-                        <a
-                            className="font-medium text-cyan-600 hover:underline dark:text-cyan-500"
-                            href="/tables"
-                        >
-                            <p>
-                                Edit
-                            </p>
-                        </a>
-                    </Table.Cell>
-                </Table.Row>
-                <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
-                    <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                        Magic Mouse 2
-                    </Table.Cell>
-                    <Table.Cell>
-                        Black
-                    </Table.Cell>
-                    <Table.Cell>
-                        Accessories
-                    </Table.Cell>
-                    <Table.Cell>
-                        $99
-                    </Table.Cell>
-                    <Table.Cell>
-                        <a
-                            className="font-medium text-cyan-600 hover:underline dark:text-cyan-500"
-                            href="/tables"
-                        >
-                            <p>
-                                Edit
-                            </p>
-                        </a>
-                    </Table.Cell>
-                </Table.Row>
-            </Table.Body>
-        </Table>
+        <div>
+            {
+                data?.map((product, index) => (
+                    <Table key={index}>
+                        <Table.Head>
+                            <Table.HeadCell>
+                                Product name
+                            </Table.HeadCell>
+                            <Table.HeadCell>
+                                Quantity
+                            </Table.HeadCell>
+                            <Table.HeadCell>
+                                Category
+                            </Table.HeadCell>
+                            <Table.HeadCell>
+                                Price
+                            </Table.HeadCell>
+                        </Table.Head>
+                        <Table.Body className="divide-y">
+                            <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
+                                <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
+                                    {product.name}
+                                </Table.Cell>
+                                <Table.Cell>
+                                    {product.quantity}
+                                </Table.Cell>
+                                <Table.Cell>
+                                    {product.category}
+                                </Table.Cell>
+                                <Table.Cell>
+                                    ৳{product.price}
+                                </Table.Cell>
+                            </Table.Row>
+                        </Table.Body>
+                    </Table>
+                ))
+            }
+        </div>
+
     );
 }
 

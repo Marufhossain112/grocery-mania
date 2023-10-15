@@ -22,8 +22,14 @@ export const api = createApi({
         getOneUser: builder.query({
             query: (email) => `/users/${email}`,
         }),
+        getBookedOrders: builder.query({
+            query: () => `/orders`,
+        }),
+        getAddedCart: builder.query({
+            query: () => `/cart`,
+        }),
     }),
 });
 
 // auto-generated based on the defined endpoints
-export const { useGetFeaturedProductsQuery, useVisualsProductsQuery, useProductsQuery, useGetOneProductQuery, useGetUsersQuery, useGetOneUserQuery } = api;
+export const { useGetFeaturedProductsQuery, useVisualsProductsQuery, useProductsQuery, useGetOneProductQuery, useGetUsersQuery, useGetOneUserQuery, useGetBookedOrdersQuery, useGetAddedCartQuery } = api;

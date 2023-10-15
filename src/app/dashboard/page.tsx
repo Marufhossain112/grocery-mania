@@ -5,6 +5,7 @@ import { HiArrowSmRight, HiChartPie, HiInbox, HiShoppingBag, HiUser } from 'reac
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useGetOneUserQuery } from '@/redux/api/api';
+import UserTable from '@/ui/UserData/UserTable';
 const UserDashboard = () => {
     const [selectedItem, setSelectedItem] = useState('Please choose dashboard items');
     const [addedCart, setAddedCart] = useState([]);
@@ -44,7 +45,7 @@ const UserDashboard = () => {
             <GMNavbar />
             <div style={{
                 display: "grid",
-                gridTemplateColumns: "8rem auto"
+                gridTemplateColumns: "12rem auto"
             }}>
                 {
                     role === 'admin' ? <>
@@ -190,8 +191,9 @@ const UserDashboard = () => {
                         }
                         {
                             selectedItem === 'history' &&
-                            <div>
-                                <h1>History</h1>
+                            <div style={{ marginTop: '0rem' }}>
+                                <h3 className='text-center font-bold text-2xl py-3'>User activities</h3>
+                                <UserTable />
                             </div>
                         }
                         {
