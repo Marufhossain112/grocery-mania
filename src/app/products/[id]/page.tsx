@@ -45,7 +45,9 @@ const ProductDetails = () => {
                     <p style={{ color: "#3c483c" }}>Location:{data.location}</p>
                     <p style={{ color: "#3c483c" }}>Contact:{data.phone}</p>
                     <div className='flex mt-2'>
-                        <Button className='mr-2'>Buy Now </Button>
+                        <Link href={`/products/buy/${data._id}`}>
+                            <Button className='mr-2'>Order Now </Button>
+                        </Link>
                         <Button color='purple'>Add to Cart </Button>
                     </div>
                 </div>

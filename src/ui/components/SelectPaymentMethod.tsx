@@ -8,7 +8,7 @@ export default function SelectPayment() {
         >
             <div className="mt-2 ">
                 <div className='mt-3'><span >Payment method:</span>
-                    <div className='w-1/2 '> <Select
+                    <div className='w-1/2 '> <Select style={{ width: "20rem" }}
                         id="payment"
                         required
                     >
