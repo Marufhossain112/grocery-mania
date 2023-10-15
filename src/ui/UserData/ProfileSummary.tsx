@@ -46,7 +46,7 @@ export default function UserProfileCard() {
     };
     return (
         <div>
-            <GMNavbar />
+            {/* <GMNavbar /> */}
             <div style={{ marginTop: "2rem" }} className='flex justify-center items-center '>
                 {
                     data?.map((user: any, index: number) => (

@@ -7,6 +7,8 @@ import { useSelector } from 'react-redux';
 import { useGetOneUserQuery } from '@/redux/api/api';
 import UserTable from '@/ui/UserData/UserTable';
 import BookingStatus from '@/ui/UserData/BookingStatus';
+import ProfileSummary from '@/ui/UserData/ProfileSummary';
+import toast from 'react-hot-toast';
 const UserDashboard = () => {
     const [selectedItem, setSelectedItem] = useState('Please choose dashboard items');
     const [addedCart, setAddedCart] = useState([]);
@@ -206,14 +208,17 @@ const UserDashboard = () => {
                         }
                         {
                             selectedItem === 'summary' &&
-                            <div>
-                                <h1>Summary</h1>
+                            <div style={{ marginTop: '0rem' }}>
+                                <h3 className='text-center font-bold text-2xl py-3'>Profile Summary</h3>
+                                <ProfileSummary />
                             </div>
                         }
                         {
                             selectedItem === 'edit' &&
                             <div>
-                                <h1>Edit Profile</h1>
+                                <div style={{ marginTop: '0rem' }}>
+                                    <h3 className='text-center font-bold text-2xl py-3'>Edit profile</h3>
+                                </div>
                             </div>
                         }</>
                 }
