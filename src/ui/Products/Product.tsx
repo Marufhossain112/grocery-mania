@@ -11,7 +11,10 @@ import { BsCartPlus } from 'react-icons/bs';
 import GMNavbar from '../components/Navbar';
 import { useProductsQuery } from '@/redux/api/api';
 import Link from 'next/link';
+import toast from 'react-hot-toast';
+import { useSelector } from 'react-redux';
 export default function Products() {
+    const { user } = useSelector((state) => state.persistedUserReducer);
     const { data, isLoading } = useProductsQuery(undefined);
     console.log("Products", data);
     if (isLoading) {
@@ -19,6 +22,32 @@ export default function Products() {
             <Spinner size="lg" aria-label="Center-aligned spinner example" />
         </div>;
     }
+    const handleAddToCart = async (product: any) => {
+        const response = await (fetch("http://localhost:5000/cart"));
+        const existingCart = await response.json();
+        // console.log("Data", data);
+        const existProduct = existingCart.find((cart) => cart._id === product._id);
+        console.log("paisi", existProduct);
+        if (existProduct) {
+            toast.error("Product is already added to the cart.");
+        }
+        if (!existProduct) {
+            fetch("http://localhost:5000/cart", {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify({ user, ...product }),
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    if (data.insertedId) {
+                        toast.success("Added to cart successfully.");
+                    }
+                })
+                .catch((err) => console.log(err));
+        }
+    };
     return (
         <>
             <GMNavbar />
@@ -65,9 +94,9 @@ export default function Products() {
                                             </p>
                                             <div className='flex  items-center justify-between gap-2'>
                                                 <Badge color="info">{product.category}</Badge >
-                                                <div className='text-2xl'>
+                                                <button onClick={() => handleAddToCart(product)} className='text-2xl'>
                                                     <BsCartPlus />
-                                                </div>
+                                                </button>
                                             </div>
                                         </div>
                                     </div>

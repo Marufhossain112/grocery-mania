@@ -22,7 +22,7 @@ const BuyPage = () => {
             headers: {
                 "content-type": "application/json",
             },
-            body: JSON.stringify({user, ...data}),
+            body: JSON.stringify({ user, ...data }),
         })
             .then((res) => res.json())
             .then((data) => console.log(data))
