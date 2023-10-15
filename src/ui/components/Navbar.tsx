@@ -42,6 +42,11 @@ export default function GMNavbar() {
                         Home
                     </p>
                 </Navbar.Link>
+                {
+                    user && <Navbar.Link href="/dashboard">
+                        Dashboard
+                    </Navbar.Link>
+                }
                 <Navbar.Link href="/products">
                     Products
                 </Navbar.Link>

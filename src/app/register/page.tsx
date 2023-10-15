@@ -34,14 +34,17 @@ const Register = () => {
         try {
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
             const user = userCredential.user;
+            user.role = "user";
             console.log("UserData", user);
-            dispatch(setUser(user.email));
+            dispatch(setUser({
+                user: user.email,
+                role: user.role
+            }));
             await updateProfile(user, {
                 displayName: name,
             });
 
             // @ts-ignore
-            user.role = "user";
             // @ts-ignore
             user.phoneNumber = phoneNumber;
             const users = {

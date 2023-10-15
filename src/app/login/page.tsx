@@ -1,5 +1,6 @@
 "use client";
 import app from '@/firebase/firebase.init';
+import { useGetOneUserQuery } from '@/redux/api/api';
 import { setUser } from '@/redux/user/userslice';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { useRouter } from 'next/navigation';
@@ -12,6 +13,7 @@ type LoginProps = {
     password: string;
 };
 const Login = () => {
+    // const { data, isLoading } = useGetOneUserQuery(email);
     const dispatch = useDispatch();
     const router = useRouter();
     const auth = getAuth(app);
@@ -21,12 +23,21 @@ const Login = () => {
         reset,
         formState: { errors },
     } = useForm<LoginProps>();
-    const onSubmit: SubmitHandler<LoginProps> = async (data) => {
-        const { email, password } = data;
+    const onSubmit: SubmitHandler<LoginProps> = async (getData) => {
+        const { email, password } = getData;
+        // const userRole = data.filter((data) => data.role);
+        // console.log("role", userRole);
+        const response = await (fetch("http://localhost:5000/users"));
+        const users = await response.json();
+        const matchedData = users?.filter((user) => user.email === email);
+        // console.log("matched", matched);
         await signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
             // Signed in 
             const user = userCredential.user;
-            dispatch(setUser(user.email));
+            dispatch(setUser({
+                user: user.email,
+                role: matchedData[0].role
+            }));
             toast.success("User logged in successfully.");
             router.push("/profile");
             reset();
