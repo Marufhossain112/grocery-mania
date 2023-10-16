@@ -7,7 +7,7 @@ const GMFooter = () => {
                 {/* <div className="grid grid-cols-2 gap-8 px-4 py-6 lg:py-8 md:grid-cols-4"> */}
                 <div className="grid grid-cols-4 mx-auto p-5">
                     <div className='flex justify-center items-center'>
-                        <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Company</h2>
+
                         <ul className="text-gray-500 dark:text-gray-400 font-medium">
                             <li className="mb-4">
                                 <a href="#" className=" hover:underline">About</a>
@@ -24,7 +24,7 @@ const GMFooter = () => {
                         </ul>
                     </div>
                     <div className='flex justify-center items-center'>
-                        <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Help center</h2>
+
                         <ul className="text-gray-500 dark:text-gray-400 font-medium">
                             <li className="mb-4">
                                 <a href="#" className="hover:underline">Discord Server</a>
@@ -41,7 +41,7 @@ const GMFooter = () => {
                         </ul>
                     </div>
                     <div className='flex justify-center items-center'>
-                        <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Legal</h2>
+
                         <ul className="text-gray-500 dark:text-gray-400 font-medium">
                             <li className="mb-4">
                                 <a href="#" className="hover:underline">Legal</a>
@@ -58,7 +58,7 @@ const GMFooter = () => {
                         </ul>
                     </div>
                     <div className='flex justify-center items-center'>
-                        <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Download</h2>
+
                         <ul className="text-gray-500 dark:text-gray-400 font-medium">
                             <li className="mb-4">
                                 <a href="#" className="hover:underline">iOS</a>

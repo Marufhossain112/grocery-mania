@@ -34,13 +34,13 @@ export default function Review() {
                         <Rating.Star />
                         <Rating.Star filled={false} />
                     </Rating>
-                    <p>{'"This is really awesome"'}</p>
+                    <p>{'"I love the services."'}</p>
                     <Avatar />
                     <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">
-                        Bonnie Green
+                        Arick Adison
                     </h5>
                     <span className="text-sm text-gray-500 dark:text-gray-400">
-                        Visual Designer
+                        Engineer
                     </span>
                 </div>
             </Card>
@@ -54,13 +54,13 @@ export default function Review() {
                         <Rating.Star />
                         <Rating.Star filled={false} />
                     </Rating>
-                    <p>{'"This is really awesome"'}</p>
+                    <p>{'"Loved the work very much."'}</p>
                     <Avatar />
                     <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">
-                        Bonnie Green
+                        Mark Kyle
                     </h5>
                     <span className="text-sm text-gray-500 dark:text-gray-400">
-                        Visual Designer
+                        Doctor
                     </span>
                 </div>
             </Card>

@@ -5,106 +5,45 @@ export default function FAQ() {
         <Accordion collapseAll>
             <Accordion.Panel>
                 <Accordion.Title>
-                    What is Flowbite?
+                    How do I place an order on the grocery website?
                 </Accordion.Title>
                 <Accordion.Content>
                     <p className="mb-2 text-gray-500 dark:text-gray-400">
                         <p>
-                            Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons,
-                            dropdowns, modals, navbars, and more.
+                            To place an order on our grocery website, follow these steps:
+                            Browse the website and add the items you want to your cart.
+                            Review your cart to ensure you have selected the correct products and quantities.
+                            Proceed to the checkout, where you will provide your delivery address and payment information.
+                            Confirm your order, and you will receive an order confirmation with the expected delivery time.
                         </p>
                     </p>
-                    <p className="text-gray-500 dark:text-gray-400">
-                        <p>
-                            Check out this guide to learn how to
-                        </p>
-                        <a
-                            className="text-cyan-600 hover:underline dark:text-cyan-500"
-                            href="https://flowbite.com/docs/getting-started/introduction/"
-                        >
-                            <p>
-                                get started
-                            </p>
-                        </a>
-                        <p>
-                            and start developing websites even faster with components on top of Tailwind CSS.
-                        </p>
-                    </p>
+
                 </Accordion.Content>
             </Accordion.Panel>
             <Accordion.Panel>
                 <Accordion.Title>
-                    Is there a Figma file available?
+                    What are the delivery options and fees?
                 </Accordion.Title>
                 <Accordion.Content>
                     <p className="mb-2 text-gray-500 dark:text-gray-400">
                         <p>
-                            Flowbite is first conceptualized and designed using the Figma software so everything you see in the library
-                            has a design equivalent in our Figma file.
+                            We offer several delivery options, including standard and express delivery. The delivery fees vary based on your location, order size, and chosen delivery speed. You can find the specific delivery options and fees during the checkout process. We often provide free delivery for orders over a certain amount or to loyal customers who meet specific criteria.
                         </p>
                     </p>
-                    <p className="text-gray-500 dark:text-gray-400">
-                        <p>
-                            Check out the
-                        </p>
-                        <a
-                            className="text-cyan-600 hover:underline dark:text-cyan-500"
-                            href="https://flowbite.com/figma/"
-                        >
-                            <p>
-                                Figma design system
-                            </p>
-                        </a>
-                        <p>
-                            based on the utility classes from Tailwind CSS and components from Flowbite.
-                        </p>
-                    </p>
+
                 </Accordion.Content>
             </Accordion.Panel>
             <Accordion.Panel>
                 <Accordion.Title>
-                    What are the differences between Flowbite and Tailwind UI?
+                    How do I track my order?
                 </Accordion.Title>
                 <Accordion.Content>
                     <p className="mb-2 text-gray-500 dark:text-gray-400">
                         <p>
-                            The main difference is that the core components from Flowbite are open source under the MIT license, whereas
-                            Tailwind UI is a paid product. Another difference is that Flowbite relies on smaller and standalone
-                            components, whereas Tailwind UI offers sections of pages.
+                            Tracking your order is easy. After placing an order, you will receive an email or SMS with a link to track your delivery. You can also log in to your account on our website to check the real-time status of your order. This tracking information includes the current location of your delivery and an estimated time of arrival. If you have any issues or questions about your order, our customer support team is available to assist you.
                         </p>
                     </p>
-                    <p className="mb-2 text-gray-500 dark:text-gray-400">
-                        <p>
-                            However, we actually recommend using both Flowbite, Flowbite Pro, and even Tailwind UI as there is no
-                            technical reason stopping you from using the best of two worlds.
-                        </p>
-                    </p>
-                    <p className="mb-2 text-gray-500 dark:text-gray-400">
-                        Learn more about these technologies:
-                    </p>
-                    <ul className="list-disc pl-5 text-gray-500 dark:text-gray-400">
-                        <li>
-                            <a
-                                className="text-cyan-600 hover:underline dark:text-cyan-500"
-                                href="https://flowbite.com/pro/"
-                            >
-                                <p>
-                                    Flowbite Pro
-                                </p>
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                className="text-cyan-600 hover:underline dark:text-cyan-500"
-                                href="https://tailwindui.com/"
-                                rel="nofollow"
-                            >
-                                <p>
-                                    Tailwind UI
-                                </p>
-                            </a>
-                        </li>
-                    </ul>
+               
                 </Accordion.Content>
             </Accordion.Panel>
         </Accordion>
