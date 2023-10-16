@@ -53,13 +53,7 @@ export default function Products() {
     return (
         <>
             <GMNavbar />
-            <div style={{
-                display: "grid",
-                gridTemplateColumns: "12rem auto",
-                gap: "2rem",
-                margin: "4rem",
-                marginBottom: "0"
-            }}>
+            <div className='product-parent-container' >
                 <div className='sidebar'>
                     <GMBreadcrumb />
                     <div className='mb-5'>
@@ -70,11 +64,7 @@ export default function Products() {
                         <CheckboxElement />
                     </div>
                 </div>
-                <div style={{
-                    display: "grid",
-                    gridTemplateColumns: "auto auto auto",
-                    rowGap: "1rem"
-                }}>
+                <div className='product-container'>
 
                     {data?.map((product: any, index: number) => (
                         <Card key={index} style={{ width: "18rem" }}

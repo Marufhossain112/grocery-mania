@@ -4,14 +4,8 @@ import { Spinner } from 'flowbite-react';
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 const ProfileHistory = () => {
-    // const [selectedItem, setSelectedItem] = useState('Please choose dashboard items');
-    const [addedCart, setAddedCart] = useState([]);
-    const [ordered, setOrdered] = useState([]);
-    // const { user } = useSelector((state) => state.persistedUserReducer);
     const { addToCart } = useSelector((state) => state.persistedProductReducer);
     const { bookedOrder } = useSelector((state) => state.persistedProductReducer);
-    // console.log("addToCart", addToCart);
-    // console.log("bookedOrder", bookedOrder);
     const { user } = useSelector((state) => state.persistedUserReducer);
     const { data, isLoading } = useGetOneUserQuery(user);
     const foundAddedCart = addToCart?.filter((cart) => cart.user === user);

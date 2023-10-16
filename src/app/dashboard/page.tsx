@@ -1,7 +1,7 @@
 // @ts-nocheck
 "use client";
 import GMNavbar from '@/ui/components/Navbar';
-import { Sidebar, Spinner } from 'flowbite-react';
+import { Dropdown, Sidebar, Spinner } from 'flowbite-react';
 import { HiArrowSmRight, HiChartPie, HiInbox, HiShoppingBag, HiUser } from 'react-icons/hi';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -12,8 +12,12 @@ import ProfileSummary from '@/ui/UserData/ProfileSummary';
 import UserList from '@/ui/Management/UserManagement';
 import ProductManagement from '@/ui/Management/ProductManagement';
 import ProfileHistory from '@/ui/ProfileHistory/ProfileHistory';
+import { AiOutlineMenu } from 'react-icons/ai';
+import { RxCross1 } from 'react-icons/rx';
 const UserDashboard = () => {
-    const [selectedItem, setSelectedItem] = useState(<ProfileHistory />);
+    // const [selectedItem, setSelectedItem] = useState(<ProfileHistory />);
+    const [selectedItem, setSelectedItem] = useState("");
+    const [closeDashboard, setCloseDashboard] = useState(true);
     const [addedCart, setAddedCart] = useState([]);
     const [ordered, setOrdered] = useState([]);
     const { user } = useSelector((state) => state.persistedUserReducer);
@@ -52,10 +56,7 @@ const UserDashboard = () => {
     return (
         <div>
             <GMNavbar />
-            <div style={{
-                display: "grid",
-                gridTemplateColumns: "12rem auto"
-            }}>
+            <div className='dashboard-container'>
                 {
                     role === 'admin' ? <>
                         <Sidebar className='h-screen' aria-label="Sidebar with multi-level dropdown example">
@@ -143,96 +144,108 @@ const UserDashboard = () => {
                                 <h3 className='text-center font-bold text-2xl py-3'>Edit profile</h3>
                             </div>
                         }
-                    </> : <>   <Sidebar className='h-screen' aria-label="Sidebar with multi-level dropdown example">
-                        <Sidebar.Items >
-                            <Sidebar.ItemGroup>
-                                <Sidebar.Item
-                                    href="#"
-                                    icon={HiChartPie}
-                                    onClick={() => handleSidebarItemClick('activities')}
-                                >
-                                    <p>
-                                        User activities
-                                    </p>
-                                </Sidebar.Item>
-                                <Sidebar.Item
-                                    href="#"
-                                    icon={HiInbox}
-                                    onClick={() => handleSidebarItemClick('history')}
-                                >
-                                    <p>
-                                        Booking History
-                                    </p>
-                                </Sidebar.Item>
-                                <Sidebar.Item
-                                    href="#"
-                                    icon={HiUser}
-                                    onClick={() => handleSidebarItemClick('status')}
-                                >
-                                    <p>
-                                        Booking Status
-                                    </p>
-                                </Sidebar.Item>
-                                <Sidebar.Item
-                                    href="#"
-                                    icon={HiShoppingBag}
-                                    onClick={() => handleSidebarItemClick('summary')}
-                                >
-                                    <p>
-                                        Profile Summary
-                                    </p>
-                                </Sidebar.Item>
-                                <Sidebar.Item
-                                    href="#"
-                                    icon={HiArrowSmRight}
-                                    onClick={() => handleSidebarItemClick('edit')}
-                                >
-                                    <p>
-                                        Edit Profile
-                                    </p>
-                                </Sidebar.Item>
-                            </Sidebar.ItemGroup>
-                        </Sidebar.Items>
-                    </Sidebar>
-                        {
-                            !selectedItem &&
-                            <ProfileHistory />
-                        }
-                        {
-                            selectedItem === 'activities' &&
-                            <ProfileHistory />
-                        }
-                        {
-                            selectedItem === 'history' &&
-                            <div style={{ marginTop: '0rem' }}>
-                                <h3 className='text-center font-bold text-2xl py-3'>Booking History</h3>
-                                <UserTable />
-                            </div>
-                        }
-                        {
-                            selectedItem === 'status' &&
-                            <div style={{ marginTop: '0rem' }}>
-                                <h3 className='text-center font-bold text-2xl py-3'>Booking Status</h3>
-                                <BookingStatus />
-                            </div>
-                        }
-                        {
-                            selectedItem === 'summary' &&
-                            <div style={{ marginTop: '0rem' }}>
-                                <h3 className='text-center font-bold text-2xl py-3'>Profile Summary</h3>
-                                <ProfileSummary />
-                            </div>
-                        }
-                        {
-                            selectedItem === 'edit' &&
-                            <div>
-                                <div style={{ marginTop: '0rem' }}>
-                                    <h3 className='text-center font-bold text-2xl py-3'>Edit profile</h3>
+                    </> : <>   <div  >
+                        <Sidebar className={`h-screen sidebar  ${closeDashboard ? "dashboard-hide" : "dashboard-show"}`} aria-label="Sidebar with multi-level dropdown example">
+                            <Sidebar.Items >
+                                <div className='cross-icon'>
+                                    <RxCross1 onClick={() => setCloseDashboard(true)} style={{ fontSize: "1.5rem" }} />
                                 </div>
+                                <Sidebar.ItemGroup>
+                                    <Sidebar.Item
+                                        href="#"
+                                        icon={HiChartPie}
+                                        onClick={() => handleSidebarItemClick('activities')}
+                                    >
+                                        <p>
+                                            User activities
+                                        </p>
+                                    </Sidebar.Item>
+                                    <Sidebar.Item
+                                        href="#"
+                                        icon={HiInbox}
+                                        onClick={() => handleSidebarItemClick('history')}
+                                    >
+                                        <p>
+                                            Booking History
+                                        </p>
+                                    </Sidebar.Item>
+                                    <Sidebar.Item
+                                        href="#"
+                                        icon={HiUser}
+                                        onClick={() => handleSidebarItemClick('status')}
+                                    >
+                                        <p>
+                                            Booking Status
+                                        </p>
+                                    </Sidebar.Item>
+                                    <Sidebar.Item
+                                        href="#"
+                                        icon={HiShoppingBag}
+                                        onClick={() => handleSidebarItemClick('summary')}
+                                    >
+                                        <p>
+                                            Profile Summary
+                                        </p>
+                                    </Sidebar.Item>
+                                    <Sidebar.Item
+                                        href="#"
+                                        icon={HiArrowSmRight}
+                                        onClick={() => handleSidebarItemClick('edit')}
+                                    >
+                                        <p>
+                                            Edit Profile
+                                        </p>
+                                    </Sidebar.Item>
+                                </Sidebar.ItemGroup>
+                            </Sidebar.Items>
+                        </Sidebar>
+                        <div className='p-5 dashboard-icon '>
+                            <AiOutlineMenu onClick={() => setCloseDashboard(false)} style={{ fontSize: "1.5rem" }} />
+                        </div>
+                    </div>
+                        {
+                        /*     closeDashboard && */ <div>
+                                {
+                                    !selectedItem &&
+                                    <ProfileHistory />
+                                }
+                                {
+                                    selectedItem === 'activities' &&
+                                    <ProfileHistory />
+                                }
+                                {
+                                    selectedItem === 'history' &&
+                                    <div style={{ marginTop: '0rem' }}>
+                                        <h3 className='text-center font-bold text-2xl py-3'>Booking History</h3>
+                                        <UserTable />
+                                    </div>
+                                }
+                                {
+                                    selectedItem === 'status' &&
+                                    <div style={{ marginTop: '0rem' }}>
+                                        <h3 className='text-center font-bold text-2xl py-3'>Booking Status</h3>
+                                        <BookingStatus />
+                                    </div>
+                                }
+                                {
+                                    selectedItem === 'summary' &&
+                                    <div style={{ marginTop: '0rem' }}>
+                                        <h3 className='text-center font-bold text-2xl py-3'>Profile Summary</h3>
+                                        <ProfileSummary />
+                                    </div>
+                                }
+                                {
+                                    selectedItem === 'edit' &&
+                                    <div>
+                                        <div style={{ marginTop: '0rem' }}>
+                                            <h3 className='text-center font-bold text-2xl py-3'>Edit profile</h3>
+                                        </div>
+                                    </div>
+                                }
                             </div>
-                        }</>
+                        }
+                    </>
                 }
-
             </div>
         </div>
     );

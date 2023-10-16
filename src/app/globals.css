@@ -19,3 +19,130 @@
 .scroll-to-top:hover {
   background-color: tomato;
 }
+
+/* media queries */
+/* Mobile devices (320px — 480px) */
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  .dashboard-hide {
+    display: none;
+  }
+  .dashboard-show {
+    display: block;
+  }
+  .product-parent-container {
+    display: grid;
+    grid-template-columns: auto;
+    justify-content: center;
+    gap: 2rem;
+    margin: 4rem;
+    margin-bottom: 0;
+  }
+  .product-container {
+    display: grid;
+    grid-template-columns: auto;
+    row-gap: 1rem;
+  }
+}
+
+/* iPads and Tablets (481px — 768px) */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .dashboard-hide {
+    display: none;
+  }
+  .dashboard-show {
+    display: block;
+  }
+  .product-parent-container {
+    display: grid;
+    grid-template-columns: 12rem auto;
+    gap: 2rem;
+    margin: 4rem;
+    margin-bottom: 0;
+  }
+  .product-container {
+    display: grid;
+    grid-template-columns: auto;
+    row-gap: 1rem;
+  }
+}
+
+/* Small screens and laptops (769px — 1024px) */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  /* Your CSS for small screens and laptops here */
+  .dashboard-container {
+    display: grid;
+    grid-template-columns: 8rem auto;
+  }
+  .dashboard-hide {
+    display: block;
+  }
+  .dashboard-show {
+    display: none;
+  }
+  .product-parent-container {
+    display: grid;
+    grid-template-columns: 12rem auto;
+    gap: 2rem;
+    margin: 4rem;
+    margin-bottom: 0;
+  }
+  .product-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    row-gap: 1rem;
+  }
+}
+
+/* Desktops and large screens (1025px — 1200px) */
+@media screen and (min-width: 1025px) and (max-width: 1200px) {
+  /* Your CSS for desktops and large screens here */
+  .dashboard-icon {
+    display: none;
+  }
+  .cross-icon {
+    display: none;
+  }
+  .dashboard-container {
+    display: grid;
+    grid-template-columns: 12rem auto;
+  }
+  .product-parent-container {
+    display: grid;
+    grid-template-columns: 12rem auto;
+    gap: 2rem;
+    margin: 4rem;
+    margin-bottom: 0;
+  }
+  .product-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    row-gap: 1rem;
+  }
+}
+
+/* Extra large screens and TV (1201px and more) */
+@media screen and (min-width: 1201px) {
+  /* Your CSS for extra large screens and TV here */
+  .dashboard-icon {
+    display: none;
+  }
+  .cross-icon {
+    display: none;
+  }
+  .dashboard-container {
+    display: grid;
+    grid-template-columns: 12rem auto;
+  }
+  .product-parent-container {
+    display: grid;
+    grid-template-columns: 12rem auto;
+    gap: 2rem;
+    margin: 4rem;
+    margin-bottom: 0;
+  }
+  .product-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    row-gap: 1rem;
+  }
+}

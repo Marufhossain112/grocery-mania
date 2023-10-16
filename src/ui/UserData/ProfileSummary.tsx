@@ -11,6 +11,7 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
+import ProfileHistory from '../ProfileHistory/ProfileHistory';
 const { Item } = Dropdown;
 export default function UserProfileCard() {
     const { user } = useSelector((state) => state.persistedUserReducer);
@@ -106,11 +107,7 @@ export default function UserProfileCard() {
                                     <Image src="/assets/rocket.jpeg" alt='rocket' height={40} width={40} />
                                 </div>
                                 <div className="mt-4 flex space-x-3 lg:mt-6">
-                                    <div className='flex flex-col text-center'>
-                                        <p className='underline'>History</p>
-                                        <p>Added to cart: {foundAddedCart ? foundAddedCart.length : "0"} items</p>
-                                        <p>Ordered products quantity: {foundOrderedCart ? foundOrderedCart.length : "0"} items</p>
-                                    </div>
+                                    <ProfileHistory />
                                 </div>
                             </div>
                         </Card>
