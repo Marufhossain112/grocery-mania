@@ -8,6 +8,8 @@ import app from '@/firebase/firebase.init';
 import toast from 'react-hot-toast';
 import { signOutUser } from '@/redux/user/userslice';
 import { useRouter } from 'next/navigation';
+import { clearResults } from '@/redux/clearSlice/clearSlice';
+import { persistor } from '@/redux/store';
 const auth = getAuth(app);
 export default function GMNavbar() {
     const dispatch = useDispatch();
@@ -15,6 +17,7 @@ export default function GMNavbar() {
     const router = useRouter();
     const handleSignout = () => {
         signOut(auth).then(() => {
+            persistor.purge();
             dispatch(signOutUser());
             // Sign-out successful.
             toast.success("Logout successful");

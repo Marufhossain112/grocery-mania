@@ -1,6 +1,7 @@
 // @ts-nocheck
 "use client";
 import { useGetOneProductQuery, useGetOneUserQuery } from '@/redux/api/api';
+import { bookedOrder } from '@/redux/product/productSlice';
 import GMNavbar from '@/ui/components/Navbar';
 import PricingCard from '@/ui/components/OrderSummery';
 import OrderingCard from '@/ui/components/OrderingCard';
@@ -9,24 +10,30 @@ import { Card, Spinner } from 'flowbite-react';
 import { redirect, useParams } from 'next/navigation';
 import React from 'react';
 import toast from 'react-hot-toast';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 const BuyPage = () => {
+    const dispatch = useDispatch();
     const { id } = useParams();
     const { user } = useSelector((state) => state.persistedUserReducer);
     const { data, isLoading } = useGetOneProductQuery(id);
     // console.log("Product data", data);
     const handleOrder = () => {
-        toast.success("Order confirmed successfully.");
+        const orderData = { user, ...data };
         fetch("https://grocery-vercel-coral.vercel.app/orders", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
             },
-            body: JSON.stringify({ user, ...data }),
+            body: JSON.stringify(orderData),
         })
             .then((res) => res.json())
-            .then((data) => console.log(data))
+            .then((data) => {
+                if (data.insertedId) {
+                    dispatch(bookedOrder(orderData));
+                    toast.success("Order confirmed successfully.");
+                }
+            })
             .catch((err) => console.log(err));
     };
 

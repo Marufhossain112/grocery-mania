@@ -1,11 +1,14 @@
 // @ts-nocheck
 'use client';
 import { useGetFeaturedProductsQuery } from '@/redux/api/api';
+import { addToCart } from '@/redux/product/productSlice';
 import { Card, Spinner } from 'flowbite-react';
 import Image from 'next/image';
+import { send } from 'process';
 import toast from 'react-hot-toast';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 export default function ECommerceCard() {
+    const dispatch = useDispatch();
     const { user } = useSelector((state) => state.persistedUserReducer);
     const { data, isLoading } = useGetFeaturedProductsQuery(undefined);
     // console.log("Featured Data", data);
@@ -15,6 +18,7 @@ export default function ECommerceCard() {
         </div>;
     }
     const handleAddToCart = async (product: any) => {
+
         const response = await (fetch("https://grocery-vercel-coral.vercel.app/cart"));
         const existingCart = await response.json();
         // console.log("Data", data);
@@ -22,17 +26,19 @@ export default function ECommerceCard() {
         if (existProduct) {
             toast.error("Product is already added to the cart.");
         }
+        const sendData = { user, ...product };
         if (!existProduct) {
             fetch("https://grocery-vercel-coral.vercel.app/cart", {
                 method: "POST",
                 headers: {
                     "content-type": "application/json",
                 },
-                body: JSON.stringify({ user, ...product }),
+                body: JSON.stringify(sendData),
             })
                 .then((res) => res.json())
                 .then((data) => {
                     if (data.insertedId) {
+                        dispatch(addToCart(sendData));
                         toast.success("Added to cart successfully.");
                     }
                 })

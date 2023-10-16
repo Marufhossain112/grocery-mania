@@ -3,7 +3,7 @@
 import app from '@/firebase/firebase.init';
 import { useGetOneUserQuery } from '@/redux/api/api';
 import { signOutUser } from '@/redux/user/userslice';
-import GMNavbar from '@/ui/components/Navbar';
+// import GMNavbar from '@/ui/components/Navbar';
 import { getAuth, signOut } from "firebase/auth";
 import { Avatar, Card, Dropdown } from 'flowbite-react';
 import Image from 'next/image';
@@ -36,7 +36,7 @@ export default function UserProfileCard() {
     const dispatch = useDispatch();
     const router = useRouter();
     const auth = getAuth(app);
-    const handleSignout = () => {
+    const handleSignOut = () => {
         signOut(auth).then(() => {
             dispatch(signOutUser());
             // Sign-out successful.
@@ -82,7 +82,7 @@ export default function UserProfileCard() {
                                             className="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white"
                                             href="#"
                                         >
-                                            <button onClick={handleSignout}>
+                                            <button onClick={handleSignOut}>
                                                 Logout
                                             </button>
                                         </a>

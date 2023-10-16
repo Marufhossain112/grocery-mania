@@ -3,22 +3,26 @@
 import GMNavbar from '@/ui/components/Navbar';
 import { Sidebar, Spinner } from 'flowbite-react';
 import { HiArrowSmRight, HiChartPie, HiInbox, HiShoppingBag, HiUser } from 'react-icons/hi';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useGetOneUserQuery } from '@/redux/api/api';
 import UserTable from '@/ui/UserData/UserTable';
 import BookingStatus from '@/ui/UserData/BookingStatus';
 import ProfileSummary from '@/ui/UserData/ProfileSummary';
-import toast from 'react-hot-toast';
 import UserList from '@/ui/Management/UserManagement';
 import ProductManagement from '@/ui/Management/ProductManagement';
+import ProfileHistory from '@/ui/ProfileHistory/ProfileHistory';
 const UserDashboard = () => {
-    const [selectedItem, setSelectedItem] = useState('Please choose dashboard items');
+    const [selectedItem, setSelectedItem] = useState(<ProfileHistory />);
     const [addedCart, setAddedCart] = useState([]);
     const [ordered, setOrdered] = useState([]);
     const { user } = useSelector((state) => state.persistedUserReducer);
     const { role } = useSelector((state) => state.persistedUserReducer);
     const { data, isLoading } = useGetOneUserQuery(user);
+    useEffect(() => {
+        setSelectedItem('activities');
+    }
+        , []);
     fetch("https://grocery-vercel-coral.vercel.app/cart")
         .then((res) => res.json())
         .then((data) => addedCart.push(data))
@@ -106,12 +110,12 @@ const UserDashboard = () => {
                             </Sidebar.Items>
                         </Sidebar>
                         {
+                            !selectedItem &&
+                            <ProfileHistory />
+                        }
+                        {
                             selectedItem === 'activities' &&
-                            <div className='text-center '>
-                                <h3 className='text-center font-bold text-2xl py-3'>User activities</h3>
-                                <p>Added to cart: {foundAddedCart ? foundAddedCart.length : "0"} items</p>
-                                <p>Ordered products quantity: {foundOrderedCart ? foundOrderedCart.length : "0"} items</p>
-                            </div>
+                            <ProfileHistory />
                         }
                         {
                             selectedItem === 'user' &&
@@ -191,17 +195,17 @@ const UserDashboard = () => {
                         </Sidebar.Items>
                     </Sidebar>
                         {
+                            !selectedItem &&
+                            <ProfileHistory />
+                        }
+                        {
                             selectedItem === 'activities' &&
-                            <div className='text-center '>
-                                <h3 className='text-center font-bold text-2xl py-3'>User activities</h3>
-                                <p>Added to cart: {foundAddedCart ? foundAddedCart.length : "0"} items</p>
-                                <p>Ordered products quantity: {foundOrderedCart ? foundOrderedCart.length : "0"} items</p>
-                            </div>
+                            <ProfileHistory />
                         }
                         {
                             selectedItem === 'history' &&
                             <div style={{ marginTop: '0rem' }}>
-                                <h3 className='text-center font-bold text-2xl py-3'>User activities</h3>
+                                <h3 className='text-center font-bold text-2xl py-3'>Booking History</h3>
                                 <UserTable />
                             </div>
                         }
