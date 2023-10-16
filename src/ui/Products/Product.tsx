@@ -20,7 +20,7 @@ export default function Products() {
     console.log("Products", data);
 
     const handleAddToCart = async (product: any) => {
-        const response = await (fetch("https://grocery-vercel-coral.vercel.app/cart"));
+        const response = await (fetch("http://localhost:5000/cart"));
         const existingCart = await response.json();
         // console.log("Data", data);
         const existProduct = existingCart.find((cart) => cart._id === product._id);
@@ -29,7 +29,7 @@ export default function Products() {
             toast.error("Product is already added to the cart.");
         }
         if (!existProduct) {
-            fetch("https://grocery-vercel-coral.vercel.app/cart", {
+            fetch("http://localhost:5000/cart", {
                 method: "POST",
                 headers: {
                     "content-type": "application/json",

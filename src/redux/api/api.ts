@@ -2,34 +2,43 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 // Define a service using a base URL and expected endpoints
 export const api = createApi({
     reducerPath: 'api',
-    baseQuery: fetchBaseQuery({ baseUrl: 'https://grocery-vercel-coral.vercel.app' }),
+    baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000/' }),
+    tagTypes: ['removeUser'],
     endpoints: (builder) => ({
         getFeaturedProducts: builder.query({
-            query: () => `/featuredProducts`,
+            query: () => `featuredProducts`,
         }),
         visualsProducts: builder.query({
-            query: () => `/visuals`,
+            query: () => `visuals`,
         }),
         products: builder.query({
-            query: () => `/products`,
+            query: () => `products`,
         }),
         getOneProduct: builder.query({
-            query: (id) => `/products/${id}`,
+            query: (id) => `products/${id}`,
         }),
         getUsers: builder.query({
-            query: () => `/users`,
+            query: () => `users`,
+            providesTags:['removeUser']
         }),
         getOneUser: builder.query({
-            query: (email) => `/users/${email}`,
+            query: (email) => `users/${email}`,
         }),
         getBookedOrders: builder.query({
-            query: () => `/orders`,
+            query: () => `orders`,
         }),
         getAddedCart: builder.query({
-            query: () => `/cart`,
+            query: () => `cart`,
+        }),
+        deleteSingleUser: builder.mutation({
+            query: (id) => ({
+                url: `users/${id}`,
+                method: 'DELETE',
+            }),
+            invalidatesTags: ['removeUser']
         }),
     }),
 });
 
 // auto-generated based on the defined endpoints
-export const { useGetFeaturedProductsQuery, useVisualsProductsQuery, useProductsQuery, useGetOneProductQuery, useGetUsersQuery, useGetOneUserQuery, useGetBookedOrdersQuery, useGetAddedCartQuery } = api;
+export const { useGetFeaturedProductsQuery, useVisualsProductsQuery, useProductsQuery, useGetOneProductQuery, useGetUsersQuery, useGetOneUserQuery, useGetBookedOrdersQuery, useGetAddedCartQuery, useDeleteSingleUserMutation } = api;

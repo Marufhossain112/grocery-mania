@@ -28,7 +28,7 @@ const Login = () => {
         const { email, password } = getData;
         // const userRole = data.filter((data) => data.role);
         // console.log("role", userRole);
-        const response = await (fetch("https://grocery-vercel-coral.vercel.app/users"));
+        const response = await (fetch("http://localhost:5000/users"));
         const users = await response.json();
         const matchedData = users?.filter((user) => user.email === email);
         // console.log("matched", matched);

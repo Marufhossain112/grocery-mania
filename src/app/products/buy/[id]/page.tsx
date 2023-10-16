@@ -20,7 +20,7 @@ const BuyPage = () => {
     // console.log("Product data", data);
     const handleOrder = () => {
         const orderData = { user, ...data };
-        fetch("https://grocery-vercel-coral.vercel.app/orders", {
+        fetch("http://localhost:5000/orders", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -82,7 +82,7 @@ const BuyPage = () => {
                                 </li>
                                 <li className=' flex justify-between'>
                                     <span>total </span>
-                                    <span>৳{data.price + 10 + 1}</span>
+                                    <span>৳{data?.price + 10 + 1}</span>
                                 </li>
                             </ul>
                             <button
