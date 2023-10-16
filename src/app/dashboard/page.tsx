@@ -18,7 +18,7 @@ const UserDashboard = () => {
     const { user } = useSelector((state) => state.persistedUserReducer);
     const { role } = useSelector((state) => state.persistedUserReducer);
     const { data, isLoading } = useGetOneUserQuery(user);
-    fetch("http://localhost:5000/cart")
+    fetch("https://grocery-vercel-coral.vercel.app/cart")
         .then((res) => res.json())
         .then((data) => addedCart.push(data))
         .catch((err) => console.log(err));
@@ -26,7 +26,7 @@ const UserDashboard = () => {
     const userAddedToCart = addedCart.find((cart) => cart);
     const foundAddedCart = userAddedToCart?.filter((cart) => cart.user === user);
     // console.log("foundAddedCart", foundAddedCart);
-    fetch("http://localhost:5000/orders")
+    fetch("https://grocery-vercel-coral.vercel.app/orders")
         .then((res) => res.json())
         .then((data) => ordered.push(data))
         .catch((err) => console.log(err));

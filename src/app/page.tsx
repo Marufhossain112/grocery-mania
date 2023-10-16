@@ -12,12 +12,12 @@ import ScrollToTopButton from '@/ui/components/ScrollToTopButton';
 import { Spinner } from 'flowbite-react';
 import React, { useEffect, useState } from 'react';
 const HomePage = () => {
-  const { data, isLoading } = useGetFeaturedProductsQuery(undefined);
-  if (isLoading) {
-    return <div style={{ height: "100vh" }} className="flex justify-center items-center">
-      <Spinner size="lg" aria-label="Center-aligned spinner example" />
-    </div>;
-  }
+  // const { data, isLoading } = useGetFeaturedProductsQuery(undefined);
+  // if (isLoading) {
+  //   return <div style={{ height: "100vh" }} className="flex justify-center items-center">
+  //     <Spinner size="lg" aria-label="Center-aligned spinner example" />
+  //   </div>;
+  // }
   return (
     <div id='home'>
       {

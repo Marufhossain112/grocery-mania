@@ -7,14 +7,14 @@ import { useSelector } from 'react-redux';
 export default function ECommerceCard() {
     const { user } = useSelector((state) => state.persistedUserReducer);
     const { data, isLoading } = useGetFeaturedProductsQuery(undefined);
-    // console.log(data);
+    console.log("Featured Data", data);
     if (isLoading) {
         return <div style={{ height: "100vh" }} className="flex justify-center items-center">
             <Spinner size="lg" aria-label="Center-aligned spinner example" />
         </div>;
     }
     const handleAddToCart = async (product: any) => {
-        const response = await (fetch("http://localhost:5000/cart"));
+        const response = await (fetch("https://grocery-vercel-coral.vercel.app/cart"));
         const existingCart = await response.json();
         // console.log("Data", data);
         const existProduct = existingCart.find((cart) => cart._id === product._id);
@@ -22,7 +22,7 @@ export default function ECommerceCard() {
             toast.error("Product is already added to the cart.");
         }
         if (!existProduct) {
-            fetch("http://localhost:5000/cart", {
+            fetch("https://grocery-vercel-coral.vercel.app/cart", {
                 method: "POST",
                 headers: {
                     "content-type": "application/json",

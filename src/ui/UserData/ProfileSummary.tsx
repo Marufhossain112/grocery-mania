@@ -16,7 +16,7 @@ export default function UserProfileCard() {
 
     const [addedCart, setAddedCart] = useState([]);
     const [ordered, setOrdered] = useState([]);
-    fetch("http://localhost:5000/cart")
+    fetch("https://grocery-vercel-coral.vercel.app/cart")
         .then((res) => res.json())
         .then((data) => addedCart.push(data))
         .catch((err) => console.log(err));
@@ -24,7 +24,7 @@ export default function UserProfileCard() {
     const userAddedToCart = addedCart.find((cart) => cart);
     const foundAddedCart = userAddedToCart?.filter((cart) => cart.user === user);
     // console.log("foundAddedCart", foundAddedCart);
-    fetch("http://localhost:5000/orders")
+    fetch("https://grocery-vercel-coral.vercel.app/orders")
         .then((res) => res.json())
         .then((data) => ordered.push(data))
         .catch((err) => console.log(err));

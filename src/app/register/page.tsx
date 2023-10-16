@@ -56,7 +56,7 @@ const Register = () => {
                 photoURL: user.photoURL,
             };
             if (user) {
-                fetch("http://localhost:5000/users", {
+                fetch("https://grocery-vercel-coral.vercel.app/users", {
                     method: "POST",
                     headers: {
                         "content-type": "application/json",
