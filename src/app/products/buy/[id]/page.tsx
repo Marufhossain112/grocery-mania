@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use client";
 import { useGetOneProductQuery, useGetOneUserQuery } from '@/redux/api/api';
 import GMNavbar from '@/ui/components/Navbar';
@@ -14,7 +15,7 @@ const BuyPage = () => {
     const { id } = useParams();
     const { user } = useSelector((state) => state.persistedUserReducer);
     const { data, isLoading } = useGetOneProductQuery(id);
-    console.log("Product data", data);
+    // console.log("Product data", data);
     const handleOrder = () => {
         toast.success("Order confirmed successfully.");
         fetch("https://grocery-vercel-coral.vercel.app/orders", {

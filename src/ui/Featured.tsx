@@ -1,3 +1,4 @@
+// @ts-nocheck
 'use client';
 import { useGetFeaturedProductsQuery } from '@/redux/api/api';
 import { Card, Spinner } from 'flowbite-react';
@@ -7,7 +8,7 @@ import { useSelector } from 'react-redux';
 export default function ECommerceCard() {
     const { user } = useSelector((state) => state.persistedUserReducer);
     const { data, isLoading } = useGetFeaturedProductsQuery(undefined);
-    console.log("Featured Data", data);
+    // console.log("Featured Data", data);
     if (isLoading) {
         return <div style={{ height: "100vh" }} className="flex justify-center items-center">
             <Spinner size="lg" aria-label="Center-aligned spinner example" />

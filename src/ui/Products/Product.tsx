@@ -1,3 +1,4 @@
+// @ts-nocheck
 'use client';
 import { Badge, Navbar, Spinner } from 'flowbite-react';
 import { Card } from 'flowbite-react';
@@ -23,7 +24,7 @@ export default function Products() {
         const existingCart = await response.json();
         // console.log("Data", data);
         const existProduct = existingCart.find((cart) => cart._id === product._id);
-        console.log("paisi", existProduct);
+        // console.log("paisi", existProduct);
         if (existProduct) {
             toast.error("Product is already added to the cart.");
         }

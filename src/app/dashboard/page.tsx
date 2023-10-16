@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use client";
 import GMNavbar from '@/ui/components/Navbar';
 import { Sidebar, Spinner } from 'flowbite-react';
@@ -22,7 +23,6 @@ const UserDashboard = () => {
         .then((res) => res.json())
         .then((data) => addedCart.push(data))
         .catch((err) => console.log(err));
-    // console.log("addedCart", addedCart);
     const userAddedToCart = addedCart.find((cart) => cart);
     const foundAddedCart = userAddedToCart?.filter((cart) => cart.user === user);
     // console.log("foundAddedCart", foundAddedCart);
@@ -33,7 +33,7 @@ const UserDashboard = () => {
     // console.log("addedCart", addedCart);
     const userOrderedCart = ordered.find((cart) => cart);
     const foundOrderedCart = userOrderedCart?.filter((cart) => cart.user === user);
-    console.log("ordered", ordered);
+    // console.log("ordered", ordered);
     if (isLoading) {
         return <div style={{ height: "100vh" }} className="flex justify-center items-center">
             <Spinner size="lg" aria-label="Center-aligned spinner example" />
@@ -44,7 +44,7 @@ const UserDashboard = () => {
     const handleSidebarItemClick = (item: any) => {
         setSelectedItem(item);
     };
-    console.log("selectedItem", selectedItem);
+    // console.log("selectedItem", selectedItem);
     return (
         <div>
             <GMNavbar />

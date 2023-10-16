@@ -12,7 +12,7 @@ import Link from 'next/link';
 const ProductDetails = () => {
     const { id } = useParams();
     const { data, isLoading } = useGetOneProductQuery(id);
-    console.log("params data", data);
+    // console.log("params data", data);
     if (isLoading) {
         return <div style={{ height: "100vh" }} className="flex justify-center items-center">
             <Spinner size="lg" aria-label="Center-aligned spinner example" />

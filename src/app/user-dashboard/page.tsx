@@ -8,7 +8,7 @@ const UserDashboard = () => {
     const handleSidebarItemClick = (item: any) => {
         setSelectedItem(item);
     };
-    console.log("selectedItem", selectedItem);
+    // console.log("selectedItem", selectedItem);
     return (
         <div>
             <GMNavbar />

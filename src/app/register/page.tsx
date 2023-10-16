@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use client";
 import app from '@/firebase/firebase.init';
 import { setUser } from '@/redux/user/userslice';
@@ -35,7 +36,7 @@ const Register = () => {
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
             const user = userCredential.user;
             user.role = "user";
-            console.log("UserData", user);
+            // console.log("UserData", user);
             dispatch(setUser({
                 user: user.email,
                 role: user.role
@@ -69,7 +70,7 @@ const Register = () => {
             }
             toast.success("User created successfully.");
             reset();
-            console.log(user);
+            // console.log(user);
         } catch (error: any) {
             const errorCode = error.code;
             const errorMessage = error.message;

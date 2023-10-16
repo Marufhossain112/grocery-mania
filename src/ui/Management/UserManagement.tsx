@@ -1,3 +1,4 @@
+// @ts-nocheck
 'use client';
 import { useGetUsersQuery } from '@/redux/api/api';
 import { Card } from 'flowbite-react';

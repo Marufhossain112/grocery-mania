@@ -1,5 +1,5 @@
+// @ts-nocheck
 'use client';
-
 import { Button, Navbar } from 'flowbite-react';
 import SearchBar from './SearchBar';
 import { useDispatch, useSelector } from 'react-redux';

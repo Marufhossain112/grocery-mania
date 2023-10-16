@@ -1,9 +1,10 @@
+// @ts-nocheck
 'use client';
 import { useGetBookedOrdersQuery } from '@/redux/api/api';
 import { Table } from 'flowbite-react';
 export default function BookingStatus() {
     const { data, isLoading } = useGetBookedOrdersQuery(undefined);
-    console.log("datatqata", data);
+    // console.log("datatqata", data);
     // const { name, quantity, category, price } = data;
 
     return (

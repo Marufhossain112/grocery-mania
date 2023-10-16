@@ -23,7 +23,7 @@ const FeedbackForm = () => {
     } = useForm<FeedbackProps>();
     const onSubmit: SubmitHandler<FeedbackProps> = async (data) => {
         // const { email, password } = data;
-        console.log(data);
+        // console.log(data);
         reset();
         toast.success("Thank you for giving feedback.");
     };

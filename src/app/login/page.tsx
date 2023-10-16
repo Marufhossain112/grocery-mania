@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use client";
 import app from '@/firebase/firebase.init';
 import { useGetOneUserQuery } from '@/redux/api/api';

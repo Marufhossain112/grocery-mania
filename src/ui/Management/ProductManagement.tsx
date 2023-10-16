@@ -1,3 +1,4 @@
+// @ts-nocheck
 'use client';
 import { useGetBookedOrdersQuery, useProductsQuery } from '@/redux/api/api';
 import { Table } from 'flowbite-react';
