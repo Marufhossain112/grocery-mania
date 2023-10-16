@@ -51,6 +51,9 @@ export default function UserList() {
                     Phone
                 </Table.HeadCell>
                 <Table.HeadCell>
+                    Role
+                </Table.HeadCell>
+                <Table.HeadCell>
                     Delete
                 </Table.HeadCell>
             </Table.Head>
@@ -66,6 +69,9 @@ export default function UserList() {
                             </Table.Cell>
                             <Table.Cell>
                                 {user.phoneNumber}
+                            </Table.Cell>
+                            <Table.Cell>
+                                {user.role}
                             </Table.Cell>
                             <Table.Cell>
                                 <AiOutlineDelete onClick={() => handleDeleteUser(user._id)} style={{ color: "red" }} />

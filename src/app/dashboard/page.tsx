@@ -59,57 +59,65 @@ const UserDashboard = () => {
             <div className='dashboard-container'>
                 {
                     role === 'admin' ? <>
-                        <Sidebar className='h-screen' aria-label="Sidebar with multi-level dropdown example">
-                            <Sidebar.Items >
-                                <Sidebar.ItemGroup>
-                                    <Sidebar.Item
-                                        href="#"
-                                        icon={HiChartPie}
-                                        onClick={() => handleSidebarItemClick('activities')}
-                                    >
-                                        <p>
-                                            Platform Activities
-                                        </p>
-                                    </Sidebar.Item>
-                                    <Sidebar.Item
-                                        href="#"
-                                        icon={HiInbox}
-                                        onClick={() => handleSidebarItemClick('user')}
-                                    >
-                                        <p>
-                                            User management
-                                        </p>
-                                    </Sidebar.Item>
-                                    <Sidebar.Item
-                                        href="#"
-                                        icon={HiUser}
-                                        onClick={() => handleSidebarItemClick('service')}
-                                    >
-                                        <p>
-                                            Product management
-                                        </p>
-                                    </Sidebar.Item>
-                                    <Sidebar.Item
-                                        href="#"
-                                        icon={HiShoppingBag}
-                                        onClick={() => handleSidebarItemClick('profile')}
-                                    >
-                                        <p>
-                                            Profile Summary
-                                        </p>
-                                    </Sidebar.Item>
-                                    <Sidebar.Item
-                                        href="#"
-                                        icon={HiArrowSmRight}
-                                        onClick={() => handleSidebarItemClick('edit')}
-                                    >
-                                        <p>
-                                            Edit Profile
-                                        </p>
-                                    </Sidebar.Item>
-                                </Sidebar.ItemGroup>
-                            </Sidebar.Items>
-                        </Sidebar>
+                        <div>
+                            <Sidebar className={`h-screen sidebar  ${closeDashboard ? "dashboard-hide" : "dashboard-show"}`} aria-label="Sidebar with multi-level dropdown example">
+                                <Sidebar.Items >
+                                    <div className='cross-icon'>
+                                        <RxCross1 onClick={() => setCloseDashboard(true)} style={{ fontSize: "1.5rem" }} />
+                                    </div>
+                                    <Sidebar.ItemGroup>
+                                        <Sidebar.Item
+                                            href="#"
+                                            icon={HiChartPie}
+                                            onClick={() => handleSidebarItemClick('activities')}
+                                        >
+                                            <p>
+                                                Platform Activities
+                                            </p>
+                                        </Sidebar.Item>
+                                        <Sidebar.Item
+                                            href="#"
+                                            icon={HiInbox}
+                                            onClick={() => handleSidebarItemClick('user')}
+                                        >
+                                            <p>
+                                                User management
+                                            </p>
+                                        </Sidebar.Item>
+                                        <Sidebar.Item
+                                            href="#"
+                                            icon={HiUser}
+                                            onClick={() => handleSidebarItemClick('service')}
+                                        >
+                                            <p>
+                                                Product management
+                                            </p>
+                                        </Sidebar.Item>
+                                        <Sidebar.Item
+                                            href="#"
+                                            icon={HiShoppingBag}
+                                            onClick={() => handleSidebarItemClick('profile')}
+                                        >
+                                            <p>
+                                                Profile Summary
+                                            </p>
+                                        </Sidebar.Item>
+                                        <Sidebar.Item
+                                            href="#"
+                                            icon={HiArrowSmRight}
+                                            onClick={() => handleSidebarItemClick('edit')}
+                                        >
+                                            <p>
+                                                Edit Profile
+                                            </p>
+                                        </Sidebar.Item>
+                                    </Sidebar.ItemGroup>
+                                </Sidebar.Items>
+                            </Sidebar>
+                            <div className='p-5 dashboard-icon '>
+                                <AiOutlineMenu onClick={() => setCloseDashboard(false)} style={{ fontSize: "1.5rem" }} />
+                            </div>
+                        </div>
                         {
                             !selectedItem &&
                             <ProfileHistory />
@@ -127,7 +135,7 @@ const UserDashboard = () => {
                         {
                             selectedItem === 'service' &&
                             <div style={{ marginTop: '0rem' }}>
-                                <h3 className='text-center font-bold text-2xl py-3'>Product Management</h3>
+                                <h3 className='text-center font-bold text-2xl py-3'>All Products</h3>
                                 <ProductManagement />
                             </div>
                         }

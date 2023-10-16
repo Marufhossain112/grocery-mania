@@ -1,12 +1,26 @@
 // @ts-nocheck
 'use client';
-import { useGetBookedOrdersQuery, useProductsQuery } from '@/redux/api/api';
+import { useDeleteSingleProductMutation, useGetBookedOrdersQuery, useProductsQuery } from '@/redux/api/api';
+import { AiOutlineDelete } from 'react-icons/ai';
 import { Table } from 'flowbite-react';
+import toast from 'react-hot-toast';
 export default function ProductManagement() {
     const { data, isLoading } = useProductsQuery(undefined);
     // console.log("datatqata", data);
     // const { name, quantity, category, price } = data;
-
+    const [deleteSingleProduct] = useDeleteSingleProductMutation();
+    const handleDeleteProduct = async (id: string) => {
+        await deleteSingleProduct(id).unwrap().then((response) => {
+            // console.log(response);
+            toast.success("Product deleted successfully");
+            // if (response.statusCode === 200) {
+            // }
+        }).catch((error) => {
+            if (error) {
+                toast.error(error?.data?.message);
+            }
+        });
+    };
     return (
         <div>
 
@@ -24,6 +38,9 @@ export default function ProductManagement() {
                     <Table.HeadCell>
                         Price
                     </Table.HeadCell>
+                    <Table.HeadCell>
+                        Delete
+                    </Table.HeadCell>
                 </Table.Head>
                 <Table.Body className="divide-y">
                     {
@@ -39,7 +56,10 @@ export default function ProductManagement() {
                                     {product.category}
                                 </Table.Cell>
                                 <Table.Cell>
-                                    ৳{product.price}
+                                    {product.price}
+                                </Table.Cell>
+                                <Table.Cell>
+                                    <AiOutlineDelete onClick={() => handleDeleteProduct(product._id)} style={{ color: "red" }} />
                                 </Table.Cell>
                             </Table.Row>
                         ))
