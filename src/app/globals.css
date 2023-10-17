@@ -42,6 +42,11 @@
     grid-template-columns: auto;
     row-gap: 1rem;
   }
+  .related-products-container {
+    display: grid;
+    justify-content: center;
+    gap: 1rem;
+  }
 }
 
 /* iPads and Tablets (481px — 768px) */
@@ -63,6 +68,10 @@
     display: grid;
     grid-template-columns: auto;
     row-gap: 1rem;
+  }
+  .related-products-container {
+    display: grid;
+    justify-content: center;
   }
 }
 
@@ -91,6 +100,17 @@
     grid-template-columns: auto auto;
     row-gap: 1rem;
   }
+  .products-detail-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    place-items: end;
+    margin-top: 3rem;
+    gap: 3rem;
+  }
+  .additional-details-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
 }
 
 /* Desktops and large screens (1025px — 1200px) */
@@ -118,6 +138,17 @@
     grid-template-columns: auto auto;
     row-gap: 1rem;
   }
+  .products-detail-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    place-items: end;
+    margin-top: 3rem;
+    gap: 3rem;
+  }
+  .additional-details-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
 }
 
 /* Extra large screens and TV (1201px and more) */
@@ -144,5 +175,16 @@
     display: grid;
     grid-template-columns: auto auto auto;
     row-gap: 1rem;
+  }
+  .products-detail-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    place-items: end;
+    margin-top: 3rem;
+    gap: 3rem;
+  }
+  .additional-details-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }

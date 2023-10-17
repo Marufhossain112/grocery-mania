@@ -12,6 +12,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
 import toast from 'react-hot-toast';
+import UserGeneratedContent from '@/ui/UserData/UserGeneratedContent';
 const ProductDetails = () => {
     const dispatch = useDispatch();
     const { user } = useSelector((state) => state.persistedUserReducer);
@@ -54,13 +55,7 @@ const ProductDetails = () => {
         <div>
             <GMNavbar />
             {/* intro part */}
-            <div style={{
-                display: 'grid',
-                gridTemplateColumns: "1fr 1fr",
-                placeItems: "end",
-                marginTop: "3rem",
-                gap: "3rem"
-            }} className='container mx-auto px-4 '>
+            <div className='container mx-auto px-4 products-detail-container'>
                 <div>
                     <Image src={data.img} height={80} width={300} alt='product' />
                 </div>
@@ -89,13 +84,10 @@ const ProductDetails = () => {
                 <h4 style={{ marginTop: "2rem", marginBottom: "0.3rem" }} className='text-xl font-medium'>Additional details</h4>
                 <p>{data.details}</p>
                 {/* Related products */}
-                <div>
+                <div className='related-products-container'>
                     <h4 style={{ marginTop: "2rem", marginBottom: "0.3rem" }} className='text-xl font-medium'>Related products</h4>
                     {/* <RelatedProducts /> */}
-                    <div style={{
-                        display: "grid",
-                        gridTemplateColumns: "1fr 1fr 1fr 1fr",
-                    }}>
+                    <div className='additional-details-container'>
 
                         {
                             data?.relatedProducts?.map((product: any, index: number) => (
@@ -153,6 +145,10 @@ const ProductDetails = () => {
                     </div>
 
                 </div>
+            </div>
+            {/* user generated  */}
+            <div className='container mx-auto px-4 mt-10'>
+                <UserGeneratedContent />
             </div>
         </div>
     );

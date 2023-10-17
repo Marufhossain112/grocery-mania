@@ -1,11 +1,12 @@
 // @ts-nocheck
 "use client";
 import { useGetOneProductQuery, useGetOneUserQuery } from '@/redux/api/api';
+
 import GMNavbar from '@/ui/components/Navbar';
 import OrderingCard from '@/ui/components/OrderingCard';
 import SelectPayment from '@/ui/components/SelectPaymentMethod';
 import { Card, Spinner } from 'flowbite-react';
-import {  useParams, useRouter } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import React, { useEffect } from 'react';
 import toast from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
@@ -102,6 +103,7 @@ const BuyPage = () => {
                         </Card>
                     </div>
                 </div>
+
             </div>
         </div>
     );
