@@ -1,8 +1,7 @@
+// @ts-nocheck
 'use client';
-
 import { Label, Select } from 'flowbite-react';
-
-export default function SelectInput() {
+export default function SelectInput({ setSort }) {
     return (
         <div
             className="max-w-md"
@@ -17,17 +16,11 @@ export default function SelectInput() {
                 id="countries"
                 required
             >
-                <option>
-                    Low to High
-                </option>
-                <option>
+                <option onClick={() => setSort('desc')}>
                     High to Low
                 </option>
-                <option>
-                    Newest first
-                </option>
-                <option>
-                    Oldest first
+                <option onClick={() => setSort('asc')}>
+                    Low to High
                 </option>
             </Select>
         </div>

@@ -17,9 +17,11 @@ import { useSelector } from 'react-redux';
 import { useState } from 'react';
 export default function Products() {
     const [search, setSearch] = useState("");
+    const [sort, setSort] = useState('desc');
     const { user } = useSelector((state) => state.persistedUserReducer);
-    const { data, isLoading } = useProductsQuery(search);
-    console.log("Products", data);
+    const { data, isLoading } = useProductsQuery({ search, sort });
+    // console.log("Products", data);
+    // console.log("sort", sort);
 
     const handleAddToCart = async (product: any) => {
         const response = await (fetch("http://localhost:5000/cart"));
@@ -59,7 +61,7 @@ export default function Products() {
                 <div className='sidebar'>
                     <GMBreadcrumb />
                     <div className='mb-5'>
-                        <span className='font-bold'>  Sort By :</span> <SelectInput />
+                        <span className='font-bold'>  Sort By :</span> <SelectInput sort={sort} setSort={setSort} />
                     </div>
                     <div>
                         <span className='font-bold'>Filter :</span>

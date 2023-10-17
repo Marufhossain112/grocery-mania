@@ -13,7 +13,7 @@ export const api = createApi({
             query: () => `visuals`,
         }),
         products: builder.query({
-            query: (search) => `products?search=${search}`,
+            query: ({ search, sort }) => `products?search=${search}&sort=${sort}`,
             providesTags: ['removeProduct']
         }),
         getOneProduct: builder.query({
