@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { useSelector } from 'react-redux';
 // Define a service using a base URL and expected endpoints
 export const api = createApi({
     reducerPath: 'api',
@@ -12,7 +13,7 @@ export const api = createApi({
             query: () => `visuals`,
         }),
         products: builder.query({
-            query: () => `products`,
+            query: (search) => `products?search=${search}`,
             providesTags: ['removeProduct']
         }),
         getOneProduct: builder.query({

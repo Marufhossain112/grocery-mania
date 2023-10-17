@@ -13,9 +13,9 @@ import toast from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
 import ProfileHistory from '../ProfileHistory/ProfileHistory';
 const { Item } = Dropdown;
-export default function UserProfileCard({ setSelectedItem }) {
+export default function UserProfileCard({ setSelectedItem
+}) {
     const { user } = useSelector((state) => state.persistedUserReducer);
-
     const [addedCart, setAddedCart] = useState([]);
     const [ordered, setOrdered] = useState([]);
     fetch("http://localhost:5000/cart")

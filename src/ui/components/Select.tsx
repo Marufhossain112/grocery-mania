@@ -24,10 +24,10 @@ export default function SelectInput() {
                     High to Low
                 </option>
                 <option>
-                    A to Z
+                    Newest first
                 </option>
                 <option>
-                    Z to A
+                    Oldest first
                 </option>
             </Select>
         </div>

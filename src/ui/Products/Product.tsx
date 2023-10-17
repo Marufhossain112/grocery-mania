@@ -14,9 +14,11 @@ import { useProductsQuery } from '@/redux/api/api';
 import Link from 'next/link';
 import toast from 'react-hot-toast';
 import { useSelector } from 'react-redux';
+import { useState } from 'react';
 export default function Products() {
+    const [search, setSearch] = useState("");
     const { user } = useSelector((state) => state.persistedUserReducer);
-    const { data, isLoading } = useProductsQuery(undefined);
+    const { data, isLoading } = useProductsQuery(search);
     console.log("Products", data);
 
     const handleAddToCart = async (product: any) => {
@@ -52,7 +54,7 @@ export default function Products() {
     }
     return (
         <>
-            <GMNavbar />
+            <GMNavbar setSearch={setSearch} />
             <div className='product-parent-container' >
                 <div className='sidebar'>
                     <GMBreadcrumb />

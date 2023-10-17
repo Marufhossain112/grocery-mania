@@ -4,8 +4,7 @@ import storage from 'redux-persist/lib/storage';
 import { api } from './api/api';
 import userReducer from './user/userslice';
 import productReducer from './product/productSlice';
-import clearReducer from './clearSlice/clearSlice';
-
+import productQueryReducer from './queries/querySlice';
 // Persist configuration for the regular Redux store
 const reduxPersistConfig = {
     key: 'root', // Change this key if needed
@@ -16,7 +15,7 @@ const persistedProductReducer = persistReducer(reduxPersistConfig, productReduce
 // const persistedPcBuilderReducer = persistReducer(reduxPersistConfig, pcBuilderReducer);
 const persistedUserReducer = persistReducer(reduxPersistConfig, userReducer);
 const store = configureStore({
-    reducer: { persistedProductReducer, persistedUserReducer, [api.reducerPath]: api.reducer, },
+    reducer: { persistedProductReducer, persistedUserReducer, productQueryReducer, [api.reducerPath]: api.reducer },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware().concat(api.middleware),
 });

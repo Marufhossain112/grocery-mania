@@ -1,6 +1,6 @@
 // @ts-nocheck
 'use client';
-import { Button, Navbar } from 'flowbite-react';
+import { Navbar } from 'flowbite-react';
 import SearchBar from './SearchBar';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAuth, signOut } from "firebase/auth";
@@ -8,10 +8,9 @@ import app from '@/firebase/firebase.init';
 import toast from 'react-hot-toast';
 import { signOutUser } from '@/redux/user/userslice';
 import { useRouter } from 'next/navigation';
-import { clearResults } from '@/redux/clearSlice/clearSlice';
 import { persistor } from '@/redux/store';
 const auth = getAuth(app);
-export default function GMNavbar() {
+export default function GMNavbar({setSearch}) {
     const dispatch = useDispatch();
     const { user } = useSelector((state) => state.persistedUserReducer);
     const router = useRouter();
@@ -82,7 +81,7 @@ export default function GMNavbar() {
 
             </Navbar.Collapse>
             <div className="flex md:order-2">
-                <SearchBar />
+                <SearchBar setSearch={setSearch} />
             </div>
             <Navbar.Toggle />
         </Navbar>
