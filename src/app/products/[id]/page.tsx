@@ -9,7 +9,11 @@ import { BsCartPlus } from 'react-icons/bs';
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useDispatch, useSelector } from 'react-redux';
+import toast from 'react-hot-toast';
 const ProductDetails = () => {
+    const dispatch = useDispatch();
+    const { user } = useSelector((state) => state.persistedUserReducer);
     const { id } = useParams();
     const { data, isLoading } = useGetOneProductQuery(id);
     // console.log("params data", data);
@@ -18,6 +22,33 @@ const ProductDetails = () => {
             <Spinner size="lg" aria-label="Center-aligned spinner example" />
         </div>;
     }
+    const handleAddToCart = async (product: any) => {
+        const response = await (fetch("http://localhost:5000/cart"));
+        const existingCart = await response.json();
+        // console.log("Data", data);
+        const existProduct = existingCart.find((cart) => cart._id === product._id && cart.user === user);
+        console.log("Existsameuserorder", existProduct);
+        if (existProduct) {
+            toast.error("Product is already added to the cart.");
+        }
+        const sendData = { user, ...product };
+        if (!existProduct) {
+            fetch("http://localhost:5000/cart", {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify(sendData),
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    if (data.insertedId) {
+                        toast.success("Added to cart successfully.");
+                    }
+                })
+                .catch((err) => console.log(err));
+        }
+    };
     return (
         <div>
             <GMNavbar />
@@ -48,7 +79,7 @@ const ProductDetails = () => {
                         <Link href={`/products/buy/${data._id}`}>
                             <Button className='mr-2'>Order Now </Button>
                         </Link>
-                        <Button color='purple'>Add to Cart </Button>
+                        <Button onClick={() => handleAddToCart(data)} color='purple'>Add to Cart </Button>
                     </div>
                 </div>
             </div >

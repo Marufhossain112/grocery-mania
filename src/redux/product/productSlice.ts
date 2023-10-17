@@ -15,8 +15,8 @@ const productSlice = createSlice({
             state.user = action.payload.user;
         },
         bookedOrder(state, action) {
-            state.bookedOrder = [...state.bookedOrder, action.payload];
             state.user = action.payload.user;
+            state.bookedOrder = [...state.bookedOrder, action.payload];
         }
     },
 });

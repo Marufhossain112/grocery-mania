@@ -48,13 +48,6 @@ export default function CheckboxElement({ setStatus, setCategory }) {
                     Beverages
                 </Label>
             </div>
-            <div className="flex items-center gap-2">
-                <Checkbox id="promotion" onClick={() => setCategory("spices")} />
-                <Label htmlFor="promotion">
-                    Spices
-                </Label>
-            </div>
-
         </div>
     );
 }

@@ -30,7 +30,7 @@ const BuyPage = () => {
             .then((res) => res.json())
             .then((data) => {
                 if (data.insertedId) {
-                    dispatch(bookedOrder(orderData));
+                    // dispatch(bookedOrder(orderData));
                     toast.success("Order confirmed successfully.");
                 }
             })

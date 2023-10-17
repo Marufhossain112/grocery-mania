@@ -18,11 +18,11 @@ export default function ECommerceCard() {
         </div>;
     }
     const handleAddToCart = async (product: any) => {
-
         const response = await (fetch("http://localhost:5000/cart"));
         const existingCart = await response.json();
         // console.log("Data", data);
-        const existProduct = existingCart.find((cart) => cart._id === product._id);
+        const existProduct = existingCart.find((cart) => cart._id === product._id && cart.user === user);
+        console.log("Existsameuserorder", existProduct);
         if (existProduct) {
             toast.error("Product is already added to the cart.");
         }
