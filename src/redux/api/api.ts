@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 export const api = createApi({
     reducerPath: 'api',
     baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000/' }),
-    tagTypes: ['removeUser', 'removeProduct', 'editProfile'],
+    tagTypes: ['removeUser', 'removeProduct', 'editProfile', 'createUser'],
     endpoints: (builder) => ({
         getFeaturedProducts: builder.query({
             query: () => `featuredProducts`,
@@ -21,11 +21,19 @@ export const api = createApi({
         }),
         getUsers: builder.query({
             query: () => `users`,
-            providesTags: ['removeUser', 'editProfile']
+            providesTags: ['removeUser', 'editProfile', 'createUser']
+        }),
+        createUser: builder.mutation({
+            query: ({ data }) => ({
+                url: `users`,
+                method: 'POST',
+                body: data
+            }),
+            invalidatesTags: ['createUser']
         }),
         getOneUser: builder.query({
             query: (email) => `users/${email}`,
-            providesTags: ['editProfile']
+            providesTags: ['editProfile', 'createUser']
         }),
         getBookedOrders: builder.query({
             query: () => `orders`,
@@ -59,4 +67,4 @@ export const api = createApi({
 });
 
 // auto-generated based on the defined endpoints
-export const { useGetFeaturedProductsQuery, useVisualsProductsQuery, useProductsQuery, useGetOneProductQuery, useGetUsersQuery, useGetOneUserQuery, useGetBookedOrdersQuery, useGetAddedCartQuery, useDeleteSingleUserMutation, useDeleteSingleProductMutation, useEditProfileMutation } = api;
+export const { useGetFeaturedProductsQuery, useVisualsProductsQuery, useProductsQuery, useGetOneProductQuery, useGetUsersQuery, useGetOneUserQuery, useGetBookedOrdersQuery, useGetAddedCartQuery, useDeleteSingleUserMutation, useDeleteSingleProductMutation, useEditProfileMutation, useCreateUserMutation } = api;

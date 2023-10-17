@@ -33,6 +33,7 @@ export default function UserProfileCard() {
     const userOrderedCart = ordered.find((cart) => cart);
     const foundOrderedCart = userOrderedCart?.filter((cart) => cart.user === user);
     const { data, isLoading } = useGetOneUserQuery(user);
+    console.log("DAAATa",data)
     const dispatch = useDispatch();
     const router = useRouter();
     const auth = getAuth(app);
@@ -92,10 +93,10 @@ export default function UserProfileCard() {
                             <div className="flex flex-col items-center pb-10">
                                 <Avatar rounded />
                                 <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">
-                                    {user.name}
+                                    {user?.name}
                                 </h5>
                                 <span className="text-sm text-gray-500 dark:text-gray-400">
-                                    {user.phoneNumber}
+                                    {user?.phoneNumber}
                                 </span>
                                 <div className="mt-4 flex space-x-3 lg:mt-6">
                                     <p className='text-center'>Payment methods</p>

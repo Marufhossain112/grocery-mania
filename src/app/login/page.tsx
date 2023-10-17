@@ -1,19 +1,24 @@
 // @ts-nocheck
 "use client";
 import app from '@/firebase/firebase.init';
-import { useGetOneUserQuery } from '@/redux/api/api';
+import { useCreateUserMutation, useGetOneUserQuery } from '@/redux/api/api';
 import { setUser } from '@/redux/user/userslice';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { useRouter } from 'next/navigation';
 import React from 'react';
 import { useForm, SubmitHandler } from "react-hook-form";
 import toast from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
+import { FcGoogle } from 'react-icons/fc';
+import { getAuth, signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword } from "firebase/auth";
+
+const provider = new GoogleAuthProvider();
 type LoginProps = {
     email: string;
     password: string;
 };
+const auth = getAuth(app);
 const Login = () => {
+    const [createUser] = useCreateUserMutation();
     // const { data, isLoading } = useGetOneUserQuery(email);
     const dispatch = useDispatch();
     const router = useRouter();
@@ -26,8 +31,6 @@ const Login = () => {
     } = useForm<LoginProps>();
     const onSubmit: SubmitHandler<LoginProps> = async (getData) => {
         const { email, password } = getData;
-        // const userRole = data.filter((data) => data.role);
-        // console.log("role", userRole);
         const response = await (fetch("http://localhost:5000/users"));
         const users = await response.json();
         const matchedData = users?.filter((user) => user.email === email);
@@ -48,6 +51,48 @@ const Login = () => {
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
+            });
+    };
+    const handleGoogleSignIn = () => {
+        signInWithPopup(auth, provider)
+            .then((result) => {
+                // This gives you a Google Access Token. You can use it to access the Google API.
+                const credential = GoogleAuthProvider.credentialFromResult(result);
+                const token = credential.accessToken;
+                // The signed-in user info.
+                const user = result.user;
+                // IdP data available using getAdditionalUserInfo(result)
+                // ...
+                const userData = {
+                    name: user.displayName,
+                    email: user.email,
+                    role: "user",
+                    uid: user.uid,
+                    photoURL: user.photoURL
+                };
+
+                console.log("UserData", userData);
+                dispatch(setUser({
+                    user: user.email,
+                    role: "user",
+                    uid: user.uid,
+                }));
+                createUser({ data: userData });
+                // const handleDeleteUser = async (id: string) => {
+                // createUser(userData).unwrap();
+                // };
+                toast.success("User logged in successfully.");
+                router.push("/profile");
+                console.log("user", user);
+            }).catch((error) => {
+                // Handle Errors here.
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // The email of the user's account used.
+                const email = error.customData.email;
+                // The AuthCredential type that was used.
+                const credential = GoogleAuthProvider.credentialFromError(error);
+                // ...
             });
     };
     return (
@@ -79,6 +124,7 @@ const Login = () => {
                             >Login</button>
                         </div>
 
+
                         <div className="text-grey-dark mt-6">
                             Do not have any account?
                             <a className="no-underline border-b border-blue text-green-700" href="../register/">
@@ -86,8 +132,21 @@ const Login = () => {
                             </a>
                         </div>
                     </div>
-                </form>
-            </div>
+                </form >
+                <button
+                    className="w-full text-center py-3 rounded  text-white hover:bg-green-dark focus:outline-none my-1"
+                >
+                    <div style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        fontSize: "1.5rem",
+                        alignItems: "center",
+                        gap: "0.3rem"
+                    }}>
+                        <span style={{ fontSize: "1rem", color: "black" }}> Sign in with</span>   <FcGoogle onClick={handleGoogleSignIn} />
+                    </div>
+                </button>
+            </div >
         </div >
     );
 };
