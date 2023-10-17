@@ -18,10 +18,11 @@ import { useState } from 'react';
 export default function Products() {
     const [search, setSearch] = useState("");
     const [sort, setSort] = useState('desc');
+    const [status, setStatus] = useState("");
+    const [category, setCategory] = useState("");
     const { user } = useSelector((state) => state.persistedUserReducer);
-    const { data, isLoading } = useProductsQuery({ search, sort });
-    // console.log("Products", data);
-    // console.log("sort", sort);
+    const { data, isLoading } = useProductsQuery({ search, sort, status,category });
+    console.log("status", status);
 
     const handleAddToCart = async (product: any) => {
         const response = await (fetch("http://localhost:5000/cart"));
@@ -65,7 +66,7 @@ export default function Products() {
                     </div>
                     <div>
                         <span className='font-bold'>Filter :</span>
-                        <CheckboxElement />
+                        <CheckboxElement setStatus={setStatus} setCategory={setCategory} />
                     </div>
                 </div>
                 <div className='product-container'>
