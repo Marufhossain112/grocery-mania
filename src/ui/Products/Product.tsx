@@ -20,10 +20,12 @@ export default function Products() {
     const [sort, setSort] = useState('desc');
     const [status, setStatus] = useState("");
     const [category, setCategory] = useState("");
+    // const [page, setPage] = useState(1);
+    const [page, setCurrentPage] = useState(1);
     const { user } = useSelector((state) => state.persistedUserReducer);
-    const { data, isLoading } = useProductsQuery({ search, sort, status,category });
-    console.log("status", status);
-
+    const { data, isLoading } = useProductsQuery({ search, sort, status, category, page });
+    // console.log("status", status);
+    console.log("DATA", data);
     const handleAddToCart = async (product: any) => {
         const response = await (fetch("http://localhost:5000/cart"));
         const existingCart = await response.json();
@@ -70,8 +72,7 @@ export default function Products() {
                     </div>
                 </div>
                 <div className='product-container'>
-
-                    {data?.map((product: any, index: number) => (
+                    {data?.paginatedProducts?.map((product: any, index: number) => (
                         <Card key={index} style={{ width: "18rem" }}
                         >
                             <div className='flex justify-center'>
@@ -126,7 +127,7 @@ export default function Products() {
                 </div>
             </div>
             <div className='flex justify-end container mx-auto ' style={{ padding: "0 4.5rem" }}>
-                <GMPagination />
+                <GMPagination setCurrentPage={setCurrentPage} />
             </div>
         </>
     );
