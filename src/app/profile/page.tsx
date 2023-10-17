@@ -110,7 +110,7 @@ export default function UserProfileCard() {
                                     <div className='flex flex-col text-center'>
                                         <p className='underline'>History</p>
                                         <p>Added to cart: {foundAddedCart ? foundAddedCart.length : "0"} items</p>
-                                        <p>Ordered products quantity: {foundOrderedCart ? foundOrderedCart.length : "0"} items</p>
+                                        <p>Ordered products : {foundOrderedCart ? foundOrderedCart.length : "0"} items</p>
                                     </div>
                                 </div>
                             </div>

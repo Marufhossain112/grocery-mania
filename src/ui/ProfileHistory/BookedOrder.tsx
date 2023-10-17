@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { useGetAddedCartQuery, useGetBookedOrdersQuery, useGetOneUserQuery } from '@/redux/api/api';
+import { useGetBookedOrdersQuery } from '@/redux/api/api';
 import { Spinner } from 'flowbite-react';
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -16,7 +16,7 @@ const BookedOrder = () => {
     }
     return (
 
-        <p>Ordered products quantity: {foundBookedOrder ? foundBookedOrder.length : "0"} items</p>
+        <p>Ordered products : {foundBookedOrder ? foundBookedOrder.length : "0"} items</p>
     );
 };
 

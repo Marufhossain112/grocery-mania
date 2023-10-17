@@ -15,7 +15,9 @@ import ProfileHistory from '@/ui/ProfileHistory/ProfileHistory';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { RxCross1 } from 'react-icons/rx';
 import EditProfile from '@/ui/EditProfile/EditProfile';
+import { useRouter } from 'next/navigation';
 const UserDashboard = () => {
+    const router = useRouter();
     // const [selectedItem, setSelectedItem] = useState(<ProfileHistory />);
     const [selectedItem, setSelectedItem] = useState("");
     const [closeDashboard, setCloseDashboard] = useState(true);
@@ -25,9 +27,12 @@ const UserDashboard = () => {
     const { role } = useSelector((state) => state.persistedUserReducer);
     const { data, isLoading } = useGetOneUserQuery(user);
     useEffect(() => {
+        if (!user) {
+            router.push('/login');
+        }
         setSelectedItem('activities');
     }
-        , []);
+        , [router,isLoading]);
     fetch("http://localhost:5000/cart")
         .then((res) => res.json())
         .then((data) => addedCart.push(data))
@@ -149,9 +154,9 @@ const UserDashboard = () => {
                         }
                         {
                             selectedItem === 'edit' &&
-                                <div style={{ marginTop: '0rem' }}>
-                                    <EditProfile />
-                                </div>
+                            <div style={{ marginTop: '0rem' }}>
+                                <EditProfile />
+                            </div>
                         }
                     </> : <>   <div  >
                         <Sidebar className={`h-screen sidebar  ${closeDashboard ? "dashboard-hide" : "dashboard-show"}`} aria-label="Sidebar with multi-level dropdown example">

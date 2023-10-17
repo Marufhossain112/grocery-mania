@@ -1,22 +1,28 @@
 // @ts-nocheck
 "use client";
 import { useGetOneProductQuery, useGetOneUserQuery } from '@/redux/api/api';
-import { bookedOrder } from '@/redux/product/productSlice';
 import GMNavbar from '@/ui/components/Navbar';
-import PricingCard from '@/ui/components/OrderSummery';
 import OrderingCard from '@/ui/components/OrderingCard';
 import SelectPayment from '@/ui/components/SelectPaymentMethod';
 import { Card, Spinner } from 'flowbite-react';
-import { redirect, useParams } from 'next/navigation';
-import React from 'react';
+import {  useParams, useRouter } from 'next/navigation';
+import React, { useEffect } from 'react';
 import toast from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
 
 const BuyPage = () => {
-    const dispatch = useDispatch();
+    const router = useRouter();
     const { id } = useParams();
     const { user } = useSelector((state) => state.persistedUserReducer);
     const { data, isLoading } = useGetOneProductQuery(id);
+    useEffect(() => {
+        if (!user) {
+            router.push('/login');
+        }
+
+    }
+        , [router, isLoading]);
+    const dispatch = useDispatch();
     // console.log("Product data", data);
     const handleOrder = () => {
         const orderData = { user, ...data };
