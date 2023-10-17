@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 export const api = createApi({
     reducerPath: 'api',
     baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000/' }),
-    tagTypes: ['removeUser', 'removeProduct'],
+    tagTypes: ['removeUser', 'removeProduct', 'editProfile'],
     endpoints: (builder) => ({
         getFeaturedProducts: builder.query({
             query: () => `featuredProducts`,
@@ -20,10 +20,11 @@ export const api = createApi({
         }),
         getUsers: builder.query({
             query: () => `users`,
-            providesTags: ['removeUser']
+            providesTags: ['removeUser', 'editProfile']
         }),
         getOneUser: builder.query({
             query: (email) => `users/${email}`,
+            providesTags: ['editProfile']
         }),
         getBookedOrders: builder.query({
             query: () => `orders`,
@@ -45,8 +46,16 @@ export const api = createApi({
             }),
             invalidatesTags: ['removeProduct']
         }),
+        editProfile: builder.mutation({
+            query: ({ id, data }) => ({
+                url: `edit-profile/${id}`,
+                method: 'PATCH',
+                body: data
+            }),
+            invalidatesTags: ['editProfile']
+        }),
     }),
 });
 
 // auto-generated based on the defined endpoints
-export const { useGetFeaturedProductsQuery, useVisualsProductsQuery, useProductsQuery, useGetOneProductQuery, useGetUsersQuery, useGetOneUserQuery, useGetBookedOrdersQuery, useGetAddedCartQuery, useDeleteSingleUserMutation, useDeleteSingleProductMutation } = api;
+export const { useGetFeaturedProductsQuery, useVisualsProductsQuery, useProductsQuery, useGetOneProductQuery, useGetUsersQuery, useGetOneUserQuery, useGetBookedOrdersQuery, useGetAddedCartQuery, useDeleteSingleUserMutation, useDeleteSingleProductMutation, useEditProfileMutation } = api;

@@ -14,6 +14,7 @@ import ProductManagement from '@/ui/Management/ProductManagement';
 import ProfileHistory from '@/ui/ProfileHistory/ProfileHistory';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { RxCross1 } from 'react-icons/rx';
+import EditProfile from '@/ui/EditProfile/EditProfile';
 const UserDashboard = () => {
     // const [selectedItem, setSelectedItem] = useState(<ProfileHistory />);
     const [selectedItem, setSelectedItem] = useState("");
@@ -143,14 +144,14 @@ const UserDashboard = () => {
                             selectedItem === 'profile' &&
                             <div style={{ marginTop: '0rem' }}>
                                 <h3 className='text-center font-bold text-2xl py-3'>Profile Summary</h3>
-                                <ProfileSummary />
+                                <ProfileSummary setSelectedItem={setSelectedItem} />
                             </div>
                         }
                         {
                             selectedItem === 'edit' &&
-                            <div style={{ marginTop: '0rem' }}>
-                                <h3 className='text-center font-bold text-2xl py-3'>Edit profile</h3>
-                            </div>
+                                <div style={{ marginTop: '0rem' }}>
+                                    <EditProfile />
+                                </div>
                         }
                     </> : <>   <div  >
                         <Sidebar className={`h-screen sidebar  ${closeDashboard ? "dashboard-hide" : "dashboard-show"}`} aria-label="Sidebar with multi-level dropdown example">
@@ -246,7 +247,7 @@ const UserDashboard = () => {
                                     selectedItem === 'edit' &&
                                     <div>
                                         <div style={{ marginTop: '0rem' }}>
-                                            <h3 className='text-center font-bold text-2xl py-3'>Edit profile</h3>
+                                            <EditProfile />
                                         </div>
                                     </div>
                                 }

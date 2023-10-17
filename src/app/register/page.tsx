@@ -39,7 +39,8 @@ const Register = () => {
             // console.log("UserData", user);
             dispatch(setUser({
                 user: user.email,
-                role: user.role
+                role: user.role,
+                uid: user.uid
             }));
             await updateProfile(user, {
                 displayName: name,

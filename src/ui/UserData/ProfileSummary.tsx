@@ -13,7 +13,7 @@ import toast from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
 import ProfileHistory from '../ProfileHistory/ProfileHistory';
 const { Item } = Dropdown;
-export default function UserProfileCard() {
+export default function UserProfileCard({ setSelectedItem }) {
     const { user } = useSelector((state) => state.persistedUserReducer);
 
     const [addedCart, setAddedCart] = useState([]);
@@ -46,6 +46,11 @@ export default function UserProfileCard() {
         }).catch((error) => {
         });
     };
+    if (data.length === 0) {
+        toast.error("No user data found.");
+        console.log("errrrr");
+        return;
+    }
     return (
         <div>
             {/* <GMNavbar /> */}
@@ -73,9 +78,9 @@ export default function UserProfileCard() {
                                             className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white"
                                             href="#"
                                         >
-                                            <p>
+                                            <button onClick={() => setSelectedItem('edit')}>
                                                 Edit profile
-                                            </p>
+                                            </button>
                                         </a>
                                     </Item>
                                     <Item>

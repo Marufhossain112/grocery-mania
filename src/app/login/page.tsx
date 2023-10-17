@@ -31,13 +31,15 @@ const Login = () => {
         const response = await (fetch("http://localhost:5000/users"));
         const users = await response.json();
         const matchedData = users?.filter((user) => user.email === email);
-        // console.log("matched", matched);
+        // console.log("matched", matchedData[0]);
         await signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
             // Signed in 
             const user = userCredential.user;
+            // console.log("signInUser", user);
             dispatch(setUser({
                 user: user.email,
-                role: matchedData[0].role
+                role: matchedData[0].role,
+                uid: matchedData[0].uid
             }));
             toast.success("User logged in successfully.");
             router.push("/profile");
