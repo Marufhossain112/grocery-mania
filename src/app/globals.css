@@ -47,6 +47,11 @@
     justify-content: center;
     gap: 1rem;
   }
+  .order-summary-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+  }
 }
 
 /* iPads and Tablets (481px — 768px) */
@@ -111,6 +116,15 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
+  .order-card-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    place-items: baseline;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 7rem;
+  }
 }
 
 /* Desktops and large screens (1025px — 1200px) */
@@ -149,6 +163,15 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
+  .order-card-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    place-items: baseline;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 7rem;
+  }
 }
 
 /* Extra large screens and TV (1201px and more) */
@@ -186,5 +209,14 @@
   .additional-details-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+  .order-card-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    place-items: baseline;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 7rem;
   }
 }

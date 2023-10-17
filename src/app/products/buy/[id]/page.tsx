@@ -56,20 +56,12 @@ const BuyPage = () => {
         <div>
             <GMNavbar />
             <div className='container mx-auto px-4 mt-4'>
-                <div style={{
-                    display: "grid",
-                    gridTemplateColumns: "auto auto",
-                    placeItems: "baseline",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    gap: "2rem",
-                    marginTop: "7rem"
-                }}>
+                <div className='order-card-container'>
                     <div>
                         <OrderingCard />
                         <SelectPayment />
                     </div>
-                    <div>
+                    <div className='order-summary-container'>
                         <Card style={{ width: "17rem" }}>
                             <h5 className=" text-md font-medium text-center">
                                 Order summery
