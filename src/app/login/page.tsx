@@ -31,7 +31,7 @@ const Login = () => {
     } = useForm<LoginProps>();
     const onSubmit: SubmitHandler<LoginProps> = async (getData) => {
         const { email, password } = getData;
-        const response = await (fetch("http://localhost:5000/users"));
+        const response = await (fetch("https://grocery-vercel-coral.vercel.app/users"));
         const users = await response.json();
         const matchedData = users?.filter((user) => user.email === email);
         // console.log("matched", matchedData[0]);

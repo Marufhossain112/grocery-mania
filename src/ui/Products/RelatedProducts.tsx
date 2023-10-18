@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use client";
 import { useGetOneProductQuery } from '@/redux/api/api';
 import GMNavbar from '@/ui/components/Navbar';

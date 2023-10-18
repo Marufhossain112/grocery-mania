@@ -18,7 +18,7 @@ export default function ECommerceCard() {
         </div>;
     }
     const handleAddToCart = async (product: any) => {
-        const response = await (fetch("http://localhost:5000/cart"));
+        const response = await (fetch("https://grocery-vercel-coral.vercel.app/cart"));
         const existingCart = await response.json();
         // console.log("Data", data);
         const existProduct = existingCart.find((cart) => cart._id === product._id && cart.user === user);
@@ -28,7 +28,7 @@ export default function ECommerceCard() {
         }
         const sendData = { user, ...product };
         if (!existProduct) {
-            fetch("http://localhost:5000/cart", {
+            fetch("https://grocery-vercel-coral.vercel.app/cart", {
                 method: "POST",
                 headers: {
                     "content-type": "application/json",

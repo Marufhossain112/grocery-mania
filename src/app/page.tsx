@@ -1,5 +1,5 @@
+// @ts-nocheck
 "use client";
-import { useGetFeaturedProductsQuery } from '@/redux/api/api';
 import AboutUs from '@/ui/AboutUs';
 import FAQCard from '@/ui/FAQCard';
 import Featured from '@/ui/Featured';

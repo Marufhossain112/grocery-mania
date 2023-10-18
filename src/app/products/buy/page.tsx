@@ -1,3 +1,4 @@
+// @ts-nocheck
 import GMNavbar from '@/ui/components/Navbar';
 import PricingCard from '@/ui/components/OrderSummery';
 import OrderingCard from '@/ui/components/OrderingCard';

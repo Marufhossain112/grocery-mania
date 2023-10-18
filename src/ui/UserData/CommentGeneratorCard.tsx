@@ -1,7 +1,7 @@
 'use client';
 
 import { useGetCommentsQuery } from '@/redux/api/api';
-import { Button, Card, Spinner } from 'flowbite-react';
+import { Card, Spinner } from 'flowbite-react';
 
 export default function CommentGeneratorCard() {
     const { data, isLoading } = useGetCommentsQuery(undefined);
@@ -14,7 +14,7 @@ export default function CommentGeneratorCard() {
     return (
         <div className='comment-container'>
             {
-                data?.map((comment, index) => (
+                data?.map((comment: any, index: number) => (
                     <Card key={index} className="max-w-sm">
                         <h5 className="text-lg font-normal tracking-tight text-gray-900 dark:text-white">
                             <p>

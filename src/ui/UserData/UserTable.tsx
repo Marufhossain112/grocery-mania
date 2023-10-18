@@ -4,11 +4,12 @@ import { useGetBookedOrdersQuery } from '@/redux/api/api';
 import { Table } from 'flowbite-react';
 import { useSelector } from 'react-redux';
 export default function UserTable() {
-    const { bookedOrder } = useSelector((state) => state.persistedProductReducer);
+    // const { bookedOrder } = useSelector((state) => state.persistedProductReducer);
     const { data, isLoading } = useGetBookedOrdersQuery(undefined);
+    // console.log("bookedOrder", data);
     const { user } = useSelector((state) => state.persistedUserReducer);
-    const foundBookedOrder = bookedOrder?.filter((cart) => cart.user === user);
-    console.log("foundBookedOrder", foundBookedOrder);
+    const foundBookedOrder = data?.filter((cart) => cart.user === user);
+    // console.log("foundBookedOrder", foundBookedOrder);
 
     return (
         <div>

@@ -1,3 +1,4 @@
+// @ts-nocheck
 'use client';
 import { Checkbox, Label } from 'flowbite-react';
 import { useState } from 'react';

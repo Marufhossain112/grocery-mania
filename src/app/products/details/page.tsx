@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use client";
 import ProductDetails from '@/ui/Products/ProductDetails';
 import SearchBar from '@/ui/components/SearchBar';
