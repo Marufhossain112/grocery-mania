@@ -15,6 +15,7 @@ import Link from 'next/link';
 import toast from 'react-hot-toast';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
+import UserGeneratedContent from '../UserData/UserGeneratedContent';
 export default function Products() {
     const [search, setSearch] = useState("");
     const [sort, setSort] = useState('desc');
@@ -128,6 +129,10 @@ export default function Products() {
             </div>
             <div className='flex justify-end container mx-auto ' style={{ padding: "0 4.5rem" }}>
                 <GMPagination setCurrentPage={setCurrentPage} />
+            </div>
+            {/* user generated  */}
+            <div className='container mx-auto px-4 mt-10'>
+                <UserGeneratedContent />
             </div>
         </>
     );

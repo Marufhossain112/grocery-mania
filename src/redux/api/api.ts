@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 export const api = createApi({
     reducerPath: 'api',
     baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000/' }),
-    tagTypes: ['removeUser', 'removeProduct', 'editProfile', 'createUser'],
+    tagTypes: ['removeUser', 'removeProduct', 'editProfile', 'createUser', 'createComment'],
     endpoints: (builder) => ({
         getFeaturedProducts: builder.query({
             query: () => `featuredProducts`,
@@ -23,6 +23,10 @@ export const api = createApi({
             query: () => `users`,
             providesTags: ['removeUser', 'editProfile', 'createUser']
         }),
+        getComments: builder.query({
+            query: () => `comment`,
+            providesTags: ['createComment']
+        }),
         createUser: builder.mutation({
             query: ({ data }) => ({
                 url: `users`,
@@ -30,6 +34,14 @@ export const api = createApi({
                 body: data
             }),
             invalidatesTags: ['createUser']
+        }),
+        createComment: builder.mutation({
+            query: ({ data }) => ({
+                url: `comment`,
+                method: 'POST',
+                body: data
+            }),
+            invalidatesTags: ['createComment']
         }),
         getOneUser: builder.query({
             query: (email) => `users/${email}`,
@@ -67,4 +79,4 @@ export const api = createApi({
 });
 
 // auto-generated based on the defined endpoints
-export const { useGetFeaturedProductsQuery, useVisualsProductsQuery, useProductsQuery, useGetOneProductQuery, useGetUsersQuery, useGetOneUserQuery, useGetBookedOrdersQuery, useGetAddedCartQuery, useDeleteSingleUserMutation, useDeleteSingleProductMutation, useEditProfileMutation, useCreateUserMutation } = api;
+export const { useGetFeaturedProductsQuery, useVisualsProductsQuery, useProductsQuery, useGetOneProductQuery, useGetUsersQuery, useGetOneUserQuery, useGetBookedOrdersQuery, useGetAddedCartQuery, useDeleteSingleUserMutation, useDeleteSingleProductMutation, useEditProfileMutation, useCreateUserMutation, useCreateCommentMutation, useGetCommentsQuery } = api;

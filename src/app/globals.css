@@ -219,4 +219,10 @@
     gap: 2rem;
     margin-top: 7rem;
   }
+  .comment-container{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
 }
