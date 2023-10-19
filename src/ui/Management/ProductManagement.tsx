@@ -1,13 +1,12 @@
 // @ts-nocheck
 'use client';
-import { useDeleteSingleProductMutation, useGetBookedOrdersQuery, useProductsQuery } from '@/redux/api/api';
+import { useAllProductsQuery, useDeleteSingleProductMutation } from '@/redux/api/api';
 import { AiOutlineDelete } from 'react-icons/ai';
 import { Table } from 'flowbite-react';
 import toast from 'react-hot-toast';
 export default function ProductManagement() {
-    const { data, isLoading } = useProductsQuery(undefined);
-    // console.log("datatqata", data);
-    // const { name, quantity, category, price } = data;
+    const { data, isLoading } = useAllProductsQuery(undefined);
+    // console.log("product Data", data);
     const [deleteSingleProduct] = useDeleteSingleProductMutation();
     const handleDeleteProduct = async (id: string) => {
         await deleteSingleProduct(id).unwrap().then((response) => {

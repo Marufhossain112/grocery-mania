@@ -29,7 +29,7 @@ const Register = () => {
 
         const { email, password, name, phoneNumber, confirmPassword } = data;
         if (password !== confirmPassword) {
-            toast.error("Passwords do not match");
+            toast.error("Passwords did not match");
             return;
         }
         try {

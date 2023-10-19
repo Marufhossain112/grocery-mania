@@ -4,39 +4,41 @@ import { AiOutlineDelete } from 'react-icons/ai';
 import { useDeleteSingleUserMutation, useGetUsersQuery } from '@/redux/api/api';
 import { Table } from 'flowbite-react';
 import toast from 'react-hot-toast';
+import { getAuth, deleteUser } from "firebase/auth";
+import app from '@/firebase/firebase.init';
 export default function UserList() {
-    // const dispatch = useDispatch();
+    const auth = getAuth(app);
     const [deleteSingleUser] = useDeleteSingleUserMutation();
     const { data, isLoading } = useGetUsersQuery(undefined);
-    // console.log("Ussssssser", data);
-    // const handleDeleteUser = async (id) => {
-    //     try {
-    //         const response = await deleteSingleUser(id);
-    //         if (response.error) {
-    //             // Handle the error, e.g., show an error message
-    //             toast.error("User deletion failed.");
-    //         } else {
-    //             // Dispatch an action or update your state if needed
-    //             toast.success("User deleted successfully.");
+    // const handleDeleteUser = async (id: string) => {
+    //     const user = auth.currentUser;
+    //     await deleteUser(user).then(() => {
+    //     }).catch((error) => {
+    //     });
+    //     await deleteSingleUser(id).unwrap().then((response) => {
+    //         // console.log(response);
+    //         toast.success("User deleted successfully");
+    //     }).catch((error) => {
+    //         if (error) {
+    //             toast.error(error?.data?.message);
     //         }
-    //     } catch (error) {
-    //         // Handle unexpected errors
-    //         console.error("An error occurred:", error);
-    //         toast.error("An unexpected error occurred.");
-    //     }
+    //     });
     // };
-
     const handleDeleteUser = async (id: string) => {
-        await deleteSingleUser(id).unwrap().then((response) => {
-            // console.log(response);
+        const user = auth.currentUser;
+
+        try {
+            // Delete the user from Firebase Authentication
+            await user.delete();
+
+            // Now, delete the user from your custom database
+            await deleteSingleUser(id).unwrap();
             toast.success("User deleted successfully");
-            // if (response.statusCode === 200) {
-            // }
-        }).catch((error) => {
+        } catch (error) {
             if (error) {
-                toast.error(error?.data?.message);
+                toast.error(error.message);
             }
-        });
+        }
     };
     return (
         <Table >

@@ -16,6 +16,10 @@ export const api = createApi({
             query: ({ search, sort, status, category, page, limit }) => `products?search=${search}&sort=${sort}&status=${status}&category=${category}&page=${page}&limit=${limit}`,
             providesTags: ['removeProduct']
         }),
+        allProducts: builder.query({
+            query: () => `allProducts`,
+            providesTags: ['removeProduct']
+        }),
         getOneProduct: builder.query({
             query: (id) => `products/${id}`,
         }),
@@ -79,4 +83,4 @@ export const api = createApi({
 });
 
 // auto-generated based on the defined endpoints
-export const { useGetFeaturedProductsQuery, useVisualsProductsQuery, useProductsQuery, useGetOneProductQuery, useGetUsersQuery, useGetOneUserQuery, useGetBookedOrdersQuery, useGetAddedCartQuery, useDeleteSingleUserMutation, useDeleteSingleProductMutation, useEditProfileMutation, useCreateUserMutation, useCreateCommentMutation, useGetCommentsQuery } = api;
+export const { useGetFeaturedProductsQuery, useVisualsProductsQuery, useProductsQuery, useGetOneProductQuery, useGetUsersQuery, useGetOneUserQuery, useGetBookedOrdersQuery, useGetAddedCartQuery, useDeleteSingleUserMutation, useDeleteSingleProductMutation, useEditProfileMutation, useCreateUserMutation, useCreateCommentMutation, useGetCommentsQuery, useAllProductsQuery } = api;

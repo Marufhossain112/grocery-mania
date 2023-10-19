@@ -180,7 +180,7 @@ const UserDashboard = () => {
                                         onClick={() => handleSidebarItemClick('history')}
                                     >
                                         <p>
-                                            Booking History
+                                            Order History
                                         </p>
                                     </Sidebar.Item>
                                     <Sidebar.Item
@@ -189,7 +189,7 @@ const UserDashboard = () => {
                                         onClick={() => handleSidebarItemClick('status')}
                                     >
                                         <p>
-                                            Booking Status
+                                            Order Status
                                         </p>
                                     </Sidebar.Item>
                                     <Sidebar.Item

@@ -21,7 +21,6 @@ export default function Products() {
     const [sort, setSort] = useState('desc');
     const [status, setStatus] = useState("");
     const [category, setCategory] = useState("");
-    // const [page, setPage] = useState(1);
     const [page, setCurrentPage] = useState(1);
     const { user } = useSelector((state) => state.persistedUserReducer);
     const { data, isLoading } = useProductsQuery({ search, sort, status, category, page });
