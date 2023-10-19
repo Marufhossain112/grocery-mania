@@ -1,6 +1,7 @@
 // @ts-nocheck
 "use client";
 import app from '@/firebase/firebase.init';
+import { useGetUsersQuery } from '@/redux/api/api';
 import { setUser } from '@/redux/user/userslice';
 import { createUserWithEmailAndPassword, getAuth, updateProfile } from 'firebase/auth';
 import React from 'react';
@@ -17,6 +18,9 @@ type RegisterProps = {
     role: string;
 };
 const Register = () => {
+    const { data, isLoading } = useGetUsersQuery(undefined);
+    const usersData = data && data[0];
+    // console.log("all users data", usersData);
     const auth = getAuth(app);
     const {
         register,
@@ -57,7 +61,11 @@ const Register = () => {
                 uid: user.uid,
                 photoURL: user.photoURL,
             };
-            if (user) {
+            if (user.email === usersData.email) {
+                toast.error("User already registered, please login");
+                return;
+            }
+            if (user && user.email !== usersData.email) {
                 fetch("https://grocery-vercel-coral.vercel.app/users", {
                     method: "POST",
                     headers: {

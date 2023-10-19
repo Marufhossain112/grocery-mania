@@ -26,11 +26,9 @@ export default function UserList() {
     // };
     const handleDeleteUser = async (id: string) => {
         const user = auth.currentUser;
-
         try {
             // Delete the user from Firebase Authentication
             await user.delete();
-
             // Now, delete the user from your custom database
             await deleteSingleUser(id).unwrap();
             toast.success("User deleted successfully");

@@ -180,7 +180,7 @@ const UserDashboard = () => {
                                         onClick={() => handleSidebarItemClick('history')}
                                     >
                                         <p>
-                                            Order History
+                                             Confirmed orders
                                         </p>
                                     </Sidebar.Item>
                                     <Sidebar.Item
@@ -189,7 +189,7 @@ const UserDashboard = () => {
                                         onClick={() => handleSidebarItemClick('status')}
                                     >
                                         <p>
-                                            Order Status
+                                            Orders on cart
                                         </p>
                                     </Sidebar.Item>
                                     <Sidebar.Item
@@ -230,14 +230,14 @@ const UserDashboard = () => {
                                 {
                                     selectedItem === 'history' &&
                                     <div style={{ marginTop: '0rem' }}>
-                                        <h3 className='text-center font-bold text-2xl py-3'>Booking History</h3>
+                                        <h3 className='text-center font-bold text-2xl py-3'>Confirmed orders</h3>
                                         <UserTable />
                                     </div>
                                 }
                                 {
                                     selectedItem === 'status' &&
                                     <div style={{ marginTop: '0rem' }}>
-                                        <h3 className='text-center font-bold text-2xl py-3'>Booking Status</h3>
+                                        <h3 className='text-center font-bold text-2xl py-3'>Orders on cart</h3>
                                         <BookingStatus />
                                     </div>
                                 }

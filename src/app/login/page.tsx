@@ -1,7 +1,7 @@
 // @ts-nocheck
 "use client";
 import app from '@/firebase/firebase.init';
-import { useCreateUserMutation, useGetOneUserQuery } from '@/redux/api/api';
+import { useCreateUserMutation, useGetOneUserQuery, useGetUsersQuery } from '@/redux/api/api';
 import { setUser } from '@/redux/user/userslice';
 import { useRouter } from 'next/navigation';
 import React from 'react';
@@ -18,6 +18,10 @@ type LoginProps = {
 };
 const auth = getAuth(app);
 const Login = () => {
+    const { data, isLoading } = useGetUsersQuery(undefined);
+    // const usersData = data && data[0];
+    const userEmail = data?.map((users) => users?.email);
+    // console.log("dataaaaaaaas of email", userEmail);
     const [createUser] = useCreateUserMutation();
     // const { data, isLoading } = useGetOneUserQuery(email);
     const dispatch = useDispatch();
@@ -38,7 +42,7 @@ const Login = () => {
         await signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
             // Signed in 
             const user = userCredential.user;
-            // console.log("signInUser", user);
+            console.log("signInUser", user);
             dispatch(setUser({
                 user: user.email,
                 role: matchedData[0].role,
@@ -58,7 +62,7 @@ const Login = () => {
             .then((result) => {
                 // This gives you a Google Access Token. You can use it to access the Google API.
                 const credential = GoogleAuthProvider.credentialFromResult(result);
-                const token = credential.accessToken;
+                // const token = credential.accessToken;
                 // The signed-in user info.
                 const user = result.user;
                 // IdP data available using getAdditionalUserInfo(result)
@@ -71,25 +75,44 @@ const Login = () => {
                     photoURL: user.photoURL
                 };
 
-                console.log("UserData", userData);
-                dispatch(setUser({
-                    user: user.email,
-                    role: "user",
-                    uid: user.uid,
-                }));
-                createUser({ data: userData });
-                // const handleDeleteUser = async (id: string) => {
-                // createUser(userData).unwrap();
-                // };
-                toast.success("User logged in successfully.");
-                router.push("/profile");
-                console.log("user", user);
+                if (!userEmail.includes(user.email)) {
+                    // store to database
+                    createUser({ data: userData });
+                    dispatch(setUser({
+                        user: user.email,
+                        role: "user",
+                        uid: user.uid,
+                    }));
+                    toast.success("User logged in successfully.");
+                    router.push("/profile");
+                }
+                if (userEmail.includes(user.email)) {
+                    // store to database
+                    // createUser({ data: userData });
+                    dispatch(setUser({
+                        user: user.email,
+                        role: "user",
+                        uid: user.uid,
+                    }));
+                    toast.success("User logged in successfully.");
+                    router.push("/profile");
+                }
+                // if (user.email === usersData.email) {
+                //     // store to redux store
+                //     dispatch(setUser({
+                //         user: user.email,
+                //         role: "user",
+                //         uid: user.uid,
+                //     }));
+                //     toast.success("User logged in successfully.");
+                //     router.push("/profile");
+                // }
             }).catch((error) => {
                 // Handle Errors here.
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 // The email of the user's account used.
-                const email = error.customData.email;
+                // const email = error.customData.email;
                 // The AuthCredential type that was used.
                 const credential = GoogleAuthProvider.credentialFromError(error);
                 // ...

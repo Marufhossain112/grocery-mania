@@ -1,13 +1,30 @@
 // @ts-nocheck
 'use client';
-import { useGetBookedOrdersQuery } from '@/redux/api/api';
+import { useGetAddedCartQuery, useGetBookedOrdersQuery, useRemoveSingleProductFromCartMutation } from '@/redux/api/api';
 import { Table } from 'flowbite-react';
 import { useSelector } from 'react-redux';
+import { RxCrossCircled } from 'react-icons/rx';
+import toast from 'react-hot-toast';
 export default function BookingStatus() {
-    const { data, isLoading } = useGetBookedOrdersQuery(undefined);
+    const { data, isLoading } = useGetAddedCartQuery(undefined);
+    console.log("Cart data", data);
+    const [removeSingleProductFromCart] = useRemoveSingleProductFromCartMutation();
     // const { bookedOrder } = useSelector((state) => state.persistedProductReducer);
     const { user } = useSelector((state) => state.persistedUserReducer);
     const foundBookedOrder = data?.filter((cart) => cart.user === user);
+    const handleCancelFromCart = async (id: string) => {
+        try {
+            console.log("Id of cart data", id);
+            // Delete the user from Firebase Authentication
+            // Now, delete the user from your custom database
+            await removeSingleProductFromCart(id).unwrap();
+            toast.success("Product cancelled successfully. ");
+        } catch (error) {
+            if (error) {
+                toast.error(error.message);
+            }
+        }
+    };
     return (
         <div>
             <Table >
@@ -23,6 +40,9 @@ export default function BookingStatus() {
                     </Table.HeadCell>
                     <Table.HeadCell>
                         Status
+                    </Table.HeadCell>
+                    <Table.HeadCell>
+                        Cancel
                     </Table.HeadCell>
                 </Table.Head>
                 {
@@ -40,6 +60,9 @@ export default function BookingStatus() {
                                 </Table.Cell>
                                 <Table.Cell>
                                     {product.status}
+                                </Table.Cell>
+                                <Table.Cell className={'text-center'}>
+                                    <RxCrossCircled onClick={() => handleCancelFromCart(product._id)} style={{ color: "red", marginLeft: "1rem" }} />
                                 </Table.Cell>
                             </Table.Row>
                         </Table.Body>
