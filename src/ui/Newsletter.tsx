@@ -32,7 +32,7 @@ const Newsletter = () => {
                     <h3 style={{ marginBottom: "0.7rem" }} className='text-2xl font-medium'>Join our newsletter and get...</h3>
                     <p style={{ marginBottom: "0.7rem", }} className='text-gray-800' >Join our email subscription now to get updates on promotions and coupons.</p>
                     <div className='flex'>
-                        <input type="text" placeholder='Your email address'   {...register("email", { required: "email is required" })} />
+                        <input type="email" placeholder='Your email address'   {...register("email", { required: "email is required" })} />
                         {errors.email && <p className='text-red-600'>{errors.email.message}</p>}
                         <button style={{
                             background: "midnightblue",
