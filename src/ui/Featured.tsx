@@ -1,60 +1,50 @@
 // @ts-nocheck
 'use client';
 import { useCreateAddToCartMutation, useGetFeaturedProductsQuery } from '@/redux/api/api';
-import { addToCart } from '@/redux/product/productSlice';
 import { Card, Spinner } from 'flowbite-react';
 import Image from 'next/image';
-import { send } from 'process';
 import toast from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
 export default function ECommerceCard() {
-    const dispatch = useDispatch();
     const { user } = useSelector((state) => state.persistedUserReducer);
     const { data, isLoading } = useGetFeaturedProductsQuery(undefined);
-    const [createAddToCart] = useCreateAddToCartMutation();
     // console.log("Featured Data", data);
     if (isLoading) {
         return <div style={{ height: "100vh" }} className="flex justify-center items-center">
             <Spinner size="lg" aria-label="Center-aligned spinner example" />
         </div>;
     }
+
     const handleAddToCart = async (product: any) => {
-        const options = {
-            data: {
-                user, ...product
-            }
-        };
-        console.log("Options", options);
         const response = await (fetch("https://grocery-vercel-coral.vercel.app/cart"));
         const cartProducts = await response.json();
         console.log("Product", product);
-        // console.log("cartProducts", cartProducts);
-        const existProduct = cartProducts.filter((cartItem) => cartItem._id === product._id);
+        const { _id, ...productsData } = product;
+        const existProduct = cartProducts.filter((cartItem) => cartItem.id === product._id);
         // console.log("paisi", (existProduct));
         const alreadyOnCart = existProduct.filter((product) => product.user === user);
         console.log("already on cart", alreadyOnCart);
-        // if (alreadyOnCart.length === 0) {
-        //     await createAddToCart(options).unwrap().then((response) => {
-        //         if (response.acknowledged) {
-        //             toast.success("Added to cart successfully.");
-        //         }
-        //         console.log("response", response);
-        //         console.log("data", data);
-        //         // if (response.statusCode === 200) {
-        //         // }
-        //     }).catch((error) => {
-        //         // if (error) {
-        //         // toast.error(error?.data?.message);
-        //         return;
-        //         // }
-        //     });
-        // };
-
+        if (alreadyOnCart.length !== 0) {
+            toast.error("Product is already added to the cart.");
+            return;
+        };
+        if (alreadyOnCart.length === 0) {
+            fetch("https://grocery-vercel-coral.vercel.app/cart", {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify({ user, ...productsData, id: _id }),
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    if (data.insertedId) {
+                        toast.success("Added to cart successfully.");
+                    }
+                })
+                .catch((err) => console.log(err));
+        }
     };
-    // if (!alreadyOnCart.length === 0) {
-    //     toast.error("Product is already added to the cart.");
-    //     return;
-    // }
     return (
         <>
             <h3 className='text-center font-bold text-2xl py-3'>Featured Products</h3>

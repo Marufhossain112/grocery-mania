@@ -27,17 +27,11 @@ export default function Products() {
     // console.log("status", status);
     console.log("DATA", data);
     const handleAddToCart = async (product: any) => {
-        // const response = await (fetch("https://grocery-vercel-coral.vercel.app/cart"));
-        // const existingCart = await response.json();
-        // console.log("Data", data);
         const response = await (fetch("https://grocery-vercel-coral.vercel.app/cart"));
         const cartProducts = await response.json();
         console.log("Product", product);
         const { _id, ...productsData } = product;
-        // console.log("ProductsData", productsData);
-        // console.log("cartProducts", cartProducts);
         const existProduct = cartProducts.filter((cartItem) => cartItem.id === product._id);
-        // console.log("paisi", (existProduct));
         const alreadyOnCart = existProduct.filter((product) => product.user === user);
         console.log("already on cart", alreadyOnCart);
         if (alreadyOnCart.length !== 0) {

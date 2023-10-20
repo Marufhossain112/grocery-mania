@@ -174,15 +174,7 @@ const UserDashboard = () => {
                                             User activities
                                         </p>
                                     </Sidebar.Item>
-                                    <Sidebar.Item
-                                        href="#"
-                                        icon={HiInbox}
-                                        onClick={() => handleSidebarItemClick('history')}
-                                    >
-                                        <p>
-                                            Confirmed orders
-                                        </p>
-                                    </Sidebar.Item>
+
                                     <Sidebar.Item
                                         href="#"
                                         icon={HiUser}
@@ -190,6 +182,15 @@ const UserDashboard = () => {
                                     >
                                         <p>
                                             Orders on cart
+                                        </p>
+                                    </Sidebar.Item>
+                                    <Sidebar.Item
+                                        href="#"
+                                        icon={HiInbox}
+                                        onClick={() => handleSidebarItemClick('history')}
+                                    >
+                                        <p>
+                                            Confirmed orders
                                         </p>
                                     </Sidebar.Item>
                                     <Sidebar.Item
@@ -228,19 +229,20 @@ const UserDashboard = () => {
                                     <ProfileHistory />
                                 }
                                 {
-                                    selectedItem === 'history' &&
-                                    <div style={{ marginTop: '0rem' }}>
-                                        <h3 className='text-center font-bold text-2xl py-3'>Confirmed orders</h3>
-                                        <UserTable />
-                                    </div>
-                                }
-                                {
                                     selectedItem === 'status' &&
                                     <div style={{ marginTop: '0rem' }}>
                                         <h3 className='text-center font-bold text-2xl py-3'>Orders on cart</h3>
                                         <BookingStatus />
                                     </div>
                                 }
+                                {
+                                    selectedItem === 'history' &&
+                                    <div style={{ marginTop: '0rem' }}>
+                                        <h3 className='text-center font-bold text-2xl py-3'>Confirmed orders</h3>
+                                        <UserTable />
+                                    </div>
+                                }
+
                                 {
                                     selectedItem === 'summary' &&
                                     <div style={{ marginTop: '0rem' }}>
