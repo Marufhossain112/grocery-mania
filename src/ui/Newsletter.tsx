@@ -4,7 +4,6 @@ const Newsletter = () => {
     return (
         <div style={{
             marginTop: "2rem",
-            marginBottom: "2rem",
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",

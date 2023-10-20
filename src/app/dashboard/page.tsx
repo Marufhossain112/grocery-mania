@@ -180,7 +180,7 @@ const UserDashboard = () => {
                                         onClick={() => handleSidebarItemClick('history')}
                                     >
                                         <p>
-                                             Confirmed orders
+                                            Confirmed orders
                                         </p>
                                     </Sidebar.Item>
                                     <Sidebar.Item

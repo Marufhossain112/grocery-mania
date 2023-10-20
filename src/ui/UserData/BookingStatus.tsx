@@ -17,7 +17,8 @@ export default function BookingStatus() {
             console.log("Id of cart data", id);
             // Delete the user from Firebase Authentication
             // Now, delete the user from your custom database
-            await removeSingleProductFromCart(id).unwrap();
+             await removeSingleProductFromCart(id).unwrap();
+
             toast.success("Product cancelled successfully. ");
         } catch (error) {
             if (error) {
@@ -62,7 +63,7 @@ export default function BookingStatus() {
                                     {product.status}
                                 </Table.Cell>
                                 <Table.Cell className={'text-center'}>
-                                    <RxCrossCircled onClick={() => handleCancelFromCart(product._id)} style={{ color: "red", marginLeft: "1rem" }} />
+                                    <RxCrossCircled onClick={() => handleCancelFromCart(product.id)} style={{ color: "red", marginLeft: "1rem" }} />
                                 </Table.Cell>
                             </Table.Row>
                         </Table.Body>

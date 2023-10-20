@@ -27,21 +27,30 @@ export default function Products() {
     // console.log("status", status);
     console.log("DATA", data);
     const handleAddToCart = async (product: any) => {
-        const response = await (fetch("https://grocery-vercel-coral.vercel.app/cart"));
-        const existingCart = await response.json();
+        // const response = await (fetch("https://grocery-vercel-coral.vercel.app/cart"));
+        // const existingCart = await response.json();
         // console.log("Data", data);
-        const existProduct = existingCart.find((cart) => cart._id === product._id);
-        // console.log("paisi", existProduct);
-        if (existProduct) {
+        const response = await (fetch("https://grocery-vercel-coral.vercel.app/cart"));
+        const cartProducts = await response.json();
+        console.log("Product", product);
+        const { _id, ...productsData } = product;
+        // console.log("ProductsData", productsData);
+        // console.log("cartProducts", cartProducts);
+        const existProduct = cartProducts.filter((cartItem) => cartItem.id === product._id);
+        // console.log("paisi", (existProduct));
+        const alreadyOnCart = existProduct.filter((product) => product.user === user);
+        console.log("already on cart", alreadyOnCart);
+        if (alreadyOnCart.length !== 0) {
             toast.error("Product is already added to the cart.");
-        }
-        if (!existProduct) {
+            return;
+        };
+        if (alreadyOnCart.length === 0) {
             fetch("https://grocery-vercel-coral.vercel.app/cart", {
                 method: "POST",
                 headers: {
                     "content-type": "application/json",
                 },
-                body: JSON.stringify({ user, ...product }),
+                body: JSON.stringify({ user, ...productsData, id: _id }),
             })
                 .then((res) => res.json())
                 .then((data) => {
@@ -51,6 +60,28 @@ export default function Products() {
                 })
                 .catch((err) => console.log(err));
         }
+
+        // const existProduct = existingCart.find((cart) => cart._id === product._id);
+        // console.log("paisi", existProduct);
+        // if (existProduct) {
+        //     toast.error("Product is already added to the cart.");
+        // }
+        // if (!existProduct) {
+        //     fetch("https://grocery-vercel-coral.vercel.app/cart", {
+        //         method: "POST",
+        //         headers: {
+        //             "content-type": "application/json",
+        //         },
+        //         body: JSON.stringify({ user, ...product }),
+        //     })
+        //         .then((res) => res.json())
+        //         .then((data) => {
+        //             if (data.insertedId) {
+        //                 toast.success("Added to cart successfully.");
+        //             }
+        //         })
+        //         .catch((err) => console.log(err));
+        // }
     };
     if (isLoading) {
         return <div style={{ height: "100vh" }} className="flex justify-center items-center">

@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 export const api = createApi({
     reducerPath: 'api',
     baseQuery: fetchBaseQuery({ baseUrl: 'https://grocery-vercel-coral.vercel.app/' }),
-    tagTypes: ['removeUser', 'removeProduct', 'editProfile', 'createUser', 'createComment', 'removeProductFromCart'],
+    tagTypes: ['removeUser', 'removeProduct', 'editProfile', 'createUser', 'createComment', 'removeProductFromCart', 'createAddToCart'],
     endpoints: (builder) => ({
         getFeaturedProducts: builder.query({
             query: () => `featuredProducts`,
@@ -46,6 +46,14 @@ export const api = createApi({
             }),
             invalidatesTags: ['createComment']
         }),
+        createAddToCart: builder.mutation({
+            query: ({ data }) => ({
+                url: `cart`,
+                method: 'POST',
+                body: data
+            }),
+            invalidatesTags: ['createAddToCart']
+        }),
         getOneUser: builder.query({
             query: (email) => `users/${email}`,
             providesTags: ['editProfile', 'createUser']
@@ -55,7 +63,7 @@ export const api = createApi({
         }),
         getAddedCart: builder.query({
             query: () => `cart`,
-            providesTags: ['removeProductFromCart']
+            providesTags: ['removeProductFromCart', 'createAddToCart']
         }),
         deleteSingleUser: builder.mutation({
             query: (id) => ({
@@ -90,4 +98,4 @@ export const api = createApi({
 });
 
 // auto-generated based on the defined endpoints
-export const { useGetFeaturedProductsQuery, useVisualsProductsQuery, useProductsQuery, useGetOneProductQuery, useGetUsersQuery, useGetOneUserQuery, useGetBookedOrdersQuery, useGetAddedCartQuery, useDeleteSingleUserMutation, useDeleteSingleProductMutation, useEditProfileMutation, useCreateUserMutation, useCreateCommentMutation, useGetCommentsQuery, useAllProductsQuery,useRemoveSingleProductFromCartMutation } = api;
+export const { useGetFeaturedProductsQuery, useVisualsProductsQuery, useProductsQuery, useGetOneProductQuery, useGetUsersQuery, useGetOneUserQuery, useGetBookedOrdersQuery, useGetAddedCartQuery, useDeleteSingleUserMutation, useDeleteSingleProductMutation, useEditProfileMutation, useCreateUserMutation, useCreateCommentMutation, useGetCommentsQuery, useAllProductsQuery, useRemoveSingleProductFromCartMutation, useCreateAddToCartMutation } = api;
