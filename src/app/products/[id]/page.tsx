@@ -26,21 +26,23 @@ const ProductDetails = () => {
     }
     const handleAddToCart = async (product: any) => {
         const response = await (fetch("https://grocery-vercel-coral.vercel.app/cart"));
-        const existingCart = await response.json();
-        // console.log("Data", data);
-        const existProduct = existingCart.find((cart) => cart._id === product._id && cart.user === user);
-        console.log("Existsameuserorder", existProduct);
-        if (existProduct) {
+        const cartProducts = await response.json();
+        console.log("Product", product);
+        const { _id, ...productsData } = product;
+        const existProduct = cartProducts.filter((cartItem) => cartItem.id === product._id);
+        const alreadyOnCart = existProduct.filter((product) => product.user === user);
+        console.log("already on cart", alreadyOnCart);
+        if (alreadyOnCart.length !== 0) {
             toast.error("Product is already added to the cart.");
-        }
-        const sendData = { user, ...product };
-        if (!existProduct) {
+            return;
+        };
+        if (alreadyOnCart.length === 0) {
             fetch("https://grocery-vercel-coral.vercel.app/cart", {
                 method: "POST",
                 headers: {
                     "content-type": "application/json",
                 },
-                body: JSON.stringify(sendData),
+                body: JSON.stringify({ user, ...productsData, id: _id }),
             })
                 .then((res) => res.json())
                 .then((data) => {
