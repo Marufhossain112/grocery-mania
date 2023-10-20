@@ -13,8 +13,8 @@ const Newsletter = () => {
     } = useForm<NewsLetterProps>();
     const onSubmit: SubmitHandler<NewsLetterProps> = async (getData) => {
         console.log("getData", getData);
-        reset();
         toast.success("Thank you for subscription.");
+        reset();
     };
     return (
         <div>
@@ -43,7 +43,6 @@ const Newsletter = () => {
                 </div >
             </form>
         </div>
-
     );
 };
 
