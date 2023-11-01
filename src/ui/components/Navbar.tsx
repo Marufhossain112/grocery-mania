@@ -10,7 +10,7 @@ import { signOutUser } from '@/redux/user/userslice';
 import { useRouter } from 'next/navigation';
 import { persistor } from '@/redux/store';
 const auth = getAuth(app);
-export default function GMNavbar({setSearch}) {
+export default function GMNavbar({ setSearch }) {
     const dispatch = useDispatch();
     const { user } = useSelector((state) => state.persistedUserReducer);
     const router = useRouter();
@@ -28,7 +28,7 @@ export default function GMNavbar({setSearch}) {
         <Navbar
             fluid
             rounded
-            style={{ background: "#21d8aa" }}
+            className='navbar'
         >
             <Navbar.Brand href="/">
                 <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">

@@ -73,7 +73,7 @@ const FeedbackForm = () => {
                             </div>
                             <button
                                 type="submit"
-                                className="w-full text-center py-3 rounded bg-green-400 text-white hover:bg-green-dark focus:outline-none my-1"
+                                className="w-full add-to-cart text-center py-3 rounded  focus:outline-none my-1"
                             >Submit</button>
                         </div>
                     </div>

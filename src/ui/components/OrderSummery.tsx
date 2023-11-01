@@ -27,7 +27,7 @@ export default function PricingCard() {
                 </li>
             </ul>
             <button
-                className="inline-flex w-full justify-center rounded-lg bg-cyan-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-cyan-700 focus:outline-none focus:ring-4 focus:ring-cyan-200 dark:focus:ring-cyan-900"
+               className="add-to-cart rounded-lg px-5 py-2.5"
                 type="button"
             >
                 <p>

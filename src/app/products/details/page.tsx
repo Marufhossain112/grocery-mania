@@ -11,7 +11,6 @@ const GMProductDetails = () => {
             <Navbar
                 fluid
                 rounded
-                style={{ background: "#21d8aa" }}
             >
                 <Navbar.Brand href="/">
                     <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
