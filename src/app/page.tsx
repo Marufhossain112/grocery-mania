@@ -22,12 +22,21 @@ const HomePage = () => {
     <div id='home'>
       {
         <div><GMNavbar />
-          <Featured />
-          <Testimonial />
-          <Gallery />
-          <AboutUs />
-          <FAQCard />
-          <Newsletter />
+          <div style={{ marginTop: "3rem" }}>
+            <Featured />
+          </div>
+          <div style={{ marginTop: "3rem" }}>
+            <Gallery />
+          </div>
+          <div style={{ marginTop: "3rem" }}>
+            <Testimonial />
+          </div>
+          <div style={{ marginTop: "3rem" }}>
+            <FAQCard />
+          </div>
+          <div style={{ marginTop: "5rem" }}>
+            <AboutUs />
+          </div>
           <ScrollToTopButton />
           <GMFooter /></div>
       }

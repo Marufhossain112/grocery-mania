@@ -315,6 +315,9 @@
   .featured-card-container {
     width: 18rem;
   }
+  #faq{
+    padding: 0 29rem;
+  }
 }
 /* Add this CSS to your stylesheet or component */
 .table-container {
