@@ -17,12 +17,7 @@ import React from 'react';
 
 const AboutUsCard = () => {
     return (
-        <div className='flex justify-center' style={{
-            background: "#b0f2b4", margin: "3rem 0",
-            padding: "4rem",
-            gap: "2rem"
-        }}>
-
+        <div className='flex justify-center aboutUs-card-container'>
             <div>
                 <Image src="/assets/grocery-mania.webp" alt='img' width={300} height={300} />
             </div>
@@ -31,7 +26,7 @@ const AboutUsCard = () => {
                 <h3 style={{ marginBottom: "1rem" }} className='text-center text-2xl pt-5 pb-4 '>
                     About Us
                 </h3>
-                <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                <h5 className="company-title font-bold tracking-tight text-gray-900 dark:text-white">
                     <p>
                         Grocery Mania Technologies 2023
                     </p>

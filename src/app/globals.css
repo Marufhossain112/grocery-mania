@@ -107,6 +107,24 @@
   .featured-card-container {
     width: 100%;
   }
+  .aboutUs-card-container {
+    background: #b0f2b4;
+    margin: 3rem 0;
+    padding: 2rem;
+    gap: 1rem;
+    flex-direction: column;
+  }
+  .company-title {
+    font-size: 1.125rem;
+  }
+  /* .testimonial-container {
+    flex-direction: row;
+    padding: 0rem 6rem 0rem 6rem;
+    gap: 1.25rem;
+  } */
+  .testimonial-card {
+    width: 100%;
+  }
 }
 .newsletter-container {
   margin-top: 2rem;
@@ -149,6 +167,14 @@
   }
   .featured-card-container {
     width: 25rem;
+  }
+  /* .testimonial-container {
+    flex-direction: row;
+    padding: 0rem 6rem 0rem 6rem;
+    gap: 1.25rem;
+  } */
+  .testimonial-card {
+    width: 100%;
   }
 }
 
@@ -197,11 +223,16 @@
     gap: 2rem;
     margin-top: 7rem;
   }
-  .testimonial-container {
-    flex-direction: row;
-  }
   .featured-card-container {
     width: 18rem;
+  }
+  .testimonial-container {
+    flex-direction: row;
+    padding: 0rem 6rem 0rem 6rem;
+    gap: 1.25rem;
+  }
+  .testimonial-card {
+    width: 60%;
   }
 }
 
@@ -250,11 +281,18 @@
     gap: 2rem;
     margin-top: 7rem;
   }
-  .testimonial-container {
-    flex-direction: row;
-  }
+
   .featured-card-container {
     width: 18rem;
+  }
+
+  .testimonial-container {
+    flex-direction: row;
+    padding: 0rem 6rem 0rem 6rem;
+    gap: 1.25rem;
+  }
+  .testimonial-card {
+    width: 60%;
   }
 }
 
@@ -311,12 +349,32 @@
   }
   .testimonial-container {
     flex-direction: row;
+    padding: 0rem 6rem 0rem 6rem;
+    gap: 1.25rem;
   }
   .featured-card-container {
     width: 18rem;
   }
-  #faq{
+  #faq {
     padding: 0 29rem;
+  }
+  .aboutUs-card-container {
+    background: #b0f2b4;
+    margin: 3rem 0;
+    padding: 4rem;
+    gap: 2rem;
+    flex-direction: row;
+  }
+  .company-title {
+    font-size: 1.25rem;
+  }
+  /* .testimonial-container {
+    flex-direction: row;
+    padding: 0rem 6rem 0rem 6rem;
+    gap: 1.25rem;
+  } */
+  .testimonial-card {
+    width: 60%;
   }
 }
 /* Add this CSS to your stylesheet or component */

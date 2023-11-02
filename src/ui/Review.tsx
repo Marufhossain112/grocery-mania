@@ -5,7 +5,7 @@ const { Item } = Dropdown;
 export default function Review() {
     return (
         <div className='flex  justify-center  items-center gap-1 testimonial-container'>
-            <Card style={{ width: "100%" }}>
+            <Card className="testimonial-card">
                 <div className="flex flex-col items-center pb-10">
                     <Rating>
                         <Rating.Star />
@@ -24,7 +24,7 @@ export default function Review() {
                     </span>
                 </div>
             </Card>
-            <Card style={{ width: "100%" }}>
+            <Card className="testimonial-card">
                 <div className="flex flex-col items-center pb-10 card-container">
                     {/* <Avatar /> */}
                     <Rating>
@@ -44,7 +44,7 @@ export default function Review() {
                     </span>
                 </div>
             </Card>
-            <Card style={{ width: "100%" }}>
+            <Card className="testimonial-card">
                 <div className="flex flex-col items-center pb-10">
                     {/* <Avatar /> */}
                     <Rating>

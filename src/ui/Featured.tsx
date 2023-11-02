@@ -47,7 +47,7 @@ export default function ECommerceCard() {
     };
     return (
         <>
-            <h3 className='text-center  text-2xl py-3'>Featured Products</h3>
+            <h3 className='text-center  text-2xl py-3 ' style={{marginBottom:"1rem"}}>Featured Products</h3>
             <div className='container  mx-auto px-4 flex justify-center flex-wrap gap-4'>
                 {
                     data?.map((product: any, index: number) => (
