@@ -45,6 +45,15 @@
   -ms-transition: all 0.2s ease;
   -o-transition: all 0.2s ease;
 }
+#testimonials {
+  background: #b0f2b4;
+  padding: 4rem 0;
+  margin: 3rem 0;
+  padding: 2rem 2rem 5rem 2rem;
+}
+.testimonial-title {
+  padding-bottom: 1.25rem;
+}
 
 /* media queries */
 /* Mobile devices (320px — 480px) */
@@ -87,6 +96,9 @@
   align-items: center;
   padding: 4rem;
 }
+.testimonial-container {
+  flex-direction: column;
+}
 
 /* iPads and Tablets (481px — 768px) */
 @media screen and (min-width: 481px) and (max-width: 768px) {
@@ -111,6 +123,9 @@
   .related-products-container {
     display: grid;
     justify-content: center;
+  }
+  .testimonial-container {
+    flex-direction: column;
   }
 }
 
@@ -159,6 +174,9 @@
     gap: 2rem;
     margin-top: 7rem;
   }
+  .testimonial-container {
+    flex-direction: row;
+  }
 }
 
 /* Desktops and large screens (1025px — 1200px) */
@@ -205,6 +223,9 @@
     align-items: center;
     gap: 2rem;
     margin-top: 7rem;
+  }
+  .testimonial-container {
+    flex-direction: row;
   }
 }
 
@@ -258,6 +279,9 @@
     justify-content: center;
     gap: 1rem;
     flex-wrap: wrap;
+  }
+  .testimonial-container {
+    flex-direction: row;
   }
 }
 /* Add this CSS to your stylesheet or component */

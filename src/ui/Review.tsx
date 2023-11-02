@@ -4,8 +4,8 @@ import { Avatar, Card, Dropdown, Rating } from 'flowbite-react';
 const { Item } = Dropdown;
 export default function Review() {
     return (
-        <div className='flex flex-col justify-center  items-center gap-4'>
-            <Card style={{ width: "95%" }}>
+        <div className='flex  justify-center  items-center gap-1 testimonial-container'>
+            <Card style={{ width: "100%" }}>
                 <div className="flex flex-col items-center pb-10">
                     <Rating>
                         <Rating.Star />
@@ -24,7 +24,7 @@ export default function Review() {
                     </span>
                 </div>
             </Card>
-            <Card style={{ width: "95%" }}>
+            <Card style={{ width: "100%" }}>
                 <div className="flex flex-col items-center pb-10">
                     {/* <Avatar /> */}
                     <Rating>
@@ -44,7 +44,7 @@ export default function Review() {
                     </span>
                 </div>
             </Card>
-            <Card style={{ width: "95%" }}>
+            <Card style={{ width: "100%" }}>
                 <div className="flex flex-col items-center pb-10">
                     {/* <Avatar /> */}
                     <Rating>
@@ -64,7 +64,6 @@ export default function Review() {
                     </span>
                 </div>
             </Card>
-
         </div>
     );
 }
