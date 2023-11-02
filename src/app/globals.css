@@ -54,6 +54,23 @@
 .testimonial-title {
   padding-bottom: 1.25rem;
 }
+.featured-card-container:hover {
+  background: #b0f2b4;
+  transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+}
+.featured-card-container:hover .add-to-cart {
+  background: black;
+  color: #fff;
+  transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+}
 
 /* media queries */
 /* Mobile devices (320px — 480px) */
@@ -86,6 +103,9 @@
     display: flex;
     justify-content: center;
     margin-top: 1rem;
+  }
+  .featured-card-container {
+    width: 100%;
   }
 }
 .newsletter-container {
@@ -126,6 +146,9 @@
   }
   .testimonial-container {
     flex-direction: column;
+  }
+  .featured-card-container {
+    width: 25rem;
   }
 }
 
@@ -177,6 +200,9 @@
   .testimonial-container {
     flex-direction: row;
   }
+  .featured-card-container {
+    width: 18rem;
+  }
 }
 
 /* Desktops and large screens (1025px — 1200px) */
@@ -226,6 +252,9 @@
   }
   .testimonial-container {
     flex-direction: row;
+  }
+  .featured-card-container {
+    width: 18rem;
   }
 }
 
@@ -282,6 +311,9 @@
   }
   .testimonial-container {
     flex-direction: row;
+  }
+  .featured-card-container {
+    width: 18rem;
   }
 }
 /* Add this CSS to your stylesheet or component */

@@ -51,7 +51,7 @@ export default function ECommerceCard() {
             <div className='container  mx-auto px-4 flex justify-center flex-wrap gap-4'>
                 {
                     data?.map((product: any, index: number) => (
-                        <Card key={index} style={{ width: "18rem" }}
+                        <Card className='featured-card-container' key={index}
                         >
                             <div className='flex justify-center'>
                                 <Image

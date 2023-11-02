@@ -25,7 +25,7 @@ export default function Review() {
                 </div>
             </Card>
             <Card style={{ width: "100%" }}>
-                <div className="flex flex-col items-center pb-10">
+                <div className="flex flex-col items-center pb-10 card-container">
                     {/* <Avatar /> */}
                     <Rating>
                         <Rating.Star />
