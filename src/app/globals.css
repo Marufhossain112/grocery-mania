@@ -8,11 +8,15 @@
   --accent-color: #b0f2b4;
 }
 .navbar,
-.add-to-cart {
+.add-to-cart,
+.registration-button,
+.login-button {
   background: var(--accent-color);
   color: black;
 }
-.add-to-cart:hover {
+.add-to-cart:hover,
+.registration-button:hover,
+.login-button:hover {
   cursor: pointer;
   background: black;
   color: #fff;
@@ -54,6 +58,7 @@
 .testimonial-title {
   padding-bottom: 1.25rem;
 }
+.products-card-container:hover,
 .featured-card-container:hover {
   background: #b0f2b4;
   transition: all 0.5s ease;
@@ -62,6 +67,7 @@
   -ms-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
 }
+.products-card-container:hover .go-to-details,
 .featured-card-container:hover .add-to-cart {
   background: black;
   color: #fff;
@@ -343,6 +349,7 @@
   }
   .comment-container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     gap: 1rem;
     flex-wrap: wrap;

@@ -22,7 +22,7 @@ const HomePage = () => {
     <div id='home'>
       {
         <div><GMNavbar />
-          <div style={{ marginTop: "3rem" }}>
+          <div style={{ marginTop: "2rem" }}>
             <Featured />
           </div>
           <div style={{ marginTop: "3rem" }}>

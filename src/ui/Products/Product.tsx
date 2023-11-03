@@ -98,7 +98,7 @@ export default function Products() {
                 </div>
                 <div className='product-container'>
                     {data?.paginatedProducts?.map((product: any, index: number) => (
-                        <Card key={index} style={{ width: "18rem" }}
+                        <Card className="products-card-container" key={index} style={{ width: "18rem" }}
                         >
                             <div className='flex justify-center'>
                                 <Image
@@ -136,7 +136,7 @@ export default function Products() {
                                     ৳{product.price}
                                 </span>
                                 <a
-                                    className="add-to-cart rounded-lg px-5 py-2.5"
+                                    className="go-to-details rounded-lg px-5 py-2.5"
                                     href="#"
                                 >
                                     <Link href={`/products/${product._id}`}>
@@ -153,10 +153,6 @@ export default function Products() {
             </div>
             <div className='flex justify-end container mx-auto ' style={{ padding: "0 4.5rem" }}>
                 <GMPagination setCurrentPage={setCurrentPage} />
-            </div>
-            {/* user generated  */}
-            <div className='container mx-auto px-4 mt-10'>
-                <UserGeneratedContent />
             </div>
         </>
     );

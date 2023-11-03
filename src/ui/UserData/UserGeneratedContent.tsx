@@ -57,29 +57,32 @@ const UserGeneratedContent: React.FC = () => {
     }
     return (
         <div className='mt-6'>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
-                    <div className="bg-white  py-8 rounded shadow-md text-black w-full">
-                        <h1 className="mb-2 text-xl text-center">Leave a comment</h1>
-                        <input
-                            type="text"
-                            className="block border border-grey-light w-full p-3 rounded mb-4"
-                            placeholder="Comment.."
-                            {...register('comment', { required: 'Comment is required' })}
-                        />
-                        {errors.comment && <p className="text-red-600">{errors.comment.message}</p>}
-                    </div>
-                    <button
-                        type="submit"
-                        className="w-full text-center py-3 rounded  focus:outline-none add-to-cart my-1"
-                    >
-                        Submit
-                    </button>
-                </div>
-            </form>
             <div>
                 <CommentGeneratorCard />
             </div>
+            <div style={{ marginTop: "3rem" }}>
+                <form onSubmit={handleSubmit(onSubmit)}>
+                    <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
+                        <div className="bg-white  py-8 rounded shadow-md text-black w-full">
+                            <h1 className="mb-2 text-xl text-center">Leave a comment</h1>
+                            <input
+                                type="text"
+                                className="block border border-grey-light w-full p-3 rounded mb-4"
+                                placeholder="Comment.."
+                                {...register('comment', { required: 'Comment is required' })}
+                            />
+                            {errors.comment && <p className="text-red-600">{errors.comment.message}</p>}
+                        </div>
+                        <button
+                            type="submit"
+                            className="w-full text-center py-3 rounded  focus:outline-none add-to-cart my-1"
+                        >
+                            Submit
+                        </button>
+                    </div>
+                </form>
+            </div>
+
         </div>
     );
 };
