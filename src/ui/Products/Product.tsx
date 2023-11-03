@@ -16,6 +16,8 @@ import toast from 'react-hot-toast';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import UserGeneratedContent from '../UserData/UserGeneratedContent';
+import ScrollToTopButton from '../components/ScrollToTopButton';
+import GMFooter from '../components/Footer';
 export default function Products() {
     const [search, setSearch] = useState("");
     const [sort, setSort] = useState('desc');
@@ -25,7 +27,7 @@ export default function Products() {
     const { user } = useSelector((state) => state.persistedUserReducer);
     const { data, isLoading } = useProductsQuery({ search, sort, status, category, page });
     // console.log("status", status);
-    console.log("DATA", data);
+    // console.log("DATA", data);
     const handleAddToCart = async (product: any) => {
         const response = await (fetch("https://grocery-vercel-coral.vercel.app/cart"));
         const cartProducts = await response.json();
@@ -127,12 +129,13 @@ export default function Products() {
                             </div>
                         </Card>
                     ))}
-
                 </div>
             </div>
             <div className='flex justify-end container mx-auto ' style={{ padding: "0 4.5rem" }}>
                 <GMPagination setCurrentPage={setCurrentPage} />
             </div>
+            <ScrollToTopButton />
+            <GMFooter  />
         </>
     );
 }
