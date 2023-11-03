@@ -9,6 +9,7 @@ import toast from 'react-hot-toast';
 import { signOutUser } from '@/redux/user/userslice';
 import { useRouter } from 'next/navigation';
 import { persistor } from '@/redux/store';
+import Image from 'next/image';
 const auth = getAuth(app);
 export default function GMNavbar({ setSearch }) {
     const dispatch = useDispatch();
@@ -31,6 +32,9 @@ export default function GMNavbar({ setSearch }) {
             className='navbar'
         >
             <Navbar.Brand href="/">
+                <span>
+                    <Image src="/assets/lgo-mani.jpeg" alt='logo' style={{ borderRadius: "45%",margin:"0 5px" }} height={30} width={30} />
+                </span>
                 <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
                     Grocery Mania
                 </span>
