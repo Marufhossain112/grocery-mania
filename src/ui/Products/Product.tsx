@@ -54,28 +54,6 @@ export default function Products() {
                 })
                 .catch((err) => console.log(err));
         }
-
-        // const existProduct = existingCart.find((cart) => cart._id === product._id);
-        // console.log("paisi", existProduct);
-        // if (existProduct) {
-        //     toast.error("Product is already added to the cart.");
-        // }
-        // if (!existProduct) {
-        //     fetch("https://grocery-vercel-coral.vercel.app/cart", {
-        //         method: "POST",
-        //         headers: {
-        //             "content-type": "application/json",
-        //         },
-        //         body: JSON.stringify({ user, ...product }),
-        //     })
-        //         .then((res) => res.json())
-        //         .then((data) => {
-        //             if (data.insertedId) {
-        //                 toast.success("Added to cart successfully.");
-        //             }
-        //         })
-        //         .catch((err) => console.log(err));
-        // }
     };
     if (isLoading) {
         return <div style={{ height: "100vh" }} className="flex justify-center items-center">
@@ -102,6 +80,7 @@ export default function Products() {
                         >
                             <div className='flex justify-center'>
                                 <Image
+                                    style={{ paddingTop: "1rem" }}
                                     src={product.img}
                                     alt="Apple Watch Series 7 in colors pink, silver, and black"
                                     height={100}

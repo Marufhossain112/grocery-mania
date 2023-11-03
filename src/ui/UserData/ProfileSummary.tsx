@@ -54,7 +54,7 @@ export default function UserProfileCard({ setSelectedItem
     return (
         <div>
             {/* <GMNavbar /> */}
-            <div style={{ marginTop: "2rem" }} className='flex justify-center items-center '>
+            <div className='flex justify-center items-center '>
                 {
                     data?.map((user: any, index: number) => (
                         <Card key={index}>

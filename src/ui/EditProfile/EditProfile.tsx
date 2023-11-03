@@ -15,7 +15,7 @@ type EditProps = {
 const EditProfile = () => {
     const dispatch = useDispatch();
     const [EditProfile] = useEditProfileMutation();
-    const { uid,user } = useSelector((state) => state.persistedUserReducer);
+    const { uid, user } = useSelector((state) => state.persistedUserReducer);
     const { data, isLoading } = useGetOneUserQuery(user);
     const userData = data?.filter((userData) => userData.uid === uid);
     const id = userData[0]?._id;
@@ -63,8 +63,7 @@ const EditProfile = () => {
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
                         <div className="bg-white px-6 py-8 rounded shadow-md text-black w-full">
-
-                            <h1 className="mb-2 text-xl text-center">Edit profile</h1>
+                            <h1 className="mb-2 text-2xl text-center">Edit profile</h1>
                             <input
                                 type="text"
                                 className="block border border-grey-light w-full p-3 rounded mb-4"
@@ -83,13 +82,13 @@ const EditProfile = () => {
                                 className="block border border-grey-light w-full p-3 rounded mb-4"
                                 placeholder="Phone number"
                                 {...register("phoneNumber")} />
-                            <select
+                            {/* <select
                                 className="block border border-grey-light w-full p-3 rounded mb-4"
                                 {...register("role")}
                             >
                                 <option value="user">User</option>
                                 <option value="admin">Admin</option>
-                            </select>
+                            </select> */}
                             <button
                                 type="submit"
                                 className="w-full text-center py-3 rounded add-to-cart focus:outline-none my-1"

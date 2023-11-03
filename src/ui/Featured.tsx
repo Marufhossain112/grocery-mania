@@ -23,7 +23,7 @@ export default function ECommerceCard() {
         const existProduct = cartProducts.filter((cartItem) => cartItem.id === product._id);
         // console.log("paisi", (existProduct));
         const alreadyOnCart = existProduct.filter((product) => product.user === user);
-        console.log("already on cart", alreadyOnCart);
+        // console.log("already on cart", alreadyOnCart);
         if (alreadyOnCart.length !== 0) {
             toast.error("Product is already added to the cart.");
             return;
@@ -47,7 +47,7 @@ export default function ECommerceCard() {
     };
     return (
         <>
-            <h3 className='text-center  text-2xl py-3 ' style={{marginBottom:"1rem"}}>Featured Products</h3>
+            <h3 className='text-center  text-2xl py-3 ' style={{ marginBottom: "1rem" }}>Featured Products</h3>
             <div className='container  mx-auto px-4 flex justify-center flex-wrap gap-4'>
                 {
                     data?.map((product: any, index: number) => (
@@ -55,6 +55,7 @@ export default function ECommerceCard() {
                         >
                             <div className='flex justify-center'>
                                 <Image
+                                    style={{ marginTop: "1rem" }}
                                     src={product.img}
                                     alt="Apple Watch Series 7 in colors pink, silver, and black"
                                     height={100}

@@ -10,7 +10,8 @@
 .navbar,
 .add-to-cart,
 .registration-button,
-.login-button {
+.login-button,
+.go-to-details {
   background: var(--accent-color);
   color: black;
 }

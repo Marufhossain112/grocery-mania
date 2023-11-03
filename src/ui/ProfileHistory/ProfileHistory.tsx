@@ -17,7 +17,7 @@ const ProfileHistory = () => {
     return (
         <div>
             <div className='text-center '>
-                <h3 className='text-center font-bold text-2xl py-3'>User activities</h3>
+                <h3 className='text-center  text-2xl py-3'>User activities</h3>
                 <p>Added to cart: {foundAddedCart?.length || 0} items</p>
                 <BookedOrder />
             </div>

@@ -87,7 +87,7 @@ const UserDashboard = () => {
                                             onClick={() => handleSidebarItemClick('user')}
                                         >
                                             <p>
-                                                User management
+                                                Manage Users
                                             </p>
                                         </Sidebar.Item>
                                         <Sidebar.Item
@@ -96,7 +96,7 @@ const UserDashboard = () => {
                                             onClick={() => handleSidebarItemClick('service')}
                                         >
                                             <p>
-                                                Product management
+                                                Manage Products
                                             </p>
                                         </Sidebar.Item>
                                         <Sidebar.Item
@@ -134,21 +134,23 @@ const UserDashboard = () => {
                         }
                         {
                             selectedItem === 'user' &&
-                            <div>
+                            <div style={{ marginTop: '0rem' }}>
+                                <h3 className='text-center  text-2xl py-3'>Users</h3>
                                 <UserList />
                             </div>
+
                         }
                         {
                             selectedItem === 'service' &&
                             <div style={{ marginTop: '0rem' }}>
-                                <h3 className='text-center font-bold text-2xl py-3'>All Products</h3>
+                                <h3 className='text-center  text-2xl py-3'>All Products</h3>
                                 <ProductManagement />
                             </div>
                         }
                         {
                             selectedItem === 'profile' &&
                             <div style={{ marginTop: '0rem' }}>
-                                <h3 className='text-center font-bold text-2xl py-3'>Profile Summary</h3>
+                                <h3 className='text-center  text-2xl py-3'>Profile Summary</h3>
                                 <ProfileSummary setSelectedItem={setSelectedItem} />
                             </div>
                         }
@@ -231,14 +233,14 @@ const UserDashboard = () => {
                                 {
                                     selectedItem === 'status' &&
                                     <div style={{ marginTop: '0rem' }}>
-                                        <h3 className='text-center font-bold text-2xl py-3'>Orders on cart</h3>
+                                        <h3 className='text-center  text-2xl py-3'>Orders on cart</h3>
                                         <BookingStatus />
                                     </div>
                                 }
                                 {
                                     selectedItem === 'history' &&
                                     <div style={{ marginTop: '0rem' }}>
-                                        <h3 className='text-center font-bold text-2xl py-3'>Confirmed orders</h3>
+                                        <h3 className='text-center  text-2xl py-3'>Confirmed orders</h3>
                                         <UserTable />
                                     </div>
                                 }
@@ -246,7 +248,7 @@ const UserDashboard = () => {
                                 {
                                     selectedItem === 'summary' &&
                                     <div style={{ marginTop: '0rem' }}>
-                                        <h3 className='text-center font-bold text-2xl py-3'>Profile Summary</h3>
+                                        <h3 className='text-center  text-2xl py-3'>Profile Summary</h3>
                                         <ProfileSummary />
                                     </div>
                                 }
