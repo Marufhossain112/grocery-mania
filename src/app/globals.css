@@ -36,7 +36,7 @@
   color: #fff;
   border: none;
   border-radius: 50%;
-  padding: 10px 15px;
+  padding: 8px 10px;
   cursor: pointer;
   font-size: 30px;
 }
@@ -50,10 +50,24 @@
   -ms-transition: all 0.2s ease;
   -o-transition: all 0.2s ease;
 }
+.gallery-pic {
+  transition: transform 0.5s ease;
+  -webkit-transition: transform 0.5s ease;
+  -moz-transition: transform 0.5s ease;
+  -ms-transition: transform 0.5s ease;
+  -o-transition: transform 0.5s ease;
+}
+.gallery-pic:hover {
+  transform: scale(1.3, 1.3);
+  -webkit-transform: scale(1.3, 1.3);
+  -moz-transform: scale(1.3, 1.3);
+  -ms-transform: scale(1.3, 1.3);
+  -o-transform: scale(1.3, 1.3);
+}
 #testimonials {
   background: #b0f2b4;
   padding: 4rem 0;
-  margin: 3rem 0;
+  margin: 4rem 0;
   padding: 2rem 2rem 5rem 2rem;
 }
 .testimonial-title {

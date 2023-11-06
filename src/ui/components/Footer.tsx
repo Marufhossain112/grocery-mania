@@ -3,7 +3,7 @@ import React from 'react';
 const GMFooter = () => {
     return (
         <footer style={{ background: "black" }}>
-            <div className="mx-auto w-full max-w-screen-xl mt-4" >
+            <div className="mx-auto w-full max-w-screen-xl" style={{ marginTop: "6rem" }} >
                 {/* <div className="grid grid-cols-2 gap-8 px-4 py-6 lg:py-8 md:grid-cols-4"> */}
                 <div className="grid grid-cols-4 mx-auto p-5">
                     <div className='flex justify-center items-center'>

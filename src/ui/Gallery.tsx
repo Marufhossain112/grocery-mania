@@ -14,7 +14,7 @@ const Gallery = () => {
             <div className="flex flex-wrap justify-center mt-4 gap-4">
                 {
                     data?.map((image: any, index: number) => (
-                        <div key={index}>
+                        <div key={index} className='gallery-pic'>
                             <Image className="h-auto max-w-full rounded-lg" src={image.img} alt="" width={200} height={200} />
                         </div>
                     ))

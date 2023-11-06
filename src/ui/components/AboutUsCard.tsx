@@ -18,7 +18,7 @@ import React from 'react';
 const AboutUsCard = () => {
     return (
         <div className='flex justify-center aboutUs-card-container'>
-            <div>
+            <div className='flex justify-center'>
                 <Image src="/assets/grocery-mania.webp" alt='img' width={300} height={300} />
             </div>
 

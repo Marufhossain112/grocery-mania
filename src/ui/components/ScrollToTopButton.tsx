@@ -1,7 +1,7 @@
 // ScrollToTopButton.js
 "use client";
 import { useEffect, useState } from 'react';
-import { GoMoveToTop } from 'react-icons/go';
+import { BiUpArrowAlt } from 'react-icons/bi';
 const ScrollToTopButton = () => {
     const [isVisible, setIsVisible] = useState(false);
     const handleScroll = () => {
@@ -26,7 +26,7 @@ const ScrollToTopButton = () => {
     return (
         isVisible && (
             <button className="scroll-to-top" onClick={scrollToTop}>
-                 <GoMoveToTop />
+                 <BiUpArrowAlt />
             </button>
 
         )

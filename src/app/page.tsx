@@ -15,9 +15,7 @@ import React, { useEffect, useState } from 'react';
 const HomePage = () => {
   return (
     <div id='home'>
-      <Head>
-    <title>Maruf</title>
-      </Head>
+
       <div>
         {
           <div><GMNavbar />
