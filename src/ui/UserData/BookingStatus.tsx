@@ -63,8 +63,8 @@ export default function BookingStatus() {
                                         <Table.Cell>
                                             {product.status}
                                         </Table.Cell>
-                                        <Table.Cell className={'text-center'}>
-                                            <RxCrossCircled onClick={() => handleCancelFromCart(product.id)} style={{ color: "red", marginLeft: "1rem" }} />
+                                        <Table.Cell onClick={() => handleCancelFromCart(product.id)} className={'text-center'}>
+                                            <RxCrossCircled style={{ color: "red", marginLeft: "1rem" }} />
                                         </Table.Cell>
                                     </Table.Row>
                                 </Table.Body>

@@ -15,7 +15,7 @@ type EditProps = {
 const EditProfile = () => {
     const dispatch = useDispatch();
     const [EditProfile] = useEditProfileMutation();
-    const { uid, user } = useSelector((state) => state.persistedUserReducer);
+    const { uid, user, role } = useSelector((state) => state.persistedUserReducer);
     const { data, isLoading } = useGetOneUserQuery(user);
     const userData = data?.filter((userData) => userData.uid === uid);
     const id = userData[0]?._id;
@@ -27,21 +27,17 @@ const EditProfile = () => {
         formState: { errors },
     } = useForm<EditProps>();
     const onSubmit: SubmitHandler<EditProps> = async (data) => {
-        // console.log("responseData", data);
-        await EditProfile({ data, id }).unwrap().then((response) => {
+        // console.log("EditResponseData", user);
+        await EditProfile({ data: { ...data, role }, id }).unwrap().then((response) => {
             if (response.acknowledged) {
                 toast.success("Profile edited successfully.");
                 dispatch(setUser({
                     user: data.email,
-                    role: data.role,
+                    role,
                     uid,
                 }));
                 reset();
             }
-            console.log("response", response);
-            console.log("data", data);
-            // if (response.statusCode === 200) {
-            // }
         }).catch((error) => {
             if (error) {
                 toast.error(error?.data?.message);
@@ -82,13 +78,6 @@ const EditProfile = () => {
                                 className="block border border-grey-light w-full p-3 rounded mb-4"
                                 placeholder="Phone number"
                                 {...register("phoneNumber")} />
-                            {/* <select
-                                className="block border border-grey-light w-full p-3 rounded mb-4"
-                                {...register("role")}
-                            >
-                                <option value="user">User</option>
-                                <option value="admin">Admin</option>
-                            </select> */}
                             <button
                                 type="submit"
                                 className="w-full text-center py-3 rounded add-to-cart focus:outline-none my-1"
